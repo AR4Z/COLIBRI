@@ -1,6 +1,8 @@
 import tkinter as tk
 from tkinter import filedialog
 import glob
+from src.utils.utils import text_to_audio
+
 
 LARGE_FONT = ("Verdana", 12)
 
@@ -69,24 +71,26 @@ class PageOne(tk.Frame):
         label = tk.Label(self, text="ARCHIVO: ", font=LARGE_FONT)
         label.pack(pady=10, padx=10)
         self.path_selected_file = tk.StringVar(None)
-        self.field_path_selected_file = tk.Entry(self, width='65', textvariable=self.path_selected_file).pack()
+        self.field_path_selected_file = tk.Entry(self, width='65', textvariable=self.path_selected_file)
+        self.field_path_selected_file.pack()
 
         label = tk.Label(self, text="VELOCIDAD: ", font=LARGE_FONT)
         label.pack(pady=10, padx=10)
 
-        scale_speed = tk.Scale(self, orient='horizontal', from_=0, to=100, command=self.value_speed)
-        scale_speed.pack()
+        self.scale_speed = tk.Scale(self, orient='horizontal', from_=0, to=100)
+        self.scale_speed.pack()
 
         button2 = tk.Button(self, text="CONVERTIR",
-                            command=lambda: controller.show_frame(PageTwo))
+                            command=self.conversion)
         button2.pack(pady=50)
 
     def select_pdf(self):
         selected_file = filedialog.askopenfilename(initialdir="/home/ar4z", title="SELECCIONAR LIBRO", filetypes=(("archivos pdf","*.pdf"),("todos los archivos","*.*")))
         self.path_selected_file.set(selected_file)
 
-    def value_speed(self, speed):
-        print(speed)
+
+    def conversion(self):
+        text_to_audio(self.field_path_selected_file.get(), self.scale_speed.get())
 
 
 class PageTwo(tk.Frame):
