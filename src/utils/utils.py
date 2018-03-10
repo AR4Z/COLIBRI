@@ -1,10 +1,19 @@
 from voxpopuli import Voice
+import textract
 
-def text_to_audio(dir_text, speed):
-    print(dir_text, speed)
+def text_to_audio(text, speed):
+    print(text, speed)
     voice = Voice(lang="es", pitch=99, speed=speed, voice_id=1)
-    wav = voice.to_audio(dir_text)
+    wavs = voice.to_audio(text)
 
-    with open("texto.wav", "wb") as wavfile:
-        wavfile.write(wav)
+    with open("/home/ar4z/Audiolibros/texto.wav", "wb") as wavfile:
+        wavfile.write(wavs)
 
+
+def extract_text(path_pdf):
+    text = textract.process(path_pdf)
+
+    decode_text = text.decode('utf-8')
+
+    decode_text.replace('\n', ' ')
+    return decode_text

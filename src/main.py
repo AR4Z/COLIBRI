@@ -1,8 +1,7 @@
 import tkinter as tk
 from tkinter import filedialog
 import glob
-from src.utils.utils import text_to_audio
-
+from src.utils.utils import text_to_audio, extract_text
 
 LARGE_FONT = ("Verdana", 12)
 
@@ -54,7 +53,7 @@ class StartPage(tk.Frame):
         button2.pack(pady=10)
 
     def show_audios(self):
-        listAudios = glob.glob("/home/ar4z/Audiolibros/*.mp3")
+        listAudios = glob.glob("/home/ar4z/Audiolibros/*.wav")
         for audio, n_audio in zip(listAudios, range(len(listAudios))):
             print("sw", audio, n_audio)
             self.listbox.insert(n_audio, audio)
@@ -85,12 +84,12 @@ class PageOne(tk.Frame):
         button2.pack(pady=50)
 
     def select_pdf(self):
-        selected_file = filedialog.askopenfilename(initialdir="/home/ar4z", title="SELECCIONAR LIBRO", filetypes=(("archivos pdf","*.pdf"),("todos los archivos","*.*")))
+        selected_file = filedialog.askopenfilename(initialdir="/home/ar4z", title="SELECCIONAR LIBRO",
+                                                   filetypes=(("archivos pdf", "*.pdf"), ("todos los archivos", "*.*")))
         self.path_selected_file.set(selected_file)
 
-
     def conversion(self):
-        text_to_audio(self.field_path_selected_file.get(), self.scale_speed.get())
+        text_to_audio(extract_text(self.field_path_selected_file.get()), self.scale_speed.get())
 
 
 class PageTwo(tk.Frame):
