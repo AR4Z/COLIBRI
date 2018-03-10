@@ -70,6 +70,13 @@ class PageOne(tk.Frame):
         label.pack(pady=10, padx=10)
         self.path_selected_file = tk.StringVar(None)
         self.field_path_selected_file = tk.Entry(self, width='65', textvariable=self.path_selected_file).pack()
+
+        label = tk.Label(self, text="VELOCIDAD: ", font=LARGE_FONT)
+        label.pack(pady=10, padx=10)
+
+        scale_speed = tk.Scale(self, orient='horizontal', from_=0, to=100, command=self.value_speed)
+        scale_speed.pack()
+
         button2 = tk.Button(self, text="CONVERTIR",
                             command=lambda: controller.show_frame(PageTwo))
         button2.pack(pady=50)
@@ -77,6 +84,9 @@ class PageOne(tk.Frame):
     def select_pdf(self):
         selected_file = filedialog.askopenfilename(initialdir="/home/ar4z", title="SELECCIONAR LIBRO", filetypes=(("archivos pdf","*.pdf"),("todos los archivos","*.*")))
         self.path_selected_file.set(selected_file)
+
+    def value_speed(self, speed):
+        print(speed)
 
 
 class PageTwo(tk.Frame):
