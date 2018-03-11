@@ -10,31 +10,38 @@ class PdfToAudio(tk.Tk):
 
     def __init__(self, *args, **kwargs):
         tk.Tk.__init__(self, *args, **kwargs)
-        container = tk.Frame(self)
-        container.pack(side="top", fill="both", expand=True)
+        self.container = tk.Frame(self)
+        self.container.pack(side="top", fill="both", expand=True)
 
-        container.grid_rowconfigure(0, weight=1)
-        container.grid_columnconfigure(0, weight=1)
+        self.container.grid_rowconfigure(0, weight=1)
+        self.container.grid_columnconfigure(0, weight=1)
 
         self.frames = {}
+        self.data = {
+            "path_file": ""
+        }
 
-        for F in (StartPage, PageOne, PageTwo):
-            frame = F(container, self)
-
-            self.frames[F] = frame
-
-            frame.grid(row=0, column=0, sticky="nsew")
+        # for F in (StartPage, PageOne, PageTwo):
+        #
+        #     frame = F(container, self)
+        #
+        #     self.frames[F] = frame
+        #
+        #     frame.grid(row=0, column=0, sticky="nsew")
 
         self.show_frame(StartPage)
 
     def show_frame(self, cont):
+        frame = cont(self.container, self)
+        self.frames[cont] = frame
+        frame.grid(row=0, column=0, sticky="nsew")
         frame = self.frames[cont]
         frame.tkraise()
-
 
 class StartPage(tk.Frame):
 
     def __init__(self, parent, controller):
+        self.controller = controller
         tk.Frame.__init__(self, parent)
 
         button = tk.Button(self, text="CONVERTIR TEXTO",
@@ -48,8 +55,11 @@ class StartPage(tk.Frame):
         self.listbox.pack(pady=5, padx=70)
         self.show_audios()
 
+
+
         button2 = tk.Button(self, text="ABRIR AUDIO",
-                            command=lambda: controller.show_frame(PageTwo))
+                            command=self.open_audio)
+
         button2.pack(pady=10)
 
     def show_audios(self):
@@ -57,6 +67,10 @@ class StartPage(tk.Frame):
         for audio, n_audio in zip(listAudios, range(len(listAudios))):
             print("sw", audio, n_audio)
             self.listbox.insert(n_audio, audio)
+
+    def open_audio(self):
+        self.controller.data["path_file"] = self.listbox.get(self.listbox.curselection()[0])
+        self.controller.show_frame(PageTwo)
 
 
 class PageOne(tk.Frame):
@@ -91,12 +105,16 @@ class PageOne(tk.Frame):
     def conversion(self):
         text_to_audio(extract_text(self.field_path_selected_file.get()), self.scale_speed.get())
 
+    def get_name_file(self):
+        return self.path_selected_file.get()
+
 
 class PageTwo(tk.Frame):
 
     def __init__(self, parent, controller):
         tk.Frame.__init__(self, parent)
-        label = tk.Label(self, text="Page Two!!!", font=LARGE_FONT)
+        print(controller.data["path_file"])
+        label = tk.Label(self, text=controller.data["path_file"], font=LARGE_FONT)
         label.pack(pady=10, padx=10)
 
         button1 = tk.Button(self, text="Back to Home",
