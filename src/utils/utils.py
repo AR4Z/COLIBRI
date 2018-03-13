@@ -9,6 +9,8 @@ def text_to_audio(text, speed):
     with open("/home/ar4z/Audiolibros/texto.wav", "wb") as wavfile:
         wavfile.write(wavs)
 
+    return "/home/ar4z/Audiolibros/texto.wav"
+
 
 def extract_text(path_pdf):
     text = textract.process(path_pdf)

@@ -1,7 +1,8 @@
 import tkinter as tk
-from tkinter import filedialog
+from tkinter import filedialog, PhotoImage
 import glob
 from src.utils.utils import text_to_audio, extract_text
+import pygame
 
 LARGE_FONT = ("Verdana", 12)
 
@@ -21,15 +22,7 @@ class PdfToAudio(tk.Tk):
             "path_file": ""
         }
 
-        # for F in (StartPage, PageOne, PageTwo):
-        #
-        #     frame = F(container, self)
-        #
-        #     self.frames[F] = frame
-        #
-        #     frame.grid(row=0, column=0, sticky="nsew")
-
-        self.show_frame(StartPage)
+        self.show_frame(MenuPage)
 
     def show_frame(self, cont):
         frame = cont(self.container, self)
@@ -38,15 +31,16 @@ class PdfToAudio(tk.Tk):
         frame = self.frames[cont]
         frame.tkraise()
 
-class StartPage(tk.Frame):
+
+class MenuPage(tk.Frame):
 
     def __init__(self, parent, controller):
         self.controller = controller
         tk.Frame.__init__(self, parent)
 
-        button = tk.Button(self, text="CONVERTIR TEXTO",
-                           command=lambda: controller.show_frame(PageOne))
-        button.pack(pady=10)
+        button_convert = tk.Button(self, text="CONVERTIR TEXTO",
+                                   command=lambda: controller.show_frame(ConvertPage))
+        button_convert.pack(pady=10)
 
         label = tk.Label(self, text="AUDIOS EXISTENTES", font=LARGE_FONT)
         label.pack(pady=10, padx=10)
@@ -57,10 +51,10 @@ class StartPage(tk.Frame):
 
 
 
-        button2 = tk.Button(self, text="ABRIR AUDIO",
+        button_open_audio_file = tk.Button(self, text="ABRIR AUDIO",
                             command=self.open_audio)
 
-        button2.pack(pady=10)
+        button_open_audio_file.pack(pady=10)
 
     def show_audios(self):
         listAudios = glob.glob("/home/ar4z/Audiolibros/*.wav")
@@ -70,32 +64,40 @@ class StartPage(tk.Frame):
 
     def open_audio(self):
         self.controller.data["path_file"] = self.listbox.get(self.listbox.curselection()[0])
-        self.controller.show_frame(PageTwo)
+        self.controller.show_frame(AudioPage)
 
 
-class PageOne(tk.Frame):
+class ConvertPage(tk.Frame):
 
     def __init__(self, parent, controller):
         tk.Frame.__init__(self, parent)
 
-        button1 = tk.Button(self, text="EXAMINAR",
+        button_browse_file = tk.Button(self, text="EXAMINAR",
                             command=self.select_pdf)
-        button1.pack(pady=10)
-        label = tk.Label(self, text="ARCHIVO: ", font=LARGE_FONT)
-        label.pack(pady=10, padx=10)
+        button_browse_file.pack(pady=10)
+
+        label_file = tk.Label(self, text="ARCHIVO: ", font=LARGE_FONT)
+        label_file.pack(pady=10, padx=10)
+
         self.path_selected_file = tk.StringVar(None)
         self.field_path_selected_file = tk.Entry(self, width='65', textvariable=self.path_selected_file)
         self.field_path_selected_file.pack()
 
-        label = tk.Label(self, text="VELOCIDAD: ", font=LARGE_FONT)
-        label.pack(pady=10, padx=10)
+        label_speed = tk.Label(self, text="VELOCIDAD: ", font=LARGE_FONT)
+        label_speed.pack(pady=10, padx=10)
 
         self.scale_speed = tk.Scale(self, orient='horizontal', from_=0, to=100)
         self.scale_speed.pack()
 
-        button2 = tk.Button(self, text="CONVERTIR",
+        self.controller = controller
+
+        button_conversion = tk.Button(self, text="CONVERTIR",
                             command=self.conversion)
-        button2.pack(pady=50)
+        button_conversion.pack(pady=50)
+
+        self.icon_return = PhotoImage(file="ic_arrow_back_black_24dp_1x.png")
+        button_return = tk.Button(self, text="ATRÁS", command=lambda: self.controller.show_frame(MenuPage), image=self.icon_return)
+        button_return.pack(pady=10)
 
     def select_pdf(self):
         selected_file = filedialog.askopenfilename(initialdir="/home/ar4z", title="SELECCIONAR LIBRO",
@@ -103,27 +105,41 @@ class PageOne(tk.Frame):
         self.path_selected_file.set(selected_file)
 
     def conversion(self):
-        text_to_audio(extract_text(self.field_path_selected_file.get()), self.scale_speed.get())
+        self.controller.data["path_file"] = text_to_audio(extract_text(self.field_path_selected_file.get()), self.scale_speed.get())
+        self.controller.show_frame(AudioPage)
 
     def get_name_file(self):
         return self.path_selected_file.get()
 
 
-class PageTwo(tk.Frame):
+class AudioPage(tk.Frame):
 
     def __init__(self, parent, controller):
         tk.Frame.__init__(self, parent)
         print(controller.data["path_file"])
-        label = tk.Label(self, text=controller.data["path_file"], font=LARGE_FONT)
-        label.pack(pady=10, padx=10)
+        label_name_file = tk.Label(self, text=controller.data["path_file"], font=LARGE_FONT)
 
-        button1 = tk.Button(self, text="Back to Home",
-                            command=lambda: controller.show_frame(StartPage))
-        button1.pack()
+        label_name_file.pack(pady=10, padx=10)
+        self.icon_play = PhotoImage(file="ic_play_arrow_black_24dp_1x.png")
+        self.icon_pause = PhotoImage(file="ic_pause_black_24dp_1x.png")
+        button_play = tk.Button(self, text="Reproducir",
+                            command=lambda: self.play_audio(controller.data["path_file"]), image=self.icon_play)
+        button_play.pack()
 
-        button2 = tk.Button(self, text="Page One",
-                            command=lambda: controller.show_frame(PageOne))
-        button2.pack()
+        button_pause = tk.Button(self, text="Pausa",
+                            command=self.pause_audio, image=self.icon_pause)
+        button_pause.pack()
+
+    def play_audio(self, audio_file):
+        pygame.init()
+        pygame.mixer.init()
+        clock = pygame.time.Clock()
+        pygame.mixer.music.load(audio_file)
+        pygame.mixer.music.play()
+
+    def pause_audio(self):
+        print("sw")
+        pygame.mixer.music.pause()
 
 
 app = PdfToAudio()
