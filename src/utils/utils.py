@@ -1,15 +1,15 @@
 from voxpopuli import Voice
-import textract
+import textract, re
 
-def text_to_audio(text, speed):
+def text_to_audio(text, speed, name_audio):
     print(text, speed)
     voice = Voice(lang="es", pitch=99, speed=speed, voice_id=1)
     wavs = voice.to_audio(text)
-
-    with open("/home/ar4z/Audiolibros/texto.wav", "wb") as wavfile:
+    path_audio = "/home/ar4z/Audiolibros/" + name_audio[:-4] + ".wav"
+    with open(path_audio, "wb") as wavfile:
         wavfile.write(wavs)
 
-    return "/home/ar4z/Audiolibros/texto.wav"
+    return path_audio
 
 
 def extract_text(path_pdf):
@@ -19,3 +19,7 @@ def extract_text(path_pdf):
 
     decode_text.replace('\n', ' ')
     return decode_text
+
+def extract_name_audio(path):
+    pattern = re.compile(r"\w+(?:\.\w+)*$")
+    return pattern.findall(path)[0]

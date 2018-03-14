@@ -1,7 +1,7 @@
 import tkinter as tk
 from tkinter import filedialog, PhotoImage
 import glob
-from src.utils.utils import text_to_audio, extract_text
+from src.utils.utils import text_to_audio, extract_text, extract_name_audio
 import pygame
 
 LARGE_FONT = ("Verdana", 12)
@@ -19,7 +19,8 @@ class PdfToAudio(tk.Tk):
 
         self.frames = {}
         self.data = {
-            "path_file": ""
+            "path_file": "",
+            "existing_audios": []
         }
 
         self.show_frame(MenuPage)
@@ -56,11 +57,17 @@ class MenuPage(tk.Frame):
 
         button_open_audio_file.pack(pady=10)
 
+        self.image_refresh = PhotoImage(file="ic_refresh_black_24dp_1x.png")
+        button_refresh_files = tk.Button(self, text="REFRESCAR", command=self.show_audios, image=self.image_refresh)
+        button_refresh_files.pack()
+
     def show_audios(self):
         listAudios = glob.glob("/home/ar4z/Audiolibros/*.wav")
         for audio, n_audio in zip(listAudios, range(len(listAudios))):
-            print("sw", audio, n_audio)
-            self.listbox.insert(n_audio, audio)
+            if not(audio in self.controller.data["existing_audios"]):
+                print("sw", audio, n_audio)
+                self.controller.data["existing_audios"].append(audio)
+                self.listbox.insert(n_audio, audio)
 
     def open_audio(self):
         self.controller.data["path_file"] = self.listbox.get(self.listbox.curselection()[0])
@@ -105,7 +112,7 @@ class ConvertPage(tk.Frame):
         self.path_selected_file.set(selected_file)
 
     def conversion(self):
-        self.controller.data["path_file"] = text_to_audio(extract_text(self.field_path_selected_file.get()), self.scale_speed.get())
+        self.controller.data["path_file"] = text_to_audio(extract_text(self.field_path_selected_file.get()), self.scale_speed.get(), extract_name_audio(self.field_path_selected_file.get()))
         self.controller.show_frame(AudioPage)
 
     def get_name_file(self):
@@ -133,9 +140,9 @@ class AudioPage(tk.Frame):
     def play_audio(self, audio_file):
         pygame.init()
         pygame.mixer.init()
-        clock = pygame.time.Clock()
         pygame.mixer.music.load(audio_file)
         pygame.mixer.music.play()
+        pygame.mixer.get_busy()
 
     def pause_audio(self):
         print("sw")
