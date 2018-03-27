@@ -8,7 +8,6 @@ LARGE_FONT = ("Verdana", 12)
 
 
 class PdfToAudio(tk.Tk):
-
     def __init__(self, *args, **kwargs):
         tk.Tk.__init__(self, *args, **kwargs)
         self.container = tk.Frame(self)
@@ -68,6 +67,7 @@ class MenuPage(tk.Frame):
                 print("sw", audio, n_audio)
                 self.controller.data["existing_audios"].append(audio)
                 self.listbox.insert(n_audio, audio)
+
 
     def open_audio(self):
         self.controller.data["path_file"] = self.listbox.get(self.listbox.curselection()[0])
