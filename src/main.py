@@ -51,8 +51,6 @@ class MenuPage(tk.Frame):
         self.listbox.pack(pady=5, padx=70)
         self.show_audios()
 
-
-
         button_open_audio_file = tk.Button(self, text="ABRIR AUDIO",
                             command=self.open_audio)
 

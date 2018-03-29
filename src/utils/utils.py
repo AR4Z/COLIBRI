@@ -1,7 +1,8 @@
 #from voxpopuli import Voice
 #from gtts import gTTS
-import textract, re
+import re
 import subprocess
+import fitz
 
 def text_to_audio(name_text,speed, name_audio, lang="es"):
     subprocess.call("espeak -v {0} -f text.txt -p 45 -s 150 -w foo.wav".format(lang), shell=True)
@@ -22,17 +23,21 @@ def text_to_audio(name_text,speed, name_audio, lang="es"):
 #     tts.save(name_audio[:-4]+ ".mp3")
 
 
-def extract_text(path_pdf):
-    text = textract.process(path_pdf)
+def extract_text(path_pdf, from_page, until_page):
+    doc = fitz.open(path_pdf)
+    text = ""
+    for number_page in range(from_page, until_page):
+        page = doc.loadPage(number_page)
+        text += page.getText("text")
 
-    decode_text = text.decode('utf-8')
-
-    decode_text.replace('\n', '')
+    text.replace('\n', ' ')
     file = open("text.txt", 'w')
-    file.write(decode_text)
+    file.write(text)
     file.close()
-    return decode_text
+    return text
 
 def extract_name_audio(path):
     pattern = re.compile(r"\w+(?:\.\w+)*$")
     return pattern.findall(path)[0]
+
+print(extract_text("/home/ar4z/Downloads/Macroeconomia de Bernanke.PDF", 0, 28))
