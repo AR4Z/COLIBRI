@@ -4,7 +4,8 @@ import re
 import subprocess
 import fitz
 
-def text_to_audio(name_text,speed, name_audio, lang="es"):
+
+def text_to_audio(name_text, speed, name_audio, lang="es"):
     subprocess.call("espeak -v {0} -f text.txt -p 45 -s 150 -w foo.wav".format(lang), shell=True)
 
 # def text_to_audio(text, speed, name_audio):
@@ -40,4 +41,7 @@ def extract_name_audio(path):
     pattern = re.compile(r"\w+(?:\.\w+)*$")
     return pattern.findall(path)[0]
 
-print(extract_text("/home/ar4z/Downloads/Macroeconomia de Bernanke.PDF", 0, 28))
+
+def len_file_pdf(path_pdf):
+    doc = fitz.open(path_pdf)
+    return doc.pageCount

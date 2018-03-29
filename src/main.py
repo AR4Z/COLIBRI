@@ -2,7 +2,7 @@ import tkinter as tk
 from tkinter.ttk import Progressbar
 from tkinter import filedialog, PhotoImage
 import glob
-from src.utils.utils import text_to_audio, extract_text, extract_name_audio
+from src.utils.utils import text_to_audio, extract_text, extract_name_audio, len_file_pdf
 import pygame
 import threading
 
@@ -90,6 +90,22 @@ class ConvertPage(tk.Frame):
         self.field_path_selected_file = tk.Entry(self, width='65', textvariable=self.path_selected_file)
         self.field_path_selected_file.pack()
 
+        self.until_number_page = tk.IntVar()
+        self.from_number_page = tk.IntVar()
+        label_from_number_page = tk.Label(self, text="DESDE: ", font=LARGE_FONT)
+
+        self.field_from_number_page = tk.Entry(self, width='5', textvariable=self.from_number_page)
+
+        label_from_number_page.pack()
+        self.field_from_number_page.pack()
+
+        label_until_number_page = tk.Label(self, text="HASTA: ", font=LARGE_FONT)
+
+        self.field_until_number_page = tk.Entry(self, width='5', textvariable=self.until_number_page)
+
+        label_until_number_page.pack()
+        self.field_until_number_page.pack()
+
         label_speed = tk.Label(self, text="VELOCIDAD: ", font=LARGE_FONT)
         label_speed.pack(pady=10, padx=10)
 
@@ -111,6 +127,8 @@ class ConvertPage(tk.Frame):
         selected_file = filedialog.askopenfilename(initialdir="/home/ar4z", title="SELECCIONAR LIBRO",
                                                    filetypes=(("archivos pdf", "*.pdf"), ("todos los archivos", "*.*")))
         self.path_selected_file.set(selected_file)
+        self.from_number_page.set(0)
+        self.until_number_page.set(len_file_pdf(selected_file))
 
     def conversion(self):
         self.show_progress(True)
