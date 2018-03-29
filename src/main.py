@@ -1,8 +1,10 @@
 import tkinter as tk
+from tkinter.ttk import Progressbar
 from tkinter import filedialog, PhotoImage
 import glob
 from src.utils.utils import text_to_audio, extract_text, extract_name_audio
 import pygame
+import threading
 
 LARGE_FONT = ("Verdana", 12)
 
@@ -56,7 +58,7 @@ class MenuPage(tk.Frame):
 
         button_open_audio_file.pack(pady=10)
 
-        self.image_refresh = PhotoImage(file="ic_refresh_black_24dp_1x.png")
+        self.image_refresh = PhotoImage(file="../img/ic_refresh_black_24dp_1x.png")
         button_refresh_files = tk.Button(self, text="REFRESCAR", command=self.show_audios, image=self.image_refresh)
         button_refresh_files.pack()
 
@@ -102,9 +104,10 @@ class ConvertPage(tk.Frame):
                             command=self.conversion)
         button_conversion.pack(pady=50)
 
-        self.icon_return = PhotoImage(file="ic_arrow_back_black_24dp_1x.png")
+        self.icon_return = PhotoImage(file="../img/ic_arrow_back_black_24dp_1x.png")
         button_return = tk.Button(self, text="ATRÁS", command=lambda: self.controller.show_frame(MenuPage), image=self.icon_return)
         button_return.pack(pady=10)
+
 
     def select_pdf(self):
         selected_file = filedialog.askopenfilename(initialdir="/home/ar4z", title="SELECCIONAR LIBRO",
@@ -112,8 +115,37 @@ class ConvertPage(tk.Frame):
         self.path_selected_file.set(selected_file)
 
     def conversion(self):
-        self.controller.data["path_file"] = text_to_audio(extract_text(self.field_path_selected_file.get()), self.scale_speed.get(), extract_name_audio(self.field_path_selected_file.get()))
+        self.show_progress(True)
+        self.thread = threading.Thread(target=self.conversion_worker)
+        self.thread.daemon = True
+        self.thread.start()
+        self.conversion_check()
+
+
+    def conversion_check(self):
+        if self.thread.is_alive():
+            self.after(10, self.conversion_check)
+
+        else:
+            self.show_progress(False)
+
+    def conversion_worker(self):
+        self.controller.data["path_file"] = text_to_audio(extract_text(self.field_path_selected_file.get()),
+                                                          self.scale_speed.get(),
+                                                          extract_name_audio(self.field_path_selected_file.get()))
         self.controller.show_frame(AudioPage)
+
+    def show_progress(self, start):
+        if start:
+            self.progress_bar = Progressbar(self,orient=tk.HORIZONTAL,
+                                                mode='indeterminate',
+                                                takefocus=True)
+            self.progress_bar.pack()
+            self.progress_bar.start()
+        else:
+
+            self.progress_bar.stop()
+            self.controller.show_frame(AudioPage)
 
     def get_name_file(self):
         return self.path_selected_file.get()
@@ -127,8 +159,8 @@ class AudioPage(tk.Frame):
         label_name_file = tk.Label(self, text=controller.data["path_file"], font=LARGE_FONT)
 
         label_name_file.pack(pady=10, padx=10)
-        self.icon_play = PhotoImage(file="ic_play_arrow_black_24dp_1x.png")
-        self.icon_pause = PhotoImage(file="ic_pause_black_24dp_1x.png")
+        self.icon_play = PhotoImage(file="../img/ic_play_arrow_black_24dp_1x.png")
+        self.icon_pause = PhotoImage(file="../img/ic_pause_black_24dp_1x.png")
         button_play = tk.Button(self, text="Reproducir",
                             command=lambda: self.play_audio(controller.data["path_file"]), image=self.icon_play)
         button_play.pack()

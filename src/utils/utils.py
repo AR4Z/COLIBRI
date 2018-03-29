@@ -3,7 +3,7 @@
 import textract, re
 import subprocess
 
-def text_to_audio(name_text,speed, name_audio,lang="es"):
+def text_to_audio(name_text,speed, name_audio, lang="es"):
     subprocess.call("espeak -v {0} -f text.txt -p 45 -s 150 -w foo.wav".format(lang), shell=True)
 
 # def text_to_audio(text, speed, name_audio):
