@@ -107,21 +107,28 @@ class ConvertPage(tk.Frame):
         self.field_until_number_page.pack()
 
         label_speed = tk.Label(self, text="VELOCIDAD: ", font=LARGE_FONT)
-        label_speed.pack(pady=10, padx=10)
+        label_speed.pack()
 
-        self.scale_speed = tk.Scale(self, orient='horizontal', from_=0, to=100)
+        self.scale_speed = tk.Scale(self, orient='horizontal', from_=80, to=450)
+        self.scale_speed.set(175)
         self.scale_speed.pack()
+
+        label_pitch = tk.Label(self, text="TONO: ", font=LARGE_FONT)
+        label_pitch.pack()
+
+        self.scale_pitch = tk.Scale(self, orient='horizontal', from_=0, to=99)
+        self.scale_pitch.set(50)
+        self.scale_pitch.pack()
 
         self.controller = controller
 
         button_conversion = tk.Button(self, text="CONVERTIR",
                             command=self.conversion)
-        button_conversion.pack(pady=50)
+        button_conversion.pack(pady=20)
 
         self.icon_return = PhotoImage(file="../img/ic_arrow_back_black_24dp_1x.png")
         button_return = tk.Button(self, text="ATRÁS", command=lambda: self.controller.show_frame(MenuPage), image=self.icon_return)
         button_return.pack(pady=10)
-
 
     def select_pdf(self):
         selected_file = filedialog.askopenfilename(initialdir="/home/ar4z", title="SELECCIONAR LIBRO",
@@ -137,7 +144,6 @@ class ConvertPage(tk.Frame):
         self.thread.start()
         self.conversion_check()
 
-
     def conversion_check(self):
         if self.thread.is_alive():
             self.after(10, self.conversion_check)
@@ -146,9 +152,10 @@ class ConvertPage(tk.Frame):
             self.show_progress(False)
 
     def conversion_worker(self):
-        self.controller.data["path_file"] = text_to_audio(extract_text(self.field_path_selected_file.get()),
-                                                          self.scale_speed.get(),
-                                                          extract_name_audio(self.field_path_selected_file.get()))
+        extract_text(self.field_path_selected_file.get(), self.from_number_page.get(), self.until_number_page.get())
+        self.controller.data["path_file"] = text_to_audio(self.scale_speed.get(),
+                                                          extract_name_audio(self.field_path_selected_file.get()),
+                                                          self.scale_pitch.get())
         self.controller.show_frame(AudioPage)
 
     def show_progress(self, start):
@@ -186,6 +193,7 @@ class AudioPage(tk.Frame):
         button_pause.pack()
 
     def play_audio(self, audio_file):
+        print(audio_file)
         pygame.init()
         pygame.mixer.init()
         pygame.mixer.music.load(audio_file)

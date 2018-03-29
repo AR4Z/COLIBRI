@@ -1,33 +1,17 @@
-#from voxpopuli import Voice
-#from gtts import gTTS
 import re
 import subprocess
 import fitz
 
 
-def text_to_audio(name_text, speed, name_audio, lang="es"):
-    subprocess.call("espeak -v {0} -f text.txt -p 45 -s 150 -w foo.wav".format(lang), shell=True)
-
-# def text_to_audio(text, speed, name_audio):
-#     print(text, speed)
-#     voice = Voice(lang="es", pitch=99, speed=speed, voice_id=1)
-#     wavs = voice.to_audio(text)
-#     path_audio = "/home/ar4z/Audiolibros/" + name_audio[:-4] + ".wav"
-#     with open(path_audio, "wb") as wavfile:
-#         wavfile.write(wavs)
-#
-#     return path_audio
-
-# def text_to_audio(text, speed, name_audio):
-#     print(text)
-#     tts = gTTS(text=text, lang='es')
-#     tts.save(name_audio[:-4]+ ".mp3")
+def text_to_audio(speed, name_audio, pitch, lang="es"):
+    subprocess.call("espeak -v {0} -f text.txt -p {1} -s {2} -w /home/ar4z/Audiolibros/{3}.wav".format(lang, pitch, speed, name_audio), shell=True)
+    return "/home/ar4z/Audiolibros/{0}.wav".format(name_audio)
 
 
 def extract_text(path_pdf, from_page, until_page):
     doc = fitz.open(path_pdf)
     text = ""
-    for number_page in range(from_page, until_page):
+    for number_page in range(from_page-1, until_page):
         page = doc.loadPage(number_page)
         text += page.getText("text")
 
@@ -37,9 +21,10 @@ def extract_text(path_pdf, from_page, until_page):
     file.close()
     return text
 
+
 def extract_name_audio(path):
-    pattern = re.compile(r"\w+(?:\.\w+)*$")
-    return pattern.findall(path)[0]
+    pattern = re.compile(r"(.+?)(?:\.[^.]*$|$)")
+    return pattern.findall(path)[0].split("/")[-1]
 
 
 def len_file_pdf(path_pdf):
