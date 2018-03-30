@@ -2,7 +2,8 @@ import tkinter as tk
 from tkinter.ttk import Progressbar
 from tkinter import filedialog, PhotoImage
 import glob
-from src.utils.utils import text_to_audio, extract_text, extract_name_audio, len_file_pdf
+from src.utils.utils import text_to_audio, extract_text, extract_name_audio, \
+    len_file_pdf, len_audio_file, seconds_in_time_for_humans
 import pygame
 import threading
 
@@ -61,7 +62,7 @@ class MenuPage(tk.Frame):
         button_refresh_files.pack()
 
     def show_audios(self):
-        listAudios = glob.glob("/home/ar4z/Audiolibros/*.wav")
+        listAudios = glob.glob("/home/ar4z/Audiolibros/*.mp3")
         for audio, n_audio in zip(listAudios, range(len(listAudios))):
             if not(audio in self.controller.data["existing_audios"]):
                 print("sw", audio, n_audio)
@@ -147,7 +148,6 @@ class ConvertPage(tk.Frame):
     def conversion_check(self):
         if self.thread.is_alive():
             self.after(10, self.conversion_check)
-
         else:
             self.show_progress(False)
 
@@ -182,28 +182,76 @@ class AudioPage(tk.Frame):
         label_name_file = tk.Label(self, text=controller.data["path_file"], font=LARGE_FONT)
 
         label_name_file.pack(pady=10, padx=10)
+
+        self.timeslider = tk.Scale(self, from_=0, to=len_audio_file(controller.data["path_file"]), resolution=1, orient=tk.HORIZONTAL, showvalue='no')
+        self.timeslider.pack()
+        self.timeslider.set(0)
+
+        self.time_elapsed = tk.Label(text=seconds_in_time_for_humans(self.timeslider.get()))
+        self.time_elapsed.pack()
         self.icon_play = PhotoImage(file="../img/ic_play_arrow_black_24dp_1x.png")
         self.icon_pause = PhotoImage(file="../img/ic_pause_black_24dp_1x.png")
-        button_play = tk.Button(self, text="Reproducir",
-                            command=lambda: self.play_audio(controller.data["path_file"]), image=self.icon_play)
-        button_play.pack()
+        self.icon_stop = PhotoImage(file="../img/ic_stop_black_24dp_1x.png")
+        self.button_play = tk.Button(self, text="Reproducir",
+                            command=lambda: self.play_audio(), image=self.icon_play)
+        self.button_play.pack()
+
+        self.button_stop = tk.Button(self, text="DETENER",
+                                     command=lambda: self.stop_audio(), image=self.icon_stop)
+        self.button_stop.pack()
 
         button_pause = tk.Button(self, text="Pausa",
                             command=self.pause_audio, image=self.icon_pause)
         button_pause.pack()
-
-    def play_audio(self, audio_file):
-        print(audio_file)
         pygame.init()
         pygame.mixer.init()
-        pygame.mixer.music.load(audio_file)
+        pygame.mixer.music.load(controller.data["path_file"])
+        self.pause = False
+        self.update_time_slider()
+
+    def play_audio(self):
+        self.play = True
+        self.lock_button_play(True)
+        self.thread = threading.Thread(target=self.play_worker)
+        self.thread.daemon = True
+        self.thread.start()
+        self.play_check()
+
+    def play_worker(self):
         pygame.mixer.music.play()
-        pygame.mixer.get_busy()
+        while pygame.mixer.music.get_busy() == 1:
+            print(pygame.mixer.music.get_pos())
+            pass
+
+    def play_check(self):
+        if self.thread.is_alive():
+            self.after(10, self.play_check)
+        else:
+            self.lock_button_play(False)
+
+    def lock_button_play(self, start):
+        if start:
+            self.button_play.config(state='disabled')
+        else:
+            self.button_play.config(state='normal')
 
     def pause_audio(self):
-        print("sw")
-        pygame.mixer.music.pause()
+        if self.pause:
+            pygame.mixer.music.unpause()
+            self.pause = False
+        else:
+            self.pause = True
+            pygame.mixer.music.pause()
+
+    def stop_audio(self):
+        pygame.mixer.music.stop()
+
+    def update_time_slider(self):
+        self.time_elapsed.config(text=seconds_in_time_for_humans(self.timeslider.get()))
+        self.after(10, self.update_time_slider)
 
 
 app = PdfToAudio()
 app.mainloop()
+
+
