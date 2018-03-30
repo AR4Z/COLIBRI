@@ -207,7 +207,7 @@ class AudioPage(tk.Frame):
         pygame.mixer.init()
         pygame.mixer.music.load(controller.data["path_file"])
         self.pause = False
-        self.update_time_slider()
+        self.update_time_elapsed()
 
     def play_audio(self):
         self.play = True
@@ -221,6 +221,7 @@ class AudioPage(tk.Frame):
         pygame.mixer.music.play()
         while pygame.mixer.music.get_busy() == 1:
             print(pygame.mixer.music.get_pos())
+            self.update_time_slider()
             pass
 
     def play_check(self):
@@ -246,9 +247,12 @@ class AudioPage(tk.Frame):
     def stop_audio(self):
         pygame.mixer.music.stop()
 
-    def update_time_slider(self):
+    def update_time_elapsed(self):
         self.time_elapsed.config(text=seconds_in_time_for_humans(self.timeslider.get()))
-        self.after(10, self.update_time_slider)
+        self.after(10, self.update_time_elapsed)
+
+    def update_time_slider(self):
+        self.timeslider.set(int(pygame.mixer.music.get_pos()/1000))
 
 
 app = PdfToAudio()
