@@ -5,6 +5,7 @@ import glob
 from utils.utils import text_to_audio, extract_text, extract_name_audio, \
     len_file_pdf, len_audio_file, seconds_in_time_for_humans
 import pygame
+import pyglet
 import threading
 
 LARGE_FONT = ("Verdana", 12)
@@ -203,11 +204,14 @@ class AudioPage(tk.Frame):
         button_pause = tk.Button(self, text="Pausa",
                             command=lambda: self.pause_audio(), image=self.icon_pause)
         button_pause.pack()
-        pygame.init()
-        pygame.mixer.init()
-        pygame.mixer.music.load(controller.data["path_file"])
+        self.player = pyglet.media.Player()
+        self.source_audio_book = pyglet.media.load(controller.data["path_file"])
+        self.audio_book = pyglet.media.StaticSource(self.source_audio_book)
         self.pause = False
         self.update_time_elapsed()
+        self.player.queue(self.audio_book)
+        self.count_plays = 0
+
 
     def play_audio(self):
         self.lock_button_play(True)
@@ -217,16 +221,21 @@ class AudioPage(tk.Frame):
         self.play_check()
 
     def play_worker(self):
-        print("pos",self.timeslider.get())
-        pygame.mixer.music.play()
-        while pygame.mixer.music.get_busy() == 1:
-            #print(pygame.mixer.music.get_pos())
-            print("voy yo")
-            self.update_time_slider()
+        if self.count_plays > 0:
+            print("next sound")
+            self.player.next_source()
+            self.player.queue(self.audio_book)
+        self.player.play()
+
+        self.count_plays += 1
+        pyglet.app.run()
 
     def play_check(self):
         if self.thread.is_alive():
+            #print("hilo de play vivo")
             self.after(10, self.play_check)
+            if not self.player.playing:
+                pyglet.app.exit()
         else:
             self.lock_button_play(False)
 
@@ -234,15 +243,17 @@ class AudioPage(tk.Frame):
         if start:
             self.button_play.config(state='disabled')
         else:
+            print("desbloquenado boton")
             self.button_play.config(state='normal')
 
     def pause_audio(self):
         if self.pause:
-            pygame.mixer.music.unpause()
+            self.player.seek(self.timeslider)
+            self.player.play()
             self.pause = False
         else:
             self.pause = True
-            pygame.mixer.music.pause()
+            self.player.pause()
 
     def stop_audio(self):
         print("stoping")
@@ -252,12 +263,12 @@ class AudioPage(tk.Frame):
         print("pos after stop", self.timeslider.get())
 
     def update_time_elapsed(self):
-        print("update time elapsed")
+        #print("update time elapsed")
         self.time_elapsed.config(text=seconds_in_time_for_humans(self.timeslider.get()))
         self.after(10, self.update_time_elapsed)
 
     def update_time_slider(self):
-        self.timeslider.set(int(pygame.mixer.music.get_pos()/1000))
+        self.timeslider.set(int(self.player.time))
 
 
 app = PdfToAudio()
