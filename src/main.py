@@ -2,7 +2,7 @@ import tkinter as tk
 from tkinter.ttk import Progressbar
 from tkinter import filedialog, PhotoImage
 import glob
-from src.utils.utils import text_to_audio, extract_text, extract_name_audio, \
+from utils.utils import text_to_audio, extract_text, extract_name_audio, \
     len_file_pdf, len_audio_file, seconds_in_time_for_humans
 import pygame
 import threading
@@ -201,7 +201,7 @@ class AudioPage(tk.Frame):
         self.button_stop.pack()
 
         button_pause = tk.Button(self, text="Pausa",
-                            command=self.pause_audio, image=self.icon_pause)
+                            command=lambda: self.pause_audio(), image=self.icon_pause)
         button_pause.pack()
         pygame.init()
         pygame.mixer.init()
@@ -210,7 +210,6 @@ class AudioPage(tk.Frame):
         self.update_time_elapsed()
 
     def play_audio(self):
-        self.play = True
         self.lock_button_play(True)
         self.thread = threading.Thread(target=self.play_worker)
         self.thread.daemon = True
@@ -218,11 +217,12 @@ class AudioPage(tk.Frame):
         self.play_check()
 
     def play_worker(self):
+        print("pos",self.timeslider.get())
         pygame.mixer.music.play()
         while pygame.mixer.music.get_busy() == 1:
-            print(pygame.mixer.music.get_pos())
+            #print(pygame.mixer.music.get_pos())
+            print("voy yo")
             self.update_time_slider()
-            pass
 
     def play_check(self):
         if self.thread.is_alive():
@@ -245,9 +245,14 @@ class AudioPage(tk.Frame):
             pygame.mixer.music.pause()
 
     def stop_audio(self):
+        print("stoping")
         pygame.mixer.music.stop()
+        self.timeslider.set(0)
+        self.time_elapsed.config(text=seconds_in_time_for_humans(0))
+        print("pos after stop", self.timeslider.get())
 
     def update_time_elapsed(self):
+        print("update time elapsed")
         self.time_elapsed.config(text=seconds_in_time_for_humans(self.timeslider.get()))
         self.after(10, self.update_time_elapsed)
 
