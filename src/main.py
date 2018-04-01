@@ -212,7 +212,6 @@ class AudioPage(tk.Frame):
         self.player.queue(self.audio_book)
         self.count_plays = 0
 
-
     def play_audio(self):
         self.lock_button_play(True)
         self.thread = threading.Thread(target=self.play_worker)
@@ -225,6 +224,7 @@ class AudioPage(tk.Frame):
             print("next sound")
             self.player.next_source()
             self.player.queue(self.audio_book)
+        self.player.seek(self.timeslider.get())
         self.player.play()
 
         self.count_plays += 1
@@ -232,9 +232,11 @@ class AudioPage(tk.Frame):
 
     def play_check(self):
         if self.thread.is_alive():
+            self.update_time_slider()
             #print("hilo de play vivo")
             self.after(10, self.play_check)
-            if not self.player.playing:
+            if not self.player.playing or self.pause:
+                self.pause = False
                 pyglet.app.exit()
         else:
             self.lock_button_play(False)
@@ -248,8 +250,7 @@ class AudioPage(tk.Frame):
 
     def pause_audio(self):
         if self.pause:
-            self.player.seek(self.timeslider)
-            self.player.play()
+            self.play_audio()
             self.pause = False
         else:
             self.pause = True
@@ -268,6 +269,7 @@ class AudioPage(tk.Frame):
         self.after(10, self.update_time_elapsed)
 
     def update_time_slider(self):
+        print("update: ", self.player.time)
         self.timeslider.set(int(self.player.time))
 
 
