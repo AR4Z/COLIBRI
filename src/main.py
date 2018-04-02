@@ -4,7 +4,6 @@ from tkinter import filedialog, PhotoImage
 import glob
 from utils.utils import text_to_audio, extract_text, extract_name_audio, \
     len_file_pdf, len_audio_file, seconds_in_time_for_humans
-import pygame
 import vlc, time
 import threading
 
