@@ -5,6 +5,7 @@ import glob
 from utils.utils import text_to_audio, extract_text, extract_name_audio, \
     len_file_pdf, len_audio_file, seconds_in_time_for_humans
 import pygame
+import vlc, time
 import threading
 
 LARGE_FONT = ("Verdana", 12)
@@ -141,8 +142,10 @@ class ConvertPage(tk.Frame):
     def conversion(self):
         self.show_progress(True)
         self.thread = threading.Thread(target=self.conversion_worker)
+        print("thread vivo?", self.thread.is_alive())
         self.thread.daemon = True
         self.thread.start()
+        print("thread vivo?", self.thread.is_alive())
         self.conversion_check()
 
     def conversion_check(self):
@@ -183,7 +186,9 @@ class AudioPage(tk.Frame):
 
         label_name_file.pack(pady=10, padx=10)
 
-        self.timeslider = tk.Scale(self, from_=0, to=len_audio_file(controller.data["path_file"]), resolution=1, orient=tk.HORIZONTAL, showvalue='no')
+        self.len_current_audio_book = len_audio_file(controller.data["path_file"])
+        self.timeslider = tk.Scale(self, from_=0, to=self.len_current_audio_book, resolution=1, orient=tk.HORIZONTAL,
+                                   showvalue='no')
         self.timeslider.pack()
         self.timeslider.set(0)
 
@@ -197,52 +202,68 @@ class AudioPage(tk.Frame):
         self.button_play.pack()
 
         self.button_stop = tk.Button(self, text="DETENER",
-                                     command=lambda: self.stop_audio(), image=self.icon_stop)
-        self.button_stop.pack()
+                                     command=lambda: self.replay(), image=self.icon_stop)
 
-        button_pause = tk.Button(self, text="Pausa",
-                            command=lambda: self.pause_audio(), image=self.icon_pause)
-        button_pause.pack()
-        pygame.init()
-        pygame.mixer.init()
-        pygame.mixer.music.load(controller.data["path_file"])
+        self.Instance = vlc.Instance()
+        self.player = self.Instance.media_player_new()
+        self.media = self.Instance.media_new(controller.data["path_file"])
         self.pause = False
+        self.play = False
         self.update_time_elapsed()
 
+
     def play_audio(self):
-        self.lock_button_play(True)
-        self.thread = threading.Thread(target=self.play_worker)
+        print("play_audio")
+        self.change_image_button_play(True)
+        self.different_time = (self.timeslider.get() - 6)* 1000
+        print("differet: ", self.different_time)
+        self.thread = threading.Thread(target=lambda: self.play_worker(self.different_time))
+        print("thread vivo?", self.thread.is_alive())
         self.thread.daemon = True
         self.thread.start()
+        print("thread vivo?", self.thread.is_alive())
         self.play_check()
 
-    def play_worker(self):
-        print("pos",self.timeslider.get())
-        pygame.mixer.music.play()
-        while pygame.mixer.music.get_busy() == 1:
-            #print(pygame.mixer.music.get_pos())
-            print("voy yo")
-            self.update_time_slider()
+    def play_worker(self, other_time):
+        if (self.pause):
+            self.player.pause()
+            self.pause = False
+            time.sleep(0.1)
+            while self.player.is_playing():
+                pass
+            return
+        self.player.set_media(self.media)
+        self.player.play()
+        self.player.set_time(other_time)
+        time.sleep(0.1)
+        while self.player.is_playing():
+            pass
+
 
     def play_check(self):
+        print("check")
         if self.thread.is_alive():
+            print("vivo")
+            self.update_time_slider()
+            #self.different_time = self.len_current_audio_book - self.timeslider.get()
             self.after(10, self.play_check)
         else:
-            self.lock_button_play(False)
+            self.change_image_button_play(False)
 
-    def lock_button_play(self, start):
+    def replay(self):
+        self.play_audio()
+
+    def change_image_button_play(self, start):
         if start:
-            self.button_play.config(state='disabled')
+            self.button_play.config(image=self.icon_pause, command=lambda: self.pause_audio())
         else:
-            self.button_play.config(state='normal')
+            print("cambiando imagen")
+            self.button_play.config(image=self.icon_play, command=lambda:self.play_audio())
 
     def pause_audio(self):
-        if self.pause:
-            pygame.mixer.music.unpause()
-            self.pause = False
-        else:
-            self.pause = True
-            pygame.mixer.music.pause()
+        print("PAUSE")
+        self.player.pause()
+        self.pause = True
 
     def stop_audio(self):
         print("stoping")
@@ -252,12 +273,17 @@ class AudioPage(tk.Frame):
         print("pos after stop", self.timeslider.get())
 
     def update_time_elapsed(self):
-        print("update time elapsed")
+        #print("update time elapsed")
         self.time_elapsed.config(text=seconds_in_time_for_humans(self.timeslider.get()))
         self.after(10, self.update_time_elapsed)
 
     def update_time_slider(self):
-        self.timeslider.set(int(pygame.mixer.music.get_pos()/1000))
+        print("update: ", self.player.get_time())
+        self.timeslider.set(self.player.get_time()/1000)
+
+    def set_time_play(self):
+        self.player.set_time(self.timeslider.get()*1000)
+
 
 
 app = PdfToAudio()
