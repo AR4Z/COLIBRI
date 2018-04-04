@@ -41,6 +41,7 @@ def wav_to_mp3(path_wav):
     path_mp3 = path_wav[:-4] + ".mp3"
     sound.export(path_mp3, format="mp3")
     os.remove(path_wav)
+
     return path_mp3
 
 
