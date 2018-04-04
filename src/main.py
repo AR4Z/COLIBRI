@@ -1,7 +1,12 @@
+import glob
+import sqlite3
+import threading
+import time
 import tkinter as tk
+import vlc
 from tkinter import filedialog, PhotoImage
 from tkinter.ttk import Progressbar
-import glob, vlc, time, threading, sqlite3
+
 from utils.utils import text_to_audio, extract_text, extract_name_audio, \
     len_file_pdf, len_audio_file, seconds_in_time_for_humans
 
@@ -66,7 +71,7 @@ class MenuPage(tk.Frame):
 
         # boton para abrir el audio seleccionado
         button_open_audio_file = tk.Button(self, text="ABRIR AUDIO",
-                            command=self.open_audio)
+                                           command=self.open_audio)
 
         button_open_audio_file.pack(pady=10)
 
@@ -80,7 +85,7 @@ class MenuPage(tk.Frame):
         # lista de archivos .mp3
         listAudios = glob.glob("/home/ar4z/Audiolibros/*.mp3")
         for audio, n_audio in zip(listAudios, range(len(listAudios))):
-            if not(audio in self.controller.data["existing_audios"]):
+            if not (audio in self.controller.data["existing_audios"]):
                 print("sw", audio, n_audio)
                 # agregando el elemento a los audios existentes
                 self.controller.data["existing_audios"].append(audio)
@@ -105,7 +110,7 @@ class ConvertPage(tk.Frame):
 
         # boton para seleccionar archivo a convertir
         button_browse_file = tk.Button(self, text="EXAMINAR",
-                            command=self.select_pdf)
+                                       command=self.select_pdf)
         button_browse_file.pack(pady=10)
 
         # label archivo
@@ -155,7 +160,8 @@ class ConvertPage(tk.Frame):
 
         # imagen y boton return
         self.icon_return = PhotoImage(file="../img/ic_arrow_back_black_24dp_1x.png")
-        button_return = tk.Button(self, text="ATRÁS", command=lambda: self.controller.show_frame(MenuPage), image=self.icon_return)
+        button_return = tk.Button(self, text="ATRÁS", command=lambda: self.controller.show_frame(MenuPage),
+                                  image=self.icon_return)
         button_return.pack(pady=10)
 
         # barra de progreso de conversion
@@ -226,7 +232,6 @@ class ConvertPage(tk.Frame):
         # inserta registro en db
         self.insert_file_in_db(self.name_audio, self.duration_audio_file)
 
-
     def show_progress(self, start):
         """
             muestra la barra de progreso
@@ -264,125 +269,168 @@ class ConvertPage(tk.Frame):
 
 
 class AudioPage(tk.Frame):
-
     def __init__(self, parent, controller):
         tk.Frame.__init__(self, parent)
-        print(controller.data["path_file"])
-        label_name_file = tk.Label(self, text=controller.data["path_file"], font=LARGE_FONT)
+        self.controller = controller
 
+        # nombre del archivo cargado
+        label_name_file = tk.Label(self, text=controller.data["path_file"], font=LARGE_FONT)
         label_name_file.pack(pady=10, padx=10)
 
-        bd = sqlite3.connect("audios")
-        self.cursor = bd.cursor()
-        self.name_busqueda = controller.data["path_file"].split("/")[-1]
-        sentencia = "SELECT * FROM archivos WHERE name LIKE?;"
-        self.cursor.execute(sentencia, ["{}".format(self.name_busqueda)])
-        audio = self.cursor.fetchone()
-        print("audos", audio)
-        print(float(audio[1]))
-        self.len_current_audio_book = float(audio[1])
+        # obtener el audio desde la db
+        self.audio_file_from_db = self.get_file_from_db()
+
+        # obtener la longitud del audio desde la db
+        self.len_current_audio_book = float(self.audio_file_from_db[1])
+
+        # slide de reproducción de audio
         self.timeslider = tk.Scale(self, from_=0, to=self.len_current_audio_book, resolution=1, orient=tk.HORIZONTAL,
                                    showvalue='no')
         self.timeslider.pack()
         self.timeslider.set(0)
 
-        print("s",self.timeslider)
-
+        # label para mostar el tiempo de la reproducción
         self.time_elapsed = tk.Label(text=seconds_in_time_for_humans(self.timeslider.get()))
         self.time_elapsed.pack()
+
+        # imagenes de iconos
         self.icon_play = PhotoImage(file="../img/ic_play_arrow_black_24dp_1x.png")
         self.icon_pause = PhotoImage(file="../img/ic_pause_black_24dp_1x.png")
         self.icon_stop = PhotoImage(file="../img/ic_stop_black_24dp_1x.png")
+
+        # boton de reproducir
         self.button_play = tk.Button(self, text="Reproducir",
-                            command=lambda: self.play_audio(), image=self.icon_play)
+                                     command=lambda: self.play_audio(), image=self.icon_play)
         self.button_play.pack()
 
+        # boton de detener
         self.button_stop = tk.Button(self, text="DETENER",
                                      command=lambda: self.replay(), image=self.icon_stop)
 
+        ############## PLAYER ##############
         self.Instance = vlc.Instance()
         self.player = self.Instance.media_player_new()
+        # cargar el archivo de audio
         self.media = self.Instance.media_new(controller.data["path_file"])
+
+        # semaforos
         self.pause = False
         self.play = False
+
+        # mantener sincronizados el slider y el label de reproduccion
         self.update_time_elapsed()
 
-
     def play_audio(self):
-        print("play_audio")
+        """
+            Se encarga de iniciar los threads para reproducción de audio
+
+        :return: None
+        """
+
+        # cambia el icono de reproducción
         self.change_image_button_play(True)
-        self.different_time = int(self.timeslider.get())* 1000
-        print("differet: ", self.different_time)
+
+        # obtiene desde donde se va iniciar el audio según la posición del slider en milisegundos
+        self.different_time = int(self.timeslider.get()) * 1000
+
+        # crear e inicia threads para reproducir audio
         self.thread = threading.Thread(target=lambda: self.play_worker(self.different_time))
-        print("thread vivo?", self.thread.is_alive())
         self.thread.daemon = True
         self.thread.start()
-        print("thread vivo?", self.thread.is_alive())
+
+        # verifica la vida de los threads
         self.play_check()
 
     def play_worker(self, other_time):
+        """
+            Se encarga de reproducir el audio.
+
+        :param other_time: el tiempo inicial de reproducción de audio
+        :return: None
+        """
+
+        # si esta en pause se encarga de mantener la misma posición de reproducción al volver a ejecutarse
+        # en caso contrario obtiene cualquier otra posición y ejecuta el audio
         if (self.pause):
             self.player.pause()
             self.pause = False
-            time.sleep(2)
-            while self.player.is_playing():
-                pass
-            return
-        self.player.set_media(self.media)
-        self.player.play()
-        self.player.set_time(other_time)
-        time.sleep(2)
+        else:
+            self.player.set_media(self.media)
+            self.player.play()
+            self.player.set_time(other_time)
+        time.sleep(1)
         while self.player.is_playing():
             pass
 
-
     def play_check(self):
-        print("check")
+        """
+            Se encarga de verificar cuando el thread muera
+
+        :return: None
+        """
+        # si el thread esta vivo mantiene actualizado el slider de reproducción
+        # en caso contrario hace el cambio de iconos en botones
         if self.thread.is_alive():
-            print("vivo")
             self.update_time_slider()
-            #self.different_time = self.len_current_audio_book - self.timeslider.get()
             self.after(10, self.play_check)
         else:
             self.change_image_button_play(False)
 
-    def replay(self):
-        self.play_audio()
-
     def change_image_button_play(self, start):
+        """
+            Cambia la imagen del icono
+            True el audio se esta ejecutando entonces muestra el icono de pausa
+            False el audio esta pausado muestra el icono de play
+        :param start: True o False
+        :return: None
+        """
         if start:
             self.button_play.config(image=self.icon_pause, command=lambda: self.pause_audio())
         else:
-            print("cambiando imagen")
-            self.button_play.config(image=self.icon_play, command=lambda:self.play_audio())
+            self.button_play.config(image=self.icon_play, command=lambda: self.play_audio())
 
     def pause_audio(self):
-        print("PAUSE")
+        """
+            Se encarga de pausar el audio.
+        :return: None
+        """
         self.player.pause()
         self.pause = True
 
     def stop_audio(self):
-        print("stoping")
-        pygame.mixer.music.stop()
-        self.timeslider.set(0)
-        self.time_elapsed.config(text=seconds_in_time_for_humans(0))
-        print("pos after stop", self.timeslider.get())
+        """
+            nada por ahora
+        :return:
+        """
+        pass
 
     def update_time_elapsed(self):
-        #print("update time elapsed")
+        """
+            mantiene el label de tiempo y el slider de reproducción sincronizados
+
+        :return: None
+        """
         self.time_elapsed.config(text=seconds_in_time_for_humans(self.timeslider.get()))
         self.after(10, self.update_time_elapsed)
 
     def update_time_slider(self):
-        print("update: ", self.player.get_time())
-        self.timeslider.set(self.player.get_time()/1000)
+        """
+            Obtiene la posición del repdocutor, la convierte a segundos y fija al slider de reproduccion
+            en esa posición
 
-    def set_time_play(self):
-        self.player.set_time(self.timeslider.get()*1000)
+        :return: None
+        """
+        self.timeslider.set(self.player.get_time() / 1000)
 
+    def get_file_from_db(self):
+        bd = sqlite3.connect("audios")
+        cursor = bd.cursor()
+        name_busqueda = self.controller.data["path_file"].split("/")[-1]
+        sentencia = "SELECT * FROM archivos WHERE name LIKE?;"
+        cursor.execute(sentencia, ["{}".format(name_busqueda)])
+        audio = cursor.fetchone()
+        return audio
 
 
 app = PdfToAudio()
 app.mainloop()
-
-
