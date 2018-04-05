@@ -1,5 +1,4 @@
 import glob
-import sqlite3
 import threading
 import time
 import tkinter as tk
@@ -9,6 +8,8 @@ from tkinter.ttk import Progressbar
 
 from utils.utils import text_to_audio, extract_text, extract_name_audio, \
     len_file_pdf, len_audio_file, seconds_in_time_for_humans
+
+from utils.db import DBHelper
 
 # tipo y numero de fuente
 LARGE_FONT = ("Verdana", 12)
@@ -22,22 +23,14 @@ class PdfToAudio(tk.Tk):
         self.container.grid_rowconfigure(0, weight=1)
         self.container.grid_columnconfigure(0, weight=1)
 
-        # base de datos
-        con = sqlite3.connect("audios")
-        self.cursor = con.cursor()
-        sentences = ["""
-            CREATE TABLE IF NOT EXISTS archivos(
-              name TEXT NOT NULL,
-              duracion TEXT NOT NULL
-            )
-        """]
-        for sentence in sentences:
-            self.cursor.execute(sentence)
+        self.manage_db = DBHelper("audios")
+        self.manage_db.create_table()
 
         self.frames = {}
         self.data = {
             "path_file": "",
-            "existing_audios": []
+            "existing_audios": [],
+            "manage_db": self.manage_db
         }
 
         self.show_frame(MenuPage)
@@ -230,7 +223,7 @@ class ConvertPage(tk.Frame):
         self.name_audio = self.controller.data["path_file"].split('/')[-1]
         self.duration_audio_file = len_audio_file(self.controller.data["path_file"])
         # inserta registro en db
-        self.insert_file_in_db(self.name_audio, self.duration_audio_file)
+        self.controller.data["manage_db"].add_file(self.name_audio, self.duration_audio_file)
 
     def show_progress(self, start):
         """
@@ -245,28 +238,6 @@ class ConvertPage(tk.Frame):
         else:
             self.progress_bar.stop()
 
-    def insert_file_in_db(self, name_file, duration):
-        """
-            Inserta el audio creado en la db
-        :param name_file: Nombre del archivo .mp3 creado
-        :param duration: duracion del archivo .mp3
-        :return: None
-        """
-        con = sqlite3.connect("audios")
-        cursor = con.cursor()
-        sentences = ["""
-
-                    INSERT INTO archivos
-                    (name, duracion)
-                    VALUES
-                    (?,?)
-                """]
-
-        for sentence in sentences:
-            cursor.execute(sentence, [name_file, duration])
-
-        con.commit()
-
 
 class AudioPage(tk.Frame):
     def __init__(self, parent, controller):
@@ -277,8 +248,10 @@ class AudioPage(tk.Frame):
         label_name_file = tk.Label(self, text=controller.data["path_file"], font=LARGE_FONT)
         label_name_file.pack(pady=10, padx=10)
 
+        # del path obtenemos el nombre para realizar la consulta en la db
+        self.name_for_get_file = self.controller.data["path_file"].split("/")[-1]
         # obtener el audio desde la db
-        self.audio_file_from_db = self.get_file_from_db()
+        self.audio_file_from_db = self.controller.data["manage_db"].get_file(self.name_for_get_file)
 
         # obtener la longitud del audio desde la db
         self.len_current_audio_book = float(self.audio_file_from_db[1])
@@ -421,15 +394,6 @@ class AudioPage(tk.Frame):
         :return: None
         """
         self.timeslider.set(self.player.get_time() / 1000)
-
-    def get_file_from_db(self):
-        bd = sqlite3.connect("audios")
-        cursor = bd.cursor()
-        name_busqueda = self.controller.data["path_file"].split("/")[-1]
-        sentencia = "SELECT * FROM archivos WHERE name LIKE?;"
-        cursor.execute(sentencia, ["{}".format(name_busqueda)])
-        audio = cursor.fetchone()
-        return audio
 
 
 app = PdfToAudio()
