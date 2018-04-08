@@ -75,7 +75,7 @@ class ConvertPage(tk.Frame):
         self.button_conversion.pack(pady=20)
 
         # imagen y boton return
-        self.icon_return = PhotoImage(file="../img/ic_arrow_back_black_24dp_1x.png")
+        self.icon_return = PhotoImage(file="../img/ic_home_black_24dp_1x.png")
         self.button_return = tk.Button(self, text="ATRÁS", command=lambda: self.controller.show_frame(self.controller.data["menu_frame"]),
                                   image=self.icon_return)
         self.button_return.pack(pady=10)

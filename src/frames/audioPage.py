@@ -49,7 +49,7 @@ class AudioPage(tk.Frame):
         # boton de detener
         self.button_stop = tk.Button(self, text="DETENER",
                                      command=lambda: self.stop_audio(), image=self.icon_stop)
-        self.icon_return = PhotoImage(file="../img/ic_arrow_back_black_24dp_1x.png")
+        self.icon_return = PhotoImage(file="../img/ic_home_black_24dp_1x.png")
         button_return = tk.Button(self, text="ATRÁS",
                                   command=lambda: self.go_home(),
                                   image=self.icon_return)
