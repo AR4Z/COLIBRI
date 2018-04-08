@@ -1,5 +1,5 @@
 import tkinter as tk
-from tkinter import PhotoImage
+from tkinter import PhotoImage, BOTTOM
 import vlc
 import threading
 import time
@@ -48,13 +48,12 @@ class AudioPage(tk.Frame):
 
         # boton de detener
         self.button_stop = tk.Button(self, text="DETENER",
-                                     command=lambda: self.replay(), image=self.icon_stop)
-
+                                     command=lambda: self.stop_audio(), image=self.icon_stop)
         self.icon_return = PhotoImage(file="../img/ic_arrow_back_black_24dp_1x.png")
         button_return = tk.Button(self, text="ATRÁS",
                                   command=lambda: self.go_home(),
                                   image=self.icon_return)
-        button_return.pack(pady=10)
+        button_return.pack(side=BOTTOM)
         ############## PLAYER ##############
         self.Instance = vlc.Instance()
         self.player = self.Instance.media_player_new()
@@ -76,6 +75,9 @@ class AudioPage(tk.Frame):
 
         # cambia el icono de reproducción
         self.change_image_button_play(True)
+
+        # mostrar boton stop
+        self.button_stop.pack()
 
         # obtiene desde donde se va iniciar el audio según la posición del slider en milisegundos
         self.different_time = int(self.timeslider.get()) * 1000
@@ -124,6 +126,7 @@ class AudioPage(tk.Frame):
             self.after(10, self.play_check)
         else:
             self.change_image_button_play(False)
+            self.button_stop.pack_forget()
 
     def change_image_button_play(self, start):
         """
@@ -152,6 +155,7 @@ class AudioPage(tk.Frame):
         :return: None
         """
         self.player.stop()
+        self.timeslider.set(0)
 
     def update_time_elapsed(self):
         """
