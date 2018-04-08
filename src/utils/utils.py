@@ -3,11 +3,21 @@ import subprocess
 import fitz
 import pydub
 import os
+import platform
 import errno
 from .ocr import ocr
 
 
 def text_to_audio(speed, name_audio, pitch, path, lang="es"):
+    if platform.system() == "Windows":
+        subprocess.call(
+            "\"C:\Program Files (x86)\eSpeak\command_line\espeak\" -v {0} -f text.txt -p {1} -s {2} -w {3}/{4}.wav".format(lang, pitch, speed, path, name_audio),
+            shell=True)
+    else:
+        subprocess.call(
+            "espeak -v {0} -f text.txt -p {1} -s {2} -w {3}/{4}.wav".format(lang, pitch, speed, path, name_audio),
+            shell=True)
+
     name_audio = clean(name_audio)
     subprocess.call("espeak -v {0} -f text.txt -p {1} -s {2} -w {3}/{4}.wav".format(lang, pitch, speed, path, name_audio), shell=True)
     return wav_to_mp3("{0}/{1}.wav".format(path, name_audio))
