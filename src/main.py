@@ -1,6 +1,9 @@
 import tkinter as tk
 from frames.menuPage import MenuPage
 from utils.db import DBHelper
+from pathlib import Path
+import os
+from utils.utils import create_directory
 
 # tipo y numero de fuente
 LARGE_FONT = ("Verdana", 12)
@@ -16,14 +19,18 @@ class PdfToAudio(tk.Tk):
 
         self.manage_db = DBHelper("audios")
         self.manage_db.create_table()
-
+        self.home_user = Path.home()
         self.frames = {}
         self.data = {
             "path_file": "",
             "existing_audios": [],
-            "manage_db": self.manage_db
+            "manage_db": self.manage_db,
+            "home_user": self.home_user,
+            "path_audios": os.path.join(str(self.home_user), "AudioLibros")
+
         }
 
+        create_directory(self.data["path_audios"])
         self.show_frame(MenuPage)
 
     def show_frame(self, cont):

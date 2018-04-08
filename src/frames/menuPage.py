@@ -7,6 +7,7 @@ from .convertPage import ConvertPage
 # tipo y numero de fuente
 LARGE_FONT = ("Verdana", 12)
 
+
 class MenuPage(tk.Frame):
     def __init__(self, parent, controller):
         tk.Frame.__init__(self, parent)
@@ -40,7 +41,7 @@ class MenuPage(tk.Frame):
     # funcion que me deuvlve todos los audios en la carpeta donde se guardan las conversiones
     def show_audios(self):
         # lista de archivos .mp3
-        listAudios = glob.glob("/home/ar4z/Audiolibros/*.mp3")
+        listAudios = glob.glob("{0}/*.mp3".format(self.controller.data["path_audios"]))
         for audio, n_audio in zip(listAudios, range(len(listAudios))):
             if not (audio in self.controller.data["existing_audios"]):
                 print("sw", audio, n_audio)

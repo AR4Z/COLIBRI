@@ -83,7 +83,7 @@ class ConvertPage(tk.Frame):
         :return: None
         """
         # toma la ruta del file seleccionado
-        selected_file = filedialog.askopenfilename(initialdir="/home/ar4z", title="SELECCIONAR LIBRO",
+        selected_file = filedialog.askopenfilename(initialdir=self.controller.data["home_user"], title="SELECCIONAR LIBRO",
                                                    filetypes=(("archivos pdf", "*.pdf"), ("todos los archivos", "*.*")))
         # llena el campo con esa ruta para mostrarse en el frame
         self.path_selected_file.set(selected_file)
@@ -134,7 +134,7 @@ class ConvertPage(tk.Frame):
         extract_text(self.field_path_selected_file.get(), self.from_number_page.get(), self.until_number_page.get())
         self.controller.data["path_file"] = text_to_audio(self.scale_speed.get(),
                                                           extract_name_audio(self.field_path_selected_file.get()),
-                                                          self.scale_pitch.get())
+                                                          self.scale_pitch.get(), self.controller.data["path_audios"])
         # toma el nombre del audio y la duracion del archivo para ser guardado en base de datos
         self.name_audio = self.controller.data["path_file"].split('/')[-1]
         self.duration_audio_file = len_audio_file(self.controller.data["path_file"])

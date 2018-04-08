@@ -3,10 +3,12 @@ import subprocess
 import fitz
 import pydub
 import os
+import errno
 
-def text_to_audio(speed, name_audio, pitch, lang="es"):
-    subprocess.call("espeak -v {0} -f text.txt -p {1} -s {2} -w /home/ar4z/Audiolibros/{3}.wav".format(lang, pitch, speed, name_audio), shell=True)
-    return wav_to_mp3("/home/ar4z/Audiolibros/{0}.wav".format(name_audio))
+
+def text_to_audio(speed, name_audio, pitch, path, lang="es"):
+    subprocess.call("espeak -v {0} -f text.txt -p {1} -s {2} -w {3}/{4}.wav".format(lang, pitch, speed, path,name_audio), shell=True)
+    return wav_to_mp3("{0}/{1}.wav".format(path, name_audio))
 
 
 def extract_text(path_pdf, from_page, until_page):
@@ -56,3 +58,12 @@ def seconds_in_time_for_humans(seconds):
     minutes = int(seconds / 60)
     seconds %= 60
     return "{0}:{1}:{2}".format(hours, minutes, seconds)
+
+
+def create_directory(path):
+    if not os.path.exists(path):
+        try:
+            os.makedirs(path)
+        except OSError as e:
+            if e.errno != errno.EEXIST:
+                raise
