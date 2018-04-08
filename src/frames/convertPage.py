@@ -19,9 +19,9 @@ class ConvertPage(tk.Frame):
         self.duration_audio_file = ""
 
         # boton para seleccionar archivo a convertir
-        button_browse_file = tk.Button(self, text="EXAMINAR",
+        self.button_browse_file = tk.Button(self, text="EXAMINAR",
                                        command=self.select_pdf)
-        button_browse_file.pack(pady=10)
+        self.button_browse_file.pack(pady=10)
 
         # label archivo
         self.label_file = tk.Label(self, text="ARCHIVO: ", font=LARGE_FONT)
@@ -71,14 +71,14 @@ class ConvertPage(tk.Frame):
         self.scale_pitch.pack()
 
         # boton para realizar la conversion
-        button_conversion = tk.Button(self, text="CONVERTIR", command=self.conversion)
-        button_conversion.pack(pady=20)
+        self.button_conversion = tk.Button(self, text="CONVERTIR", command=self.conversion)
+        self.button_conversion.pack(pady=20)
 
         # imagen y boton return
         self.icon_return = PhotoImage(file="../img/ic_arrow_back_black_24dp_1x.png")
-        button_return = tk.Button(self, text="ATRÁS", command=lambda: self.controller.show_frame(self.controller.data["menu_frame"]),
+        self.button_return = tk.Button(self, text="ATRÁS", command=lambda: self.controller.show_frame(self.controller.data["menu_frame"]),
                                   image=self.icon_return)
-        button_return.pack(pady=10)
+        self.button_return.pack(pady=10)
 
         # barra de progreso de conversion
         self.progress_bar = Progressbar(self, orient=tk.HORIZONTAL, mode='indeterminate', takefocus=True)
@@ -108,6 +108,13 @@ class ConvertPage(tk.Frame):
         # muestra la barra para informar que el proceso se esta ejecutando
         self.show_progress(True)
 
+        # bloquear botones mientras se realiza la conversion
+        self.button_conversion.config(state='disabled')
+        self.scale_pitch.config(state='disabled')
+        self.scale_speed.config(state='disabled')
+        self.button_browse_file.config(state='disabled')
+        self.button_return.config(state='disabled')
+        
         # crea un hilo para realizar la conversion que va a ser ejecutada por conversion_worker
         self.thread = threading.Thread(target=self.conversion_worker)
         self.thread.daemon = True

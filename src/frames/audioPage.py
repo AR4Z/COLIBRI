@@ -52,7 +52,7 @@ class AudioPage(tk.Frame):
 
         self.icon_return = PhotoImage(file="../img/ic_arrow_back_black_24dp_1x.png")
         button_return = tk.Button(self, text="ATRÁS",
-                                  command=lambda: self.controller.show_frame(self.controller.data["menu_frame"]),
+                                  command=lambda: self.go_home(),
                                   image=self.icon_return)
         button_return.pack(pady=10)
         ############## PLAYER ##############
@@ -64,8 +64,7 @@ class AudioPage(tk.Frame):
         # semaforos
         self.pause = False
         self.play = False
-
-        # mantener sincronizados el slider y el label de reproduccion
+        self.going_home = False
         self.update_time_elapsed()
 
     def play_audio(self):
@@ -116,6 +115,8 @@ class AudioPage(tk.Frame):
 
         :return: None
         """
+        if self.going_home:
+            self.stop_audio()
         # si el thread esta vivo mantiene actualizado el slider de reproducción
         # en caso contrario hace el cambio de iconos en botones
         if self.thread.is_alive():
@@ -147,10 +148,10 @@ class AudioPage(tk.Frame):
 
     def stop_audio(self):
         """
-            nada por ahora
-        :return:
+            se encarga de detener el audio
+        :return: None
         """
-        pass
+        self.player.stop()
 
     def update_time_elapsed(self):
         """
@@ -169,3 +170,9 @@ class AudioPage(tk.Frame):
         :return: None
         """
         self.timeslider.set(self.player.get_time() / 1000)
+
+    def go_home(self):
+        self.going_home = True
+        self.time_elapsed.pack_forget()
+        self.controller.show_frame(self.controller.data["menu_frame"])
+
