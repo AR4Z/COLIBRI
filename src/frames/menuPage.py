@@ -1,4 +1,5 @@
 import tkinter as tk
+import tkinter.messagebox
 import glob
 from .audioPage import AudioPage
 from .convertPage import ConvertPage
@@ -45,6 +46,9 @@ class MenuPage(tk.Frame):
     # function que se encarga de abrir un audio
     def open_audio(self):
         # obtiene la ruta del audio seleccionado
-        self.controller.data["path_file"] = self.listbox.get(self.listbox.curselection()[0])
+        try:
+            self.controller.data["path_file"] = self.listbox.get(self.listbox.curselection()[0])
+        except IndexError:
+            tkinter.messagebox.showerror("ERROR", "SELECCIONE AUDIO")
         # abre el frame de audio
         self.controller.show_frame(AudioPage)

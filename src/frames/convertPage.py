@@ -1,6 +1,7 @@
 import tkinter as tk
 from tkinter import PhotoImage, filedialog, StringVar, Radiobutton
 from tkinter.ttk import Progressbar
+import tkinter.messagebox
 import threading
 from utils.utils import len_file_pdf, extract_text, text_to_audio, extract_name_audio, len_audio_file
 from .audioPage import AudioPage
@@ -82,6 +83,7 @@ class ConvertPage(tk.Frame):
 
         # barra de progreso de conversion
         self.progress_bar = Progressbar(self, orient=tk.HORIZONTAL, mode='indeterminate', takefocus=True)
+        self.is_valid = False
 
     def select_pdf(self):
         """
@@ -105,22 +107,27 @@ class ConvertPage(tk.Frame):
 
         :return: None
         """
-        # muestra la barra para informar que el proceso se esta ejecutando
-        self.show_progress(True)
+        self.validate()
 
-        # bloquear botones mientras se realiza la conversion
-        self.button_conversion.config(state='disabled')
-        self.scale_pitch.config(state='disabled')
-        self.scale_speed.config(state='disabled')
-        self.button_browse_file.config(state='disabled')
-        self.button_return.config(state='disabled')
+        if self.is_valid:
+            # muestra la barra para informar que el proceso se esta ejecutando
+            self.show_progress(True)
+
+            # bloquear botones mientras se realiza la conversion
+            self.button_conversion.config(state='disabled')
+            self.scale_pitch.config(state='disabled')
+            self.scale_speed.config(state='disabled')
+            self.button_browse_file.config(state='disabled')
+            self.button_return.config(state='disabled')
         
-        # crea un hilo para realizar la conversion que va a ser ejecutada por conversion_worker
-        self.thread = threading.Thread(target=self.conversion_worker)
-        self.thread.daemon = True
-        self.thread.start()
-        # verifica cuando termina el hilo
-        self.conversion_check()
+            # crea un hilo para realizar la conversion que va a ser ejecutada por conversion_worker
+            self.thread = threading.Thread(target=self.conversion_worker)
+            self.thread.daemon = True
+            self.thread.start()
+            # verifica cuando termina el hilo
+            self.conversion_check()
+        else:
+            return
 
     def conversion_check(self):
         """
@@ -167,3 +174,22 @@ class ConvertPage(tk.Frame):
             self.progress_bar.start()
         else:
             self.progress_bar.stop()
+
+    def error(self, message):
+        tkinter.messagebox.showerror("Error", message)
+
+    def validate(self):
+        if self.field_path_selected_file.get() == "":
+            self.error("SELECCIONE UN ARCHIVO")
+            return
+
+        if self.option.get() != "pymupdf" and self.option.get() != "ocr":
+            self.error("ELIJA UN MODO DE CONVERSION")
+            return
+
+        if self.from_number_page.get() > self.until_number_page.get():
+            self.error("LA PAGINA INICIAL NO PUEDE SER MAYOR QUE LA FINAL")
+            return
+
+        self.is_valid = True
+

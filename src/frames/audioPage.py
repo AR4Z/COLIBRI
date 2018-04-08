@@ -178,5 +178,6 @@ class AudioPage(tk.Frame):
     def go_home(self):
         self.going_home = True
         self.time_elapsed.pack_forget()
+        self.controller.data["path_file"] = ""
         self.controller.show_frame(self.controller.data["menu_frame"])
 
