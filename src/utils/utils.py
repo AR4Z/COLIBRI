@@ -4,21 +4,28 @@ import fitz
 import pydub
 import os
 import errno
+from .ocr import ocr
 
 
 def text_to_audio(speed, name_audio, pitch, path, lang="es"):
-    subprocess.call("espeak -v {0} -f text.txt -p {1} -s {2} -w {3}/{4}.wav".format(lang, pitch, speed, path,name_audio), shell=True)
+    name_audio = clean(name_audio)
+    subprocess.call("espeak -v {0} -f text.txt -p {1} -s {2} -w {3}/{4}.wav".format(lang, pitch, speed, path, name_audio), shell=True)
     return wav_to_mp3("{0}/{1}.wav".format(path, name_audio))
 
 
-def extract_text(path_pdf, from_page, until_page):
-    doc = fitz.open(path_pdf)
-    text = ""
-    if from_page != 0:
-        from_page -= 1
-    for number_page in range(from_page, until_page):
-        page = doc.loadPage(number_page)
-        text += page.getText("text")
+def extract_text(path_pdf, from_page, until_page, mode):
+    if mode == "pymupdf":
+        doc = fitz.open(path_pdf)
+        text = ""
+
+        if from_page != 0:
+            from_page -= 1
+
+        for number_page in range(from_page, until_page):
+            page = doc.loadPage(number_page)
+            text += page.getText("text")
+    else:
+        text = ocr(path_pdf, from_page, until_page)
 
     print(text)
     text.replace('\n', ' ')
@@ -67,3 +74,7 @@ def create_directory(path):
         except OSError as e:
             if e.errno != errno.EEXIST:
                 raise
+
+
+def clean(string):
+    return ''.join(ch for ch in string if ch.isalnum())

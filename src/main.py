@@ -26,7 +26,7 @@ class PdfToAudio(tk.Tk):
             "existing_audios": [],
             "manage_db": self.manage_db,
             "home_user": self.home_user,
-            "path_audios": os.path.join(str(self.home_user), "AudioLibros")
+            "path_audios": os.path.join(self.home_user, "AudioLibros")
 
         }
 

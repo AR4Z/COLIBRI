@@ -1,9 +1,10 @@
 import tkinter as tk
-from tkinter import PhotoImage, filedialog
+from tkinter import PhotoImage, filedialog, StringVar, Radiobutton
 from tkinter.ttk import Progressbar
 import threading
 from utils.utils import len_file_pdf, extract_text, text_to_audio, extract_name_audio, len_audio_file
 from .audioPage import AudioPage
+
 
 # tipo y numero de fuente
 LARGE_FONT = ("Verdana", 12)
@@ -33,6 +34,12 @@ class ConvertPage(tk.Frame):
         self.field_path_selected_file = tk.Entry(self, width='65', textvariable=self.path_selected_file)
         self.field_path_selected_file.pack()
 
+        self.option = StringVar()
+        scanned = Radiobutton(self, text="PDF ESCANEADO", value="ocr", var=self.option)
+        normal = Radiobutton(self, text="PDF NORMAL", value="pymupdf", var=self.option)
+
+        scanned.pack()
+        normal.pack()
         # numero de paginas
         self.until_number_page = tk.IntVar()
         self.from_number_page = tk.IntVar()
@@ -131,7 +138,7 @@ class ConvertPage(tk.Frame):
         """
         #
         # extrae el texto y genera un .txt con el
-        extract_text(self.field_path_selected_file.get(), self.from_number_page.get(), self.until_number_page.get())
+        extract_text(self.field_path_selected_file.get(), self.from_number_page.get(), self.until_number_page.get(), self.option)
         self.controller.data["path_file"] = text_to_audio(self.scale_speed.get(),
                                                           extract_name_audio(self.field_path_selected_file.get()),
                                                           self.scale_pitch.get(), self.controller.data["path_audios"])
