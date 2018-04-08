@@ -23,19 +23,18 @@ class PdfToAudio(tk.Tk):
         self.frames = {}
         self.data = {
             "path_file": "",
-            "existing_audios": [],
             "manage_db": self.manage_db,
             "home_user": self.home_user,
-            "path_audios": os.path.join(self.home_user, "AudioLibros")
-
+            "path_audios": os.path.join(self.home_user, "AudioLibros"),
+            "menu_frame": MenuPage
         }
-
         create_directory(self.data["path_audios"])
         self.show_frame(MenuPage)
 
     def show_frame(self, cont):
         frame = cont(self.container, self)
         self.frames[cont] = frame
+        print(self.frames)
         frame.grid(row=0, column=0, sticky="nsew")
         frame = self.frames[cont]
         frame.tkraise()

@@ -19,7 +19,7 @@ class AudioPage(tk.Frame):
         label_name_file.pack(pady=10, padx=10)
 
         # del path obtenemos el nombre para realizar la consulta en la db
-        self.name_for_get_file = self.controller.data["path_file"].split("/")[-1]
+        self.name_for_get_file = self.controller.data["path_file"]
         # obtener el audio desde la db
         self.audio_file_from_db = self.controller.data["manage_db"].get_file(self.name_for_get_file)
 
@@ -50,6 +50,11 @@ class AudioPage(tk.Frame):
         self.button_stop = tk.Button(self, text="DETENER",
                                      command=lambda: self.replay(), image=self.icon_stop)
 
+        self.icon_return = PhotoImage(file="../img/ic_arrow_back_black_24dp_1x.png")
+        button_return = tk.Button(self, text="ATRÁS",
+                                  command=lambda: self.controller.show_frame(self.controller.data["menu_frame"]),
+                                  image=self.icon_return)
+        button_return.pack(pady=10)
         ############## PLAYER ##############
         self.Instance = vlc.Instance()
         self.player = self.Instance.media_player_new()

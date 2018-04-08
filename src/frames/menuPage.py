@@ -1,6 +1,5 @@
 import tkinter as tk
 import glob
-from tkinter import PhotoImage
 from .audioPage import AudioPage
 from .convertPage import ConvertPage
 
@@ -33,20 +32,13 @@ class MenuPage(tk.Frame):
 
         button_open_audio_file.pack(pady=10)
 
-        # boton para actualizar los archivos existentes
-        self.image_refresh = PhotoImage(file="../img/ic_refresh_black_24dp_1x.png")
-        button_refresh_files = tk.Button(self, text="REFRESCAR", command=self.show_audios, image=self.image_refresh)
-        button_refresh_files.pack()
-
     # funcion que me deuvlve todos los audios en la carpeta donde se guardan las conversiones
     def show_audios(self):
         # lista de archivos .mp3
         listAudios = glob.glob("{0}/*.mp3".format(self.controller.data["path_audios"]))
         for audio, n_audio in zip(listAudios, range(len(listAudios))):
-            if not (audio in self.controller.data["existing_audios"]):
+            if not self.controller.data["manage_db"].get_file(audio) is None:
                 print("sw", audio, n_audio)
-                # agregando el elemento a los audios existentes
-                self.controller.data["existing_audios"].append(audio)
                 # agregando el elemento a la lista que se mostrara en la ventana
                 self.listbox.insert(n_audio, audio)
 

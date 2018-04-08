@@ -76,7 +76,7 @@ class ConvertPage(tk.Frame):
 
         # imagen y boton return
         self.icon_return = PhotoImage(file="../img/ic_arrow_back_black_24dp_1x.png")
-        button_return = tk.Button(self, text="ATRÁS", command=lambda: self.controller.show_frame(MenuPage),
+        button_return = tk.Button(self, text="ATRÁS", command=lambda: self.controller.show_frame(self.controller.data["menu_frame"]),
                                   image=self.icon_return)
         button_return.pack(pady=10)
 
@@ -143,7 +143,7 @@ class ConvertPage(tk.Frame):
                                                           extract_name_audio(self.field_path_selected_file.get()),
                                                           self.scale_pitch.get(), self.controller.data["path_audios"])
         # toma el nombre del audio y la duracion del archivo para ser guardado en base de datos
-        self.name_audio = self.controller.data["path_file"].split('/')[-1]
+        self.name_audio = self.controller.data["path_file"]
         self.duration_audio_file = len_audio_file(self.controller.data["path_file"])
         # inserta registro en db
         self.controller.data["manage_db"].add_file(self.name_audio, self.duration_audio_file)
