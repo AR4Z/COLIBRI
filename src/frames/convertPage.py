@@ -152,7 +152,7 @@ class ConvertPage(tk.Frame):
         """
         #
         # extrae el texto y genera un .txt con el
-        extract_text(self.field_path_selected_file.get(), self.from_number_page.get(), self.until_number_page.get(), self.option)
+        extract_text(self.field_path_selected_file.get(), self.from_number_page.get(), self.until_number_page.get(), self.option.get())
         self.controller.data["path_file"] = text_to_audio(self.scale_speed.get(),
                                                           extract_name_audio(self.field_path_selected_file.get()),
                                                           self.scale_pitch.get(), self.controller.data["path_audios"])
