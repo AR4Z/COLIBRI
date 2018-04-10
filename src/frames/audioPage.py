@@ -27,7 +27,8 @@ class AudioPage(tk.Frame):
         self.len_current_audio_book = float(self.audio_file_from_db[1])
 
         # slide de reproducción de audio
-        self.timeslider = tk.Scale(self, from_=0, to=self.len_current_audio_book, resolution=1, orient=tk.HORIZONTAL,
+        print(self.len_current_audio_book)
+        self.timeslider = tk.Scale(self, from_=0, to=int(self.len_current_audio_book), resolution=1, orient=tk.HORIZONTAL,
                                    showvalue='no')
         self.timeslider.pack()
         self.timeslider.set(0)
@@ -54,6 +55,7 @@ class AudioPage(tk.Frame):
                                   command=lambda: self.go_home(),
                                   image=self.icon_return)
         button_return.pack(side=BOTTOM)
+
         ############## PLAYER ##############
         self.Instance = vlc.Instance()
         self.player = self.Instance.media_player_new()
@@ -80,7 +82,8 @@ class AudioPage(tk.Frame):
         self.button_stop.pack()
 
         # obtiene desde donde se va iniciar el audio según la posición del slider en milisegundos
-        self.different_time = int(self.timeslider.get()) * 1000
+        print(self.timeslider.get())
+        self.different_time = self.timeslider.get()/1000.0
 
         # crear e inicia threads para reproducir audio
         self.thread = threading.Thread(target=lambda: self.play_worker(self.different_time))
@@ -106,9 +109,11 @@ class AudioPage(tk.Frame):
         else:
             self.player.set_media(self.media)
             self.player.play()
-            self.player.set_time(other_time)
+            #self.player.set_time(self.different_time - 14000)
+            self.player.set_position(self.different_time)
         time.sleep(1)
         while self.player.is_playing():
+            print(self.player.get_position())
             pass
 
     def play_check(self):
@@ -173,7 +178,7 @@ class AudioPage(tk.Frame):
 
         :return: None
         """
-        self.timeslider.set(self.player.get_time() / 1000)
+        self.timeslider.set(self.player.get_position()*100)
 
     def go_home(self):
         self.going_home = True
