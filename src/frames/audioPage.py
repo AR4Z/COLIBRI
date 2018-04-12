@@ -12,8 +12,9 @@ LARGE_FONT = ("Verdana", 12)
 class AudioPage(tk.Frame):
     def __init__(self, parent, controller):
         tk.Frame.__init__(self, parent)
+        self.parent = parent
         self.controller = controller
-
+        self.parent._root().protocol("WM_DELETE_WINDOW", self.on_closing)
         # nombre del archivo cargado
         label_name_file = tk.Label(self, text=controller.data["path_file"], font=LARGE_FONT)
         label_name_file.pack(pady=10, padx=10)
@@ -67,6 +68,9 @@ class AudioPage(tk.Frame):
         self.play = False
         self.going_home = False
         self.update_time_elapsed()
+        self.last_time = 0
+        self.count_play = 0
+
 
     def play_audio(self):
         """
@@ -83,7 +87,12 @@ class AudioPage(tk.Frame):
 
         # obtiene desde donde se va iniciar el audio según la posición del slider en milisegundos
         print(self.timeslider.get())
-        self.different_time = (self.timeslider.get())
+
+        if self.count_play == 0:
+            self.different_time = float(self.audio_file_from_db[2])
+            self.count_play += 1
+        else:
+            self.different_time = self.timeslider.get()
 
         # crear e inicia threads para reproducir audio
         self.thread = threading.Thread(target=lambda: self.play_worker(self.different_time))
@@ -113,7 +122,7 @@ class AudioPage(tk.Frame):
         time.sleep(1)
         while self.player.is_playing():
             print(self.player.get_position())
-            pass
+            self.last_time = self.player.get_position()
 
     def play_check(self):
         """
@@ -131,6 +140,8 @@ class AudioPage(tk.Frame):
         else:
             self.change_image_button_play(False)
             self.button_stop.pack_forget()
+            print("saliedo")
+            self.controller.data["manage_db"].set_last_time(self.controller.data["path_file"], self.last_time)
 
     def change_image_button_play(self, start):
         """
@@ -181,7 +192,13 @@ class AudioPage(tk.Frame):
 
     def go_home(self):
         self.going_home = True
+        self.controller.data["manage_db"].set_last_time(self.controller.data["path_file"], self.last_time)
         self.time_elapsed.pack_forget()
         self.controller.data["path_file"] = ""
         self.controller.show_frame(self.controller.data["menu_frame"])
+        self.count_play = 0
+
+    def on_closing(self):
+        self.controller.data["manage_db"].set_last_time(self.controller.data["path_file"], self.last_time)
+        self.parent._root().destroy()
 

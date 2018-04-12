@@ -38,3 +38,12 @@ class DBHelper:
         self.cursor.execute(sentence[0], ["{}".format(name_file)])
         audio_file = self.cursor.fetchone()
         return audio_file
+
+    def set_last_time(self, name_file, new_last_position):
+        sentence = [
+            """
+                UPDATE archivos SET last_position = ?  WHERE name = ?
+            """
+        ]
+        self.cursor.execute(sentence[0], [new_last_position, name_file])
+        self.connection.commit()
