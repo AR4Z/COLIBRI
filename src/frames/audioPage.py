@@ -28,13 +28,13 @@ class AudioPage(tk.Frame):
 
         # slide de reproducción de audio
         print(self.len_current_audio_book)
-        self.timeslider = tk.Scale(self, from_=0, to=int(self.len_current_audio_book), resolution=1, orient=tk.HORIZONTAL,
+        self.timeslider = tk.Scale(self, from_=0, to=1, resolution=0.01, orient=tk.HORIZONTAL,
                                    showvalue='no')
         self.timeslider.pack()
         self.timeslider.set(0)
 
         # label para mostar el tiempo de la reproducción
-        self.time_elapsed = tk.Label(text=seconds_in_time_for_humans(self.timeslider.get()))
+        self.time_elapsed = tk.Label(text=seconds_in_time_for_humans(0))
         self.time_elapsed.pack()
 
         # imagenes de iconos
@@ -83,7 +83,7 @@ class AudioPage(tk.Frame):
 
         # obtiene desde donde se va iniciar el audio según la posición del slider en milisegundos
         print(self.timeslider.get())
-        self.different_time = self.timeslider.get()/1000.0
+        self.different_time = (self.timeslider.get())
 
         # crear e inicia threads para reproducir audio
         self.thread = threading.Thread(target=lambda: self.play_worker(self.different_time))
@@ -109,7 +109,6 @@ class AudioPage(tk.Frame):
         else:
             self.player.set_media(self.media)
             self.player.play()
-            #self.player.set_time(self.different_time - 14000)
             self.player.set_position(self.different_time)
         time.sleep(1)
         while self.player.is_playing():
@@ -128,7 +127,7 @@ class AudioPage(tk.Frame):
         # en caso contrario hace el cambio de iconos en botones
         if self.thread.is_alive():
             self.update_time_slider()
-            self.after(10, self.play_check)
+            self.after(1, self.play_check)
         else:
             self.change_image_button_play(False)
             self.button_stop.pack_forget()
@@ -168,8 +167,8 @@ class AudioPage(tk.Frame):
 
         :return: None
         """
-        self.time_elapsed.config(text=seconds_in_time_for_humans(self.timeslider.get()))
-        self.after(10, self.update_time_elapsed)
+        self.time_elapsed.config(text=seconds_in_time_for_humans(self.timeslider.get() * 100))
+        self.after(1, self.update_time_elapsed)
 
     def update_time_slider(self):
         """
@@ -178,7 +177,7 @@ class AudioPage(tk.Frame):
 
         :return: None
         """
-        self.timeslider.set(self.player.get_position()*100)
+        self.timeslider.set(self.player.get_position())
 
     def go_home(self):
         self.going_home = True

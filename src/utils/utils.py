@@ -19,7 +19,7 @@ def text_to_audio(speed, name_audio, pitch, path, lang="es"):
             shell=True)
 
     name_audio = clean(name_audio)
-    return wav_to_mp3("{0}/{1}.wav".format(path, name_audio))
+    return wav_to_mp3(os.path.join(path, name_audio + ".wav"))
 
 
 def extract_text(path_pdf, from_page, until_page, mode):
@@ -73,7 +73,7 @@ def seconds_in_time_for_humans(seconds):
     seconds %= 3600
     minutes = int(seconds / 60)
     seconds %= 60
-    return "{0}:{1}:{2}".format(hours, minutes, seconds)
+    return "{0}:{1}:{2}".format(hours, minutes, int(seconds))
 
 
 def create_directory(path):
