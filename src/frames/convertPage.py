@@ -158,7 +158,8 @@ class ConvertPage(tk.Frame):
                                                           self.scale_pitch.get(), self.controller.data["path_audios"])
         # toma el nombre del audio y la duracion del archivo para ser guardado en base de datos
         self.name_audio = self.controller.data["path_file"]
-        self.duration_audio_file = len_audio_file(self.controller.data["path_file"])
+        #self.duration_audio_file = len_audio_file(self.controller.data["path_file"])
+        self.duration_audio_file = 0
         # inserta registro en db
         self.controller.data["manage_db"].add_file(self.name_audio, self.duration_audio_file)
 

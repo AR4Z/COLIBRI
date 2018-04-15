@@ -34,6 +34,7 @@ class PdfToAudio(tk.Tk):
     def show_frame(self, cont):
         frame = cont(self.container, self)
         self.frames[cont] = frame
+        self.frames[cont].config(width=100, height=100)
         print(self.frames)
         frame.grid(row=0, column=0, sticky="nsew")
         frame = self.frames[cont]

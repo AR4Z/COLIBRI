@@ -55,12 +55,10 @@ def len_file_pdf(path_pdf):
 
 
 def wav_to_mp3(path_wav):
-    sound = pydub.AudioSegment.from_wav(path_wav)
-    path_mp3 = path_wav[:-4] + ".mp3"
-    sound.export(path_mp3, format="mp3")
+    cmd = 'lame --preset insane {0}'.format(path_wav)
+    subprocess.call(cmd, shell=True)
     os.remove(path_wav)
-
-    return path_mp3
+    return path_wav[:-4] + ".mp3"
 
 
 def len_audio_file(path_audio_file):
