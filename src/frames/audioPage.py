@@ -29,7 +29,7 @@ class AudioPage(tk.Frame):
 
         # slide de reproducción de audio
         print(self.len_current_audio_book)
-        self.timeslider = tk.Scale(self, from_=0, to=1, resolution=0.01, orient=tk.HORIZONTAL,
+        self.timeslider = tk.Scale(self, from_=0, to=self.len_current_audio_book, resolution=1, orient=tk.HORIZONTAL,
                                    showvalue='no')
         self.timeslider.pack()
         self.timeslider.set(0)
@@ -64,12 +64,9 @@ class AudioPage(tk.Frame):
         self.media = self.Instance.media_new(controller.data["path_file"])
 
         # semaforos
-        self.pause = False
-        self.play = False
         self.going_home = False
         self.update_time_elapsed()
         self.last_time = 0
-        self.count_play = 0
 
 
     def play_audio(self):
@@ -88,11 +85,10 @@ class AudioPage(tk.Frame):
         # obtiene desde donde se va iniciar el audio según la posición del slider en milisegundos
         print(self.timeslider.get())
 
-        if self.count_play == 0:
-            self.different_time = float(self.audio_file_from_db[2])
-            self.count_play += 1
+        if self.player.get_state() == 0:
+            self.different_time = float(self.audio_file_from_db[2]) * 1000
         else:
-            self.different_time = self.timeslider.get()
+            self.different_time = self.timeslider.get() * 1000
 
         # crear e inicia threads para reproducir audio
         self.thread = threading.Thread(target=lambda: self.play_worker(self.different_time))
@@ -112,17 +108,16 @@ class AudioPage(tk.Frame):
 
         # si esta en pause se encarga de mantener la misma posición de reproducción al volver a ejecutarse
         # en caso contrario obtiene cualquier otra posición y ejecuta el audio
-        if (self.pause):
+        if (self.player.get_state() == 3):
             self.player.pause()
-            self.pause = False
         else:
             self.player.set_media(self.media)
             self.player.play()
-            self.player.set_position(self.different_time)
+            self.player.set_time(int(other_time))
         time.sleep(1)
         while self.player.is_playing():
-            print(self.player.get_position())
-            self.last_time = self.player.get_position()
+            print(self.player.get_time())
+            self.last_time = self.player.get_time() / 1000
 
     def play_check(self):
         """
@@ -141,6 +136,8 @@ class AudioPage(tk.Frame):
             self.change_image_button_play(False)
             self.button_stop.pack_forget()
             print("saliedo")
+            if self.player.get_state() == 6:
+                self.stop_audio()
             self.controller.data["manage_db"].set_last_time(self.controller.data["path_file"], self.last_time)
 
     def change_image_button_play(self, start):
@@ -162,7 +159,6 @@ class AudioPage(tk.Frame):
         :return: None
         """
         self.player.pause()
-        self.pause = True
 
     def stop_audio(self):
         """
@@ -178,7 +174,7 @@ class AudioPage(tk.Frame):
 
         :return: None
         """
-        self.time_elapsed.config(text=seconds_in_time_for_humans(self.timeslider.get() * 100))
+        self.time_elapsed.config(text=seconds_in_time_for_humans(self.timeslider.get()))
         self.after(1, self.update_time_elapsed)
 
     def update_time_slider(self):
@@ -188,17 +184,23 @@ class AudioPage(tk.Frame):
 
         :return: None
         """
-        self.timeslider.set(self.player.get_position())
+        self.timeslider.set(self.player.get_time()/1000)
 
     def go_home(self):
         self.going_home = True
-        self.controller.data["manage_db"].set_last_time(self.controller.data["path_file"], self.last_time)
+
+        if self.player.get_state() == 3 or self.player.get_state() == 4:
+            self.controller.data["manage_db"].set_last_time(self.controller.data["path_file"], self.last_time)
+
         self.time_elapsed.pack_forget()
         self.controller.data["path_file"] = ""
         self.controller.show_frame(self.controller.data["menu_frame"])
-        self.count_play = 0
 
     def on_closing(self):
-        self.controller.data["manage_db"].set_last_time(self.controller.data["path_file"], self.last_time)
+        try:
+            if self.player.get_state() == 3 or self.player.get_state() == 4:
+                self.controller.data["manage_db"].set_last_time(self.controller.data["path_file"], self.last_time)
+        except:
+            pass
         self.parent._root().destroy()
 
