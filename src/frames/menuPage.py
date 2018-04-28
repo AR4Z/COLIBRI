@@ -3,7 +3,7 @@ import tkinter.messagebox
 import glob
 from .audioPage import AudioPage
 from .convertPage import ConvertPage
-from tkinter import ttk
+import platform
 # tipo y numero de fuente
 LARGE_FONT = ("Verdana", 16)
 
@@ -13,9 +13,14 @@ class MenuPage(tk.Frame):
         tk.Frame.__init__(self, parent)
         self.controller = controller
 
+        if platform.system() == "Windows":
+            height=500
+        else:
+            height = 400
+
         # boton para realizar conversiones
-        button_convert = ttk.Button(self, text="CONVERTIR TEXTO",
-                                   command=lambda: controller.show_frame(ConvertPage, 500, 400))
+        button_convert = tk.Button(self, text="CONVERTIR TEXTO",
+                                   command=lambda: controller.show_frame(ConvertPage, 500, height), font=LARGE_FONT, bg="#000000", fg="#ffff00", activebackground="#000000", activeforeground="#ffff00")
         button_convert.pack(pady=10)
 
         label = tk.Label(self, text="AUDIOS EXISTENTES", font=LARGE_FONT)
@@ -28,8 +33,8 @@ class MenuPage(tk.Frame):
         self.show_audios()
 
         # boton para abrir el audio seleccionado
-        button_open_audio_file = ttk.Button(self, text="ABRIR AUDIO",
-                                           command=self.open_audio)
+        button_open_audio_file = tk.Button(self, text="ABRIR AUDIO",
+                                           command=self.open_audio, font=LARGE_FONT, bg="#000000", fg="#ffff00", activebackground="#000000", activeforeground="#ffff00")
 
         button_open_audio_file.pack(pady=10)
 

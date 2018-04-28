@@ -1,11 +1,11 @@
 import tkinter as tk
 from tkinter import PhotoImage, filedialog, StringVar, Radiobutton
-from tkinter.ttk import Progressbar, Button
+from tkinter.ttk import Progressbar
 import tkinter.messagebox
 import threading
 from utils.utils import len_file_pdf, extract_text, text_to_audio, extract_name_audio, len_audio_file
 from .audioPage import AudioPage
-
+import platform
 
 # tipo y numero de fuente
 LARGE_FONT = ("Verdana", 16)
@@ -21,8 +21,8 @@ class ConvertPage(tk.Frame):
         self.duration_audio_file = ""
 
         # boton para seleccionar archivo a convertir
-        self.button_browse_file = Button(self, text="EXAMINAR",
-                                       command=self.select_pdf)
+        self.button_browse_file =tk.Button(self, text="EXAMINAR",
+                                       command=self.select_pdf, font=LARGE_FONT, bg="#000000", fg="#ffff00", activebackground="#000000", activeforeground="#ffff00")
         self.button_browse_file.pack()
 
         # label archivo
@@ -37,6 +37,8 @@ class ConvertPage(tk.Frame):
         self.field_path_selected_file.pack()
 
         self.option = StringVar()
+        self.label_conversion = tk.Label(self, text="TIPO DE CONVERSIÓN: ", font=LARGE_FONT)
+        self.label_conversion.pack()
         scanned = Radiobutton(self, text="PDF ESCANEADO", value="ocr", var=self.option)
         normal = Radiobutton(self, text="PDF NORMAL", value="pymupdf", var=self.option)
 
@@ -61,24 +63,29 @@ class ConvertPage(tk.Frame):
         # slider para configurar la velocidad
         self.label_speed = tk.Label(self, text="VELOCIDAD: ", font=LARGE_FONT)
         self.label_speed.pack()
-        self.scale_speed = tk.Scale(self, orient='horizontal', from_=80, to=450)
+        self.scale_speed = tk.Scale(self, orient='horizontal', from_=80, to=450, activebackground="black", bg="#ffff00")
         self.scale_speed.set(175)
         self.scale_speed.pack()
 
         # slider para configurar el tono
         self.label_pitch = tk.Label(self, text="TONO: ", font=LARGE_FONT)
         self.label_pitch.pack()
-        self.scale_pitch = tk.Scale(self, orient='horizontal', from_=0, to=99)
+        self.scale_pitch = tk.Scale(self, orient='horizontal', from_=0, to=99, activebackground="black", bg="#ffff00")
         self.scale_pitch.set(50)
         self.scale_pitch.pack()
 
         # boton para realizar la conversion
-        self.button_conversion = Button(self, text="CONVERTIR", command=self.conversion)
+        self.button_conversion = tk.Button(self, text="CONVERTIR", command=self.conversion, font=LARGE_FONT, bg="#000000", fg="#ffff00", activebackground="#000000", activeforeground="#ffff00")
         self.button_conversion.pack()
 
         # imagen y boton return
+        if platform.system() == "Windows":
+            height = 300
+        else:
+            height = 400
+
         self.icon_return = PhotoImage(file="../img/ic_home_black_24dp_1x.png")
-        self.button_return = tk.Button(self, text="ATRÁS", command=lambda: self.controller.show_frame(self.controller.data["menu_frame"], 450, 250),
+        self.button_return = tk.Button(self, text="ATRÁS", command=lambda: self.controller.show_frame(self.controller.data["menu_frame"], 450, height),
                                   image=self.icon_return)
         self.button_return.pack()
 

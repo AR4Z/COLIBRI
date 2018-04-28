@@ -30,7 +30,7 @@ class AudioPage(tk.Frame):
         # slide de reproducción de audio
         print(self.len_current_audio_book)
         self.timeslider = tk.Scale(self, from_=0, to=self.len_current_audio_book, resolution=1, orient=tk.HORIZONTAL,
-                                   showvalue='no')
+                                   showvalue='no', activebackground="black", bg="#ffff00")
         self.timeslider.pack()
         self.timeslider.set(0)
 

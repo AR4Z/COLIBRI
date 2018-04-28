@@ -9,7 +9,6 @@ import ctypes
 import time
 import subprocess
 import platform
-from tkinter import ttk
 
 if platform.system() == "Windows":
     from pywinauto.application import Application
@@ -28,13 +27,6 @@ class PdfToAudio(tk.Tk):
         self.container.grid_columnconfigure(0, weight=1)
         self.container.grid_propagate(0)
 
-        self.s= ttk.Style()
-        self.s.map("TButton",
-                  foreground=[('pressed', 'red'), ('active', 'yellow'), ('!disabled', 'yellow')],
-                  background=[('pressed', 'black'), ('active', 'black'), ('!disabled', 'black')]
-                  )
-        self.s.configure("TButton", font=LARGE_FONT)
-
         self.manage_db = DBHelper("audios")
         self.manage_db.create_table()
         self.home_user = Path.home()
@@ -47,7 +39,10 @@ class PdfToAudio(tk.Tk):
             "menu_frame": MenuPage
         }
         create_directory(self.data["path_audios"])
-        self.show_frame(MenuPage, 450, 250)
+        if platform.system() == "Windows":
+            self.show_frame(MenuPage, 450, 300)
+        else:
+            self.show_frame(MenuPage, 450, 250)
 
     def show_frame(self, cont, width, height):
         frame = cont(self.container, self)
