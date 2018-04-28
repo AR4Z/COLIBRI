@@ -1,12 +1,12 @@
 import re
 import subprocess
 import fitz
-import pydub
 import os
 import platform
 import errno
 # from .ocr import ocr
 from pathlib import Path
+from mutagen.mp3 import MP3
 if platform.system() == "Windows":
     import winreg as reg
     import win32gui
@@ -72,11 +72,8 @@ def wav_to_mp3(path_wav):
 
 
 def len_audio_file(path_audio_file):
-    if platform.system() == "Windows":
-        pydub.AudioSegment.converter = os.path.join(Path.home(), "bin", "ffmpeg", "ffmpeg-20180411-9825f77-win64-static",
-                                                "bin", "ffmpeg.exe")
-    sound = pydub.AudioSegment.from_mp3(path_audio_file)
-    return sound.duration_seconds
+    audio = MP3(path_audio_file)
+    return audio.info.length
 
 
 def seconds_in_time_for_humans(seconds):

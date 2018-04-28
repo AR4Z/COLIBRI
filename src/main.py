@@ -14,7 +14,7 @@ if platform.system() == "Windows":
     from pywinauto.application import Application
 
 # tipo y numero de fuente
-LARGE_FONT = ("Verdana", 16)
+LARGE_FONT = ("Verdana", 16, 'bold')
 
 
 class PdfToAudio(tk.Tk):
@@ -33,6 +33,7 @@ class PdfToAudio(tk.Tk):
         self.frames = {}
         self.data = {
             "path_file": "",
+            "name_file":"",
             "manage_db": self.manage_db,
             "home_user": self.home_user,
             "path_audios": os.path.join(self.home_user, "AudioLibros"),
@@ -40,9 +41,9 @@ class PdfToAudio(tk.Tk):
         }
         create_directory(self.data["path_audios"])
         if platform.system() == "Windows":
-            self.show_frame(MenuPage, 450, 300)
+            self.show_frame(MenuPage, 450, 350)
         else:
-            self.show_frame(MenuPage, 450, 250)
+            self.show_frame(MenuPage, 450, 300)
 
     def show_frame(self, cont, width, height):
         frame = cont(self.container, self)

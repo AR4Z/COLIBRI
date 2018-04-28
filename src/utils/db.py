@@ -11,7 +11,8 @@ class DBHelper:
         sentence = [
             """
                 CREATE TABLE IF NOT EXISTS archivos(
-                  name TEXT NOT NULL,
+                  name TEXT NOT NULL PRIMARY KEY,
+                  path TEXT NOT NULL,
                   time_duration TEXT NOT NULL,
                   last_position TEXT NOT NULL
                 )
@@ -19,15 +20,15 @@ class DBHelper:
         self.cursor.execute(sentence[0])
         self.connection.commit()
 
-    def add_file(self, name_file, duration, last_position="0"):
+    def add_file(self, name_file, duration, path, last_position="0"):
         sentence = [
             """
                  INSERT INTO archivos
-                  (name, time_duration, last_position)
+                  (name, path, time_duration, last_position)
                   VALUES
-                  (?,?, ?)
+                  (?,?, ?, ?)
             """]
-        self.cursor.execute(sentence[0], [name_file, duration, last_position])
+        self.cursor.execute(sentence[0], [name_file, path, duration, last_position])
         self.connection.commit()
 
     def get_file(self, name_file):
@@ -47,3 +48,13 @@ class DBHelper:
         ]
         self.cursor.execute(sentence[0], [new_last_position, name_file])
         self.connection.commit()
+
+    def get_files(self):
+        sentence = [
+            """
+                SELECT * FROM archivos;            
+            """
+
+        ]
+        self.cursor.execute(sentence[0])
+        return self.cursor.fetchall()

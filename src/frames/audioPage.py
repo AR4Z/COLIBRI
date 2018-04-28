@@ -16,16 +16,16 @@ class AudioPage(tk.Frame):
         self.controller = controller
         self.parent._root().protocol("WM_DELETE_WINDOW", self.on_closing)
         # nombre del archivo cargado
-        label_name_file = tk.Label(self, text=controller.data["path_file"], font=LARGE_FONT)
+        label_name_file = tk.Label(self, text=controller.data["name_file"], font=LARGE_FONT)
         label_name_file.pack(pady=10, padx=10)
 
         # del path obtenemos el nombre para realizar la consulta en la db
-        self.name_for_get_file = self.controller.data["path_file"]
+        self.name_for_get_file = self.controller.data["name_file"]
         # obtener el audio desde la db
         self.audio_file_from_db = self.controller.data["manage_db"].get_file(self.name_for_get_file)
 
         # obtener la longitud del audio desde la db
-        self.len_current_audio_book = float(self.audio_file_from_db[1])
+        self.len_current_audio_book = float(self.audio_file_from_db[2])
 
         # slide de reproducción de audio
         print(self.len_current_audio_book)
@@ -61,7 +61,7 @@ class AudioPage(tk.Frame):
         self.Instance = vlc.Instance()
         self.player = self.Instance.media_player_new()
         # cargar el archivo de audio
-        self.media = self.Instance.media_new(controller.data["path_file"])
+        self.media = self.Instance.media_new(self.audio_file_from_db[1])
 
         # semaforos
         self.going_home = False
@@ -86,7 +86,7 @@ class AudioPage(tk.Frame):
         print(self.timeslider.get())
 
         if self.player.get_state() == 0:
-            self.different_time = float(self.audio_file_from_db[2]) * 1000
+            self.different_time = float(self.audio_file_from_db[3]) * 1000
         else:
             self.different_time = self.timeslider.get() * 1000
 
@@ -138,7 +138,7 @@ class AudioPage(tk.Frame):
             print("saliedo")
             if self.player.get_state() == 6:
                 self.stop_audio()
-            self.controller.data["manage_db"].set_last_time(self.controller.data["path_file"], self.last_time)
+            self.controller.data["manage_db"].set_last_time(self.controller.data["name_file"], self.last_time)
 
     def change_image_button_play(self, start):
         """
@@ -190,7 +190,7 @@ class AudioPage(tk.Frame):
         self.going_home = True
 
         if self.player.get_state() == 3 or self.player.get_state() == 4:
-            self.controller.data["manage_db"].set_last_time(self.controller.data["path_file"], self.last_time)
+            self.controller.data["manage_db"].set_last_time(self.controller.data["name_file"], self.last_time)
 
         self.time_elapsed.pack_forget()
         self.controller.data["path_file"] = ""
@@ -199,7 +199,7 @@ class AudioPage(tk.Frame):
     def on_closing(self):
         try:
             if self.player.get_state() == 3 or self.player.get_state() == 4:
-                self.controller.data["manage_db"].set_last_time(self.controller.data["path_file"], self.last_time)
+                self.controller.data["manage_db"].set_last_time(self.controller.data["name_file"], self.last_time)
         except:
             pass
         self.parent._root().destroy()

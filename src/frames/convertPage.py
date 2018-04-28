@@ -17,7 +17,6 @@ class ConvertPage(tk.Frame):
         # compartir info entre frames
 
         self.controller = controller
-        self.name_audio = ""
         self.duration_audio_file = ""
 
         # boton para seleccionar archivo a convertir
@@ -33,7 +32,7 @@ class ConvertPage(tk.Frame):
         self.path_selected_file = tk.StringVar(None)
 
         # campo donde sera mostrada la ruta del pdf seleccionado
-        self.field_path_selected_file = tk.Entry(self, width='65', textvariable=self.path_selected_file)
+        self.field_path_selected_file = tk.Entry(self, width='65', textvariable=self.path_selected_file, font=LARGE_FONT)
         self.field_path_selected_file.pack()
 
         self.option = StringVar()
@@ -54,11 +53,19 @@ class ConvertPage(tk.Frame):
         self.label_from_number_page.pack()
         self.field_from_number_page.pack()
 
+
         # bboton y label numero de pagina final
         self.label_until_number_page = tk.Label(self, text="HASTA: ", font=LARGE_FONT)
         self.field_until_number_page = tk.Entry(self, width='5', textvariable=self.until_number_page)
         self.label_until_number_page.pack()
         self.field_until_number_page.pack()
+
+        # nombre archivo
+        self.name_conversion = tk.StringVar()
+        self.label_name = tk.Label(self, text="NOMBRE: ", font=LARGE_FONT)
+        self.field_name_conversion= tk.Entry(self, width='40', textvariable=self.name_conversion, font=LARGE_FONT)
+        self.label_name.pack()
+        self.field_name_conversion.pack()
 
         # slider para configurar la velocidad
         self.label_speed = tk.Label(self, text="VELOCIDAD: ", font=LARGE_FONT)
@@ -80,9 +87,9 @@ class ConvertPage(tk.Frame):
 
         # imagen y boton return
         if platform.system() == "Windows":
-            height = 300
+            height = 200
         else:
-            height = 400
+            height = 300
 
         self.icon_return = PhotoImage(file="../img/ic_home_black_24dp_1x.png")
         self.button_return = tk.Button(self, text="ATRÁS", command=lambda: self.controller.show_frame(self.controller.data["menu_frame"], 450, height),
@@ -165,11 +172,12 @@ class ConvertPage(tk.Frame):
                                                           extract_name_audio(self.field_path_selected_file.get()),
                                                           self.scale_pitch.get(), self.controller.data["path_audios"])
         # toma el nombre del audio y la duracion del archivo para ser guardado en base de datos
-        self.name_audio = self.controller.data["path_file"]
-        self.duration_audio_file = len_audio_file(self.controller.data["path_file"])
-        #self.duration_audio_file = 0
+        path_audio = self.controller.data["path_file"]
+        duration_audio_file = len_audio_file(self.controller.data["path_file"])
+
         # inserta registro en db
-        self.controller.data["manage_db"].add_file(self.name_audio, self.duration_audio_file)
+        self.controller.data["manage_db"].add_file(self.name_conversion.get(), duration_audio_file,  path_audio)
+        self.controller.data["name_file"] = self.name_conversion.get()
 
     def show_progress(self, start):
         """
@@ -198,6 +206,12 @@ class ConvertPage(tk.Frame):
 
         if self.from_number_page.get() > self.until_number_page.get():
             self.error("LA PAGINA INICIAL NO PUEDE SER MAYOR QUE LA FINAL")
+            return
+        if self.name_conversion.get() == "":
+            self.error("INGRESE UN NOMBRE PARA EL ARCHIVO")
+            return
+        if not self.controller.data["manage_db"].get_file(self.name_conversion.get()) is None:
+            self.error("EL NOMBRE YA HA SIDO USADO")
             return
 
         self.is_valid = True
