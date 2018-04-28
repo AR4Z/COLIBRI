@@ -1,6 +1,6 @@
 import tkinter as tk
 from tkinter import PhotoImage, filedialog, StringVar, Radiobutton
-from tkinter.ttk import Progressbar
+from tkinter.ttk import Progressbar, Button
 import tkinter.messagebox
 import threading
 from utils.utils import len_file_pdf, extract_text, text_to_audio, extract_name_audio, len_audio_file
@@ -8,25 +8,26 @@ from .audioPage import AudioPage
 
 
 # tipo y numero de fuente
-LARGE_FONT = ("Verdana", 12)
+LARGE_FONT = ("Verdana", 16)
 
 
 class ConvertPage(tk.Frame):
     def __init__(self, parent, controller):
         tk.Frame.__init__(self, parent)
         # compartir info entre frames
+
         self.controller = controller
         self.name_audio = ""
         self.duration_audio_file = ""
 
         # boton para seleccionar archivo a convertir
-        self.button_browse_file = tk.Button(self, text="EXAMINAR",
+        self.button_browse_file = Button(self, text="EXAMINAR",
                                        command=self.select_pdf)
-        self.button_browse_file.pack(pady=10)
+        self.button_browse_file.pack()
 
         # label archivo
         self.label_file = tk.Label(self, text="ARCHIVO: ", font=LARGE_FONT)
-        self.label_file.pack(pady=10, padx=10)
+        self.label_file.pack()
 
         # donde se va a guardar la ruta del pdf seleccionado para la conversion
         self.path_selected_file = tk.StringVar(None)
@@ -72,14 +73,14 @@ class ConvertPage(tk.Frame):
         self.scale_pitch.pack()
 
         # boton para realizar la conversion
-        self.button_conversion = tk.Button(self, text="CONVERTIR", command=self.conversion)
-        self.button_conversion.pack(pady=20)
+        self.button_conversion = Button(self, text="CONVERTIR", command=self.conversion)
+        self.button_conversion.pack()
 
         # imagen y boton return
         self.icon_return = PhotoImage(file="../img/ic_home_black_24dp_1x.png")
-        self.button_return = tk.Button(self, text="ATRÁS", command=lambda: self.controller.show_frame(self.controller.data["menu_frame"]),
+        self.button_return = tk.Button(self, text="ATRÁS", command=lambda: self.controller.show_frame(self.controller.data["menu_frame"], 450, 250),
                                   image=self.icon_return)
-        self.button_return.pack(pady=10)
+        self.button_return.pack()
 
         # barra de progreso de conversion
         self.progress_bar = Progressbar(self, orient=tk.HORIZONTAL, mode='indeterminate', takefocus=True)
@@ -142,7 +143,7 @@ class ConvertPage(tk.Frame):
             self.after(10, self.conversion_check)
         else:
             self.show_progress(False)
-            self.controller.show_frame(AudioPage)
+            self.controller.show_frame(AudioPage, 450, 200)
 
     def conversion_worker(self):
         """

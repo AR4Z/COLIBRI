@@ -6,7 +6,7 @@ import time
 from utils.utils import seconds_in_time_for_humans
 
 # tipo y numero de fuente
-LARGE_FONT = ("Verdana", 12)
+LARGE_FONT = ("Verdana", 16)
 
 
 class AudioPage(tk.Frame):
@@ -194,7 +194,7 @@ class AudioPage(tk.Frame):
 
         self.time_elapsed.pack_forget()
         self.controller.data["path_file"] = ""
-        self.controller.show_frame(self.controller.data["menu_frame"])
+        self.controller.show_frame(self.controller.data["menu_frame"], 450, 250)
 
     def on_closing(self):
         try:

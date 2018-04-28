@@ -5,14 +5,20 @@ import pydub
 import os
 import platform
 import errno
-from .ocr import ocr
+# from .ocr import ocr
+from pathlib import Path
+if platform.system() == "Windows":
+    import winreg as reg
+    import win32gui
+    import win32con
 
 
 def text_to_audio(speed, name_audio, pitch, path, lang="es"):
     name_audio = clean(name_audio)
     if platform.system() == "Windows":
         subprocess.call(
-            "\"C:\Program Files (x86)\eSpeak\command_line\espeak\" -v {0} -f text.txt -p {1} -s {2} -w {3}/{4}.wav".format(lang, pitch, speed, path, name_audio),
+            "\"C:\Program Files (x86)\eSpeak\command_line\espeak\" -v {0} -f text.txt -p {1} -s {2} -w {3}/{4}.wav".format(
+                lang, pitch, speed, path, name_audio),
             shell=True)
     else:
         subprocess.call(
@@ -33,8 +39,8 @@ def extract_text(path_pdf, from_page, until_page, mode):
         for number_page in range(from_page, until_page):
             page = doc.loadPage(number_page)
             text += page.getText("text")
-    else:
-        text = ocr(path_pdf, from_page, until_page)
+    # else:
+    # text = ocr(path_pdf, from_page, until_page)
 
     print(text)
     text.replace('\n', ' ')
@@ -55,13 +61,20 @@ def len_file_pdf(path_pdf):
 
 
 def wav_to_mp3(path_wav):
-    cmd = 'lame --preset insane {0}'.format(path_wav)
+
+    if platform.system() == "Windows":
+        cmd = '{0}\\lame --preset insane {1}'.format(os.path.join(Path.home(), "bin", "lame"), path_wav)
+    else:
+        cmd = "lame --preset insane {0}".format(path_wav)
     subprocess.call(cmd, shell=True)
     os.remove(path_wav)
     return path_wav[:-4] + ".mp3"
 
 
 def len_audio_file(path_audio_file):
+    if platform.system() == "Windows":
+        pydub.AudioSegment.converter = os.path.join(Path.home(), "bin", "ffmpeg", "ffmpeg-20180411-9825f77-win64-static",
+                                                "bin", "ffmpeg.exe")
     sound = pydub.AudioSegment.from_mp3(path_audio_file)
     return sound.duration_seconds
 
@@ -89,11 +102,11 @@ def clean(string):
 
 def firstOnce():
     with open('count.txt', 'r') as count_file:
-        data=count_file.read()
+        data = count_file.read()
 
     return data
 
 
 def secondOnce():
     with open('count.txt', 'w') as count_file:
-        data=count_file.write("1")
+        data = count_file.write("1")
