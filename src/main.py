@@ -3,7 +3,7 @@ from frames.menuPage import MenuPage
 from utils.db import DBHelper
 from pathlib import Path
 import os
-from utils.utils import create_directory
+from utils.utils import create_directory, firstOnce, secondOnce
 
 # tipo y numero de fuente
 LARGE_FONT = ("Verdana", 12)
@@ -41,6 +41,10 @@ class PdfToAudio(tk.Tk):
         frame = self.frames[cont]
         frame.tkraise()
 
+
+if firstOnce() == '0':
+    print("Primera vez configurando")
+    secondOnce()
 
 app = PdfToAudio()
 app.mainloop()

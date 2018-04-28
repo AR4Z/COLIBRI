@@ -38,7 +38,7 @@ def extract_text(path_pdf, from_page, until_page, mode):
 
     print(text)
     text.replace('\n', ' ')
-    file = open("text.txt", 'w')
+    file = open("text.txt", 'w', encoding='utf8')
     file.write(text)
     file.close()
     return text
@@ -85,3 +85,15 @@ def create_directory(path):
 
 def clean(string):
     return ''.join(ch for ch in string if ch.isalnum())
+
+
+def firstOnce():
+    with open('count.txt', 'r') as count_file:
+        data=count_file.read()
+
+    return data
+
+
+def secondOnce():
+    with open('count.txt', 'w') as count_file:
+        data=count_file.write("1")
