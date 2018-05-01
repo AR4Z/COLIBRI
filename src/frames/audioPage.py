@@ -1,9 +1,18 @@
 import tkinter as tk
 from tkinter import PhotoImage, BOTTOM
-import vlc
+import subprocess
+try:
+    import vlc
+except:
+    p = subprocess.Popen([r"bin/vlc-3.0.1-win32.exe"])
+    (output, err) = p.communicate()
+    p_status = p.wait()
+    import vlc
+    
 import threading
 import time
 from utils.utils import seconds_in_time_for_humans
+import platform
 
 # tipo y numero de fuente
 LARGE_FONT = ("Verdana", 16)
@@ -39,9 +48,9 @@ class AudioPage(tk.Frame):
         self.time_elapsed.pack()
 
         # imagenes de iconos
-        self.icon_play = PhotoImage(file="../img/ic_play_arrow_black_24dp_1x.png")
-        self.icon_pause = PhotoImage(file="../img/ic_pause_black_24dp_1x.png")
-        self.icon_stop = PhotoImage(file="../img/ic_stop_black_24dp_1x.png")
+        self.icon_play = PhotoImage(file="img/ic_play_arrow_black_24dp_1x.png")
+        self.icon_pause = PhotoImage(file="img/ic_pause_black_24dp_1x.png")
+        self.icon_stop = PhotoImage(file="img/ic_stop_black_24dp_1x.png")
 
         # boton de reproducir
         self.button_play = tk.Button(self, text="Reproducir",
@@ -51,7 +60,7 @@ class AudioPage(tk.Frame):
         # boton de detener
         self.button_stop = tk.Button(self, text="DETENER",
                                      command=lambda: self.stop_audio(), image=self.icon_stop)
-        self.icon_return = PhotoImage(file="../img/ic_home_black_24dp_1x.png")
+        self.icon_return = PhotoImage(file="img/ic_home_black_24dp_1x.png")
         button_return = tk.Button(self, text="ATRÁS",
                                   command=lambda: self.go_home(),
                                   image=self.icon_return)
@@ -194,12 +203,18 @@ class AudioPage(tk.Frame):
 
         self.time_elapsed.pack_forget()
         self.controller.data["path_file"] = ""
-        self.controller.show_frame(self.controller.data["menu_frame"], 450, 250)
+        self.controller.data["name_file"] = ""
+        if platform.system() == "Windows":
+            height = 350
+        else:
+            height = 300
+        self.controller.show_frame(self.controller.data["menu_frame"], 450, height)
 
     def on_closing(self):
         try:
             if self.player.get_state() == 3 or self.player.get_state() == 4:
                 self.controller.data["manage_db"].set_last_time(self.controller.data["name_file"], self.last_time)
+                self.stop_audio()
         except:
             pass
         self.parent._root().destroy()

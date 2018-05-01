@@ -8,10 +8,10 @@ PYTHON_INSTALL_DIR = os.path.dirname(os.path.dirname(os.__file__))
 os.environ["TCL_LIBRARY"] = os.path.join(PYTHON_INSTALL_DIR, 'tcl', 'tcl8.6')
 os.environ["TK_LIBRARY"] = os.path.join(PYTHON_INSTALL_DIR, 'tcl', 'tk8.6')
 
-build_exe_options = {"packages":["tkinter", "vlc", "fitz", "pydub", "tkinter.messagebox", "pdf2image", "tkinter.filedialog", "tkinter.ttk", "sqlite3", "glob", "pywinauto"],
+build_exe_options = {'packages':['vlc','tkinter.messagebox', 'fitz', 'mutagen', 'tkinter.filedialog', 'tkinter.ttk', 'sqlite3'],
                      'include_files':[os.path.join(PYTHON_INSTALL_DIR, 'DLLs', 'tk86t.dll'),
                                     os.path.join(PYTHON_INSTALL_DIR, 'DLLs', 'tcl86t.dll'),
-                                      "frames", "utils", "bin", "text.txt", "count.txt", "ffmpeg.zip", "lame.zip", "audios", "..\\img"]}
+                                      "frames", "utils","text.txt", "count.txt", "..\\img", "bin", "lame.zip"]}
 base = None
 
 if sys.platform == "Win32":

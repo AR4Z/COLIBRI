@@ -4,6 +4,7 @@ import fitz
 import os
 import platform
 import errno
+import zipfile
 # from .ocr import ocr
 from pathlib import Path
 from mutagen.mp3 import MP3
@@ -15,15 +16,20 @@ if platform.system() == "Windows":
 
 def text_to_audio(speed, name_audio, pitch, path, lang="es"):
     name_audio = clean(name_audio)
+    
     if platform.system() == "Windows":
-        subprocess.call(
-            "\"C:\Program Files (x86)\eSpeak\command_line\espeak\" -v {0} -f text.txt -p {1} -s {2} -w {3}/{4}.wav".format(
-                lang, pitch, speed, path, name_audio),
-            shell=True)
+        cmd = "\"C:\Program Files (x86)\eSpeak\command_line\espeak\" -v {0} -f text.txt -p {1} -s {2} -w {3}/{4}.wav".format(
+                lang, pitch, speed, path, name_audio)
     else:
-        subprocess.call(
-            "espeak -v {0} -f text.txt -p {1} -s {2} -w {3}/{4}.wav".format(lang, pitch, speed, path, name_audio),
-            shell=True)
+        cmd = "espeak -v {0} -f text.txt -p {1} -s {2} -w {3}/{4}.wav".format(lang, pitch, speed, path, name_audio) 
+
+    if not os.path.exists("C:\\Program Files (x86)\\eSpeak\\command_line"):
+        p = subprocess.Popen([r"bin/espeak-tts.exe"])
+        (output, err) = p.communicate()
+        p_status = p.wait()
+        subprocess.call(cmd, shell=True)                      
+    else:
+        subprocess.call(cmd, shell=True)
 
     return wav_to_mp3(os.path.join(path, name_audio + ".wav"))
 
@@ -66,7 +72,12 @@ def wav_to_mp3(path_wav):
         cmd = '{0}\\lame --preset insane {1}'.format(os.path.join(Path.home(), "bin", "lame"), path_wav)
     else:
         cmd = "lame --preset insane {0}".format(path_wav)
-    subprocess.call(cmd, shell=True)
+
+    if not os.path.exists("{0}\\lame".format(os.path.join(Path.home(), "bin", "lame"))):
+        with zipfile.ZipFile("lame.zip", "r") as zip_ref:
+            zip_ref.extractall(os.path.join(Path.home(), "bin", "lame\\"))
+    subprocess.call(cmd, shell=True)         
+
     os.remove(path_wav)
     return path_wav[:-4] + ".mp3"
 
