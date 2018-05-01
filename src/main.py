@@ -3,15 +3,8 @@ from frames.menuPage import MenuPage
 from utils.db import DBHelper
 from pathlib import Path
 import os
-from utils.utils import create_directory, firstOnce, secondOnce
-import zipfile
-import ctypes
-import time
-import subprocess
+from utils.utils import create_directory
 import platform
-
-if platform.system() == "Windows":
-    from pywinauto.application import Application
 
 # tipo y numero de fuente
 LARGE_FONT = ("Verdana", 16, 'bold')
@@ -56,33 +49,6 @@ class PdfToAudio(tk.Tk):
         frame = self.frames[cont]
         frame.tkraise()
 
-
-def is_admin():
-    try:
-        return ctypes.windll.shell32.IsUserAnAdmin()
-    except:
-        return False
-
-
-if firstOnce() == '0':
-    print("Primera vez configurando")
-
-    if not is_admin():
-        # Re-run the program with admin rights
-        # ctypes.windll.shell32.ShellExecuteEx(None, "runas", sys.executable,'main',None, 1)
-        pass
-    time.sleep(5)
-    espeak_install = Application().start("bin/espeak.exe")
-    subprocess.Popen([r"bin/vlc.exe"])
-    # ocr_tool = Application().start("bin/tessereact.exe")
-
-    with zipfile.ZipFile("ffmpeg.zip", "r") as zip_ref:
-        zip_ref.extractall(os.path.join(Path.home(), "bin", "ffmpeg\\"))
-
-    with zipfile.ZipFile("lame.zip", "r") as zip_ref:
-        zip_ref.extractall(os.path.join(Path.home(), "bin", "lame\\"))
-
-    secondOnce()
 
 app = PdfToAudio()
 app.title('pdfToAudio')

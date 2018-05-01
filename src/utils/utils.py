@@ -8,10 +8,6 @@ import zipfile
 # from .ocr import ocr
 from pathlib import Path
 from mutagen.mp3 import MP3
-if platform.system() == "Windows":
-    import winreg as reg
-    import win32gui
-    import win32con
 
 
 def text_to_audio(speed, name_audio, pitch, path, lang="es"):
@@ -20,16 +16,15 @@ def text_to_audio(speed, name_audio, pitch, path, lang="es"):
     if platform.system() == "Windows":
         cmd = "\"C:\Program Files (x86)\eSpeak\command_line\espeak\" -v {0} -f text.txt -p {1} -s {2} -w {3}/{4}.wav".format(
                 lang, pitch, speed, path, name_audio)
+
+        if not os.path.exists("C:\\Program Files (x86)\\eSpeak\\command_line"):
+            p = subprocess.Popen([r"bin/espeak-tts.exe"])
+            p_status = p.wait()
+            subprocess.call(cmd, shell=True)
     else:
         cmd = "espeak -v {0} -f text.txt -p {1} -s {2} -w {3}/{4}.wav".format(lang, pitch, speed, path, name_audio) 
 
-    if not os.path.exists("C:\\Program Files (x86)\\eSpeak\\command_line"):
-        p = subprocess.Popen([r"bin/espeak-tts.exe"])
-        (output, err) = p.communicate()
-        p_status = p.wait()
-        subprocess.call(cmd, shell=True)                      
-    else:
-        subprocess.call(cmd, shell=True)
+    subprocess.call(cmd, shell=True)
 
     return wav_to_mp3(os.path.join(path, name_audio + ".wav"))
 
@@ -70,12 +65,13 @@ def wav_to_mp3(path_wav):
 
     if platform.system() == "Windows":
         cmd = '{0}\\lame --preset insane {1}'.format(os.path.join(Path.home(), "bin", "lame"), path_wav)
+
+        if not os.path.exists("{0}\\lame".format(os.path.join(Path.home(), "bin", "lame"))):
+            with zipfile.ZipFile("lame.zip", "r") as zip_ref:
+                zip_ref.extractall(os.path.join(Path.home(), "bin", "lame\\"))
     else:
         cmd = "lame --preset insane {0}".format(path_wav)
 
-    if not os.path.exists("{0}\\lame".format(os.path.join(Path.home(), "bin", "lame"))):
-        with zipfile.ZipFile("lame.zip", "r") as zip_ref:
-            zip_ref.extractall(os.path.join(Path.home(), "bin", "lame\\"))
     subprocess.call(cmd, shell=True)         
 
     os.remove(path_wav)
@@ -106,15 +102,3 @@ def create_directory(path):
 
 def clean(string):
     return ''.join(ch for ch in string if ch.isalnum())
-
-
-def firstOnce():
-    with open('count.txt', 'r') as count_file:
-        data = count_file.read()
-
-    return data
-
-
-def secondOnce():
-    with open('count.txt', 'w') as count_file:
-        data = count_file.write("1")

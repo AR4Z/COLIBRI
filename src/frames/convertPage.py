@@ -88,10 +88,11 @@ class ConvertPage(tk.Frame):
         # imagen y boton return
         if platform.system() == "Windows":
             height = 350
+            self.icon_return = PhotoImage(file="img/ic_home_black_24dp_1x.png")
         else:
             height = 300
+            self.icon_return = PhotoImage(file="../img/ic_home_black_24dp_1x.png")
 
-        self.icon_return = PhotoImage(file="img/ic_home_black_24dp_1x.png")
         self.button_return = tk.Button(self, text="ATRÁS", command=lambda: self.controller.show_frame(self.controller.data["menu_frame"], 450, height),
                                   image=self.icon_return)
         self.button_return.pack()
