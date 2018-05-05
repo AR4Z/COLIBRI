@@ -1,12 +1,948 @@
-El  término  enfermedad  holandesa  se  refiere  a  los  efectos  nocivos  derivados  de  un  aumento
-significativo en las entradas de divisas de un país y fue acuñado debido al hallazgo de grandes
-yacimientos de gas natural en Holanda, específicamente en el mar del norte. El impacto de estos
-hallazgos originó un aumento considerable en sus exportaciones lo que trajo una mayor entrada de
-divisas y por tanto una reducción de la tasa de cambio de la moneda holandesa de la época, el Florín.
-El concepto por partes
-En principio la lógica nos llevaría a pensar que el hallazgo de un gran yacimiento de gas natural en
-Groningen en 1959 debería ser algo positivo para el crecimiento económico de Holanda, sin embargo,
-existe un efecto adverso sobre otros sectores debido a la revaluación de la tasa de cambio. En otras
-palabras, cuando se presentan este tipo de hallazgos hay un sector que experimenta un boom, en este
-caso el gas natural, y lo vuelve mucho más activo, pero perjudica otros sectores como el de la
-manufactura.
+ONTOLOGÍA DE LA ADMINISTRACIÓN: UNA
+APROXIMACIÓN A LA PRÁCTICA ADMINISTRATIVA
+
+COMO HECHO INSTITUCIONAL.
+
+Elkin Fabriany Pineda”
+
+“ Estudiante de sexto semestre de Licenciatura en filosofía dela Universidad del Valle y Administrador de Empresas
+egresado de la Universdad Nacional de Colombia Sede Palmira. Auxiliar de investigación del Grupo de
+Investigación Episteme: Filosofia y Ciencia dela Universidad del Valle, y del Grupo de Estudios Neoinstitucionales de
+la Universidad Nacional de Colombia Sede Palmira. También es miembro del comité editorial de la Revista Le'gein,
+revista de estudiantes de filosofia dela Universidad del Valle. Colombia. Email: elkin.pineda©correounivalleedu.co,
+efpinedah©unaled u4co.
+
+R1Vl5 IA INS/XYOS. ANO 7. N” 7. ]Ul lO » DICIIMISRI Dl 2014.Resumen
+
+En el presente escrito se presenta un esquema preliminar de la práctica administrativa
+como hecho institucional, a partir del trabajo sobre ontología de lo social del filósofo
+norteamericano John Roger Searle (1997). Se hace un énfasis en los elementos que
+dicho autor presenta en los apartados I y II de su obra La construcción de la realidad
+social, para poder dar un acercamiento a las preguntas "¿qué tipo de hecho es la
+práctica administrativa?", y ”¿cómo es posible su modo de existencia?". En esta reflexión
+se llega a una categorización básica que ubica a la práctica administrativa dentro del
+conjunto de prácticas sociales institucionalizadas, y se esboza brevemente un esquema
+básico en la forma Xcuenta como Yen Cque relaciona los hechos sociales y brutos que
+constituyen éste hecho institucionalizado.
+
+Palabras clave
+Ontologia social, práctica administrativa, hecho institucional, realidad social, John
+Searle.
+
+Abstract
+
+This paper presents a management practice's preliminary scheme as 'Institutional fact',
+from the John Roger Searle's (1997) work about Social Ontology. lt emphasizes in the
+elements that Searle shows at the Chapters I and II of his “The Construction of the Social
+Reality" to try to give an approach to the questions ”What kind of fact is the
+management practice?" and “how is its existence possible?” This reflection reaches a
+basic categorization that places the administrative practice at the set of social
+institutionalized practices, and it roughs out a basic scheme in the form "X counts as Y in
+C" and it links the social and brutes facts that constitute this fact institutionalized.
+
+Key words
+Social ontology, management practice, institutional fact, social reality, John Searle.
+
+R1Vl5 IA INS/XYOS. ANO 7. N” 7. ]Ul lO » DICIIMISRI Dl 2014.A disciplinary field can hardly attain the sophisticated level of scholarship
+Which is worthy of graduate education if it is not capable of critically
+developing from within itself its epistemological [and ontological]
+foundations,
+
+*Alberto Guerreiro Ramos, The New Science of Organizations, 1981
+
+(Se agregó lo que está en corchetes)
+
+1. Introducción
+
+Una delas cosas que debería resultar de gran interés para cualquier disciplina científica
+tiene que ver con la indagación de aquellos principios ontológicos y epistemológicos
+que las fundamentan. Por decirlo de alguna manera, tales cosas son imprescindibles si
+se quiere alcanzar un nivel de comprensión amplio y profundo en un campo del
+conocimiento, pues nos muestran las bases por medio de las cuales se configuran los
+sistemas conceptuales, las teorías y las prácticas asociadas a éstos. En el caso de los
+fundamentos ontológicos, se trata de comprender los supuestos más básicos sobre la
+existencia yla realidad, y la estructura dela realidad, que configuran los principios delas
+representaciones de un objeto (o un conjunto de objetos) dados en un campo de
+estudio. Para el caso de la disciplina administrativa, tal tipo de reflexión filosófica estaria
+direccionada a las organizaciones yla práctica administrativa.
+
+El presente escrito tiene como objetivo presentar una fundamentación ontológica
+preliminar de la práctica administrativa como hecho institucional, a partir de algunos
+elementos básicos dela teoría delos hechos institucionales de John Roger Searle (1997).
+Esto, sin embargo, es tan sólo una aproximación, cuya relevancia se da en la medida en
+que se considere, sobre todo, por algunos aportes analíticos que provee. Así pues, el
+objetivo se concentra en los aspectos que tienen que ver con la identificación de la
+práctica administrativa como hecho institucional, que seria una respuesta a la pregunta
+de ”¿qué tipo de hecho es la práctica administrativa?'ºí y una explicación del modo en
+que ésta se configura como tal, que sería una respuesta a la pregunta de "¿cómo es
+posible su modo de existencia?"”. Quedan sin abordar en este escrito aspectos de gran
+relevancia, también ontológicos, que tienen que ver con el origen de la institución
+administrativa, su historicidad, la relación de esto con el lenguaje, entre otros aspectos,
+que podrán ser abordados en otros escritos.
+
+Para cumplir el objetivo propuesto, se presentan en un primer momento los elementos
+básicos de la teoria dela realidad social de Searle (1997), expuestos en los capítulos I y II
+de su trabajo. Luego, y a partir de lo anterior, se entra a interpretar la práctica
+
+25 También puede entenderse como una posible respuesta a la pregunta de “¿cuál es la naturaleza o el modo de
+existenciade la práctica administrativa?
+
+“ También puede entenderse como una posible respuesta a la pregunta de “¿cómo es posible la existencia del
+hecho institucional de la práctica administrativa?“
+
+R1Vl5 IA INS/XYOS. ANO 7. N” 7. ]Ul lO » DICIIMISRI Dl 2014.administrativa, a la luz de tales elementos del marco teórico searleano. Para finalizar, se
+recogerán los aspectos más importantes de este escrito.
+
+2. Elementos básicos de la teoría dela realidad social de John Searle
+
+[H]ay porciones del mundo real, hechos objetivos en el mundo, que son
+hechos sólo merced al acuerdo humano. Estoy pensando en cosas como
+el dinero, la propiedad, los gobiernos, y los matrimonios.
+
+John R. Serie. (1997)
+
+2.1 Las "piedras angulares” que sustentan la estructura dela realidad social
+
+El objetivo central del presente apartado radica en describir los elementos principales
+que componen el planteamiento ontológico de J. Roger Searle (1997) sobre la realidad
+social, presentes en el capítulo I y II del libro La Construcción dela Realidad Social. Para
+exponerlo de forma consecuente con la manera en quelo presenta este autor, en lo que
+sigue se tratan los siguientes tópicos en el siguiente orden: 2.1.1) la distinción entre
+hechos brutos y hechos sociales, y la manera como una ontología general de los
+primeros encaja en una ontología particular delos segundos; 2.1.2) el carácter objetivo y
+subjetivo de las cosas en términos ontológicos y epistemológicos; 2.1.3) los elementos
+de trasfondo: intencionalidad colectiva, funciones agentivas y reglas constitutivas.
+Luego, en el punto 2.2) se trabajan los aspectos fundamentales del capitulo dos de la
+obra de Searle, en la cual se ilustra la creación de los hechos institucionales. Sin
+embargo, por su necesidad, se agregará un elemento adicional que no pertenece al
+capítulo dos de la obra searleana, sino que se encuentra en el capítulo cuatro: la
+posibilidad de iteración que da paso a la creación de hechos institucionales formados
+por reglas constitutivas basadas en otras reglas constitutivas formadas previamente (y,
+por ende, de otros hechos institucionales ya preexistentes). Para tal parte, se propone el
+siguiente orden: 2.2.1) autorreferenciabilidad de conceptos generales; 2.2.2)
+expresiones performativas; 2.2.3) primacía lógica de los hechos brutos sobre los hechos
+institucionales; 2.2.4) relaciones sistémicas entre hechos institucionales, y primacía de
+los actos sociales sobre los objetos sociales; 2.2.5) el componente lingúistico de base;
+2.2.6) iteración.27
+
+2.1.1 De los hechos brutos a los hechos sociales
+
+Searle (1997: 19) parte de una postura realista sobre el modo de existencia del mundo,
+en la cual sólo existe un mundo (un mundo físico), y su existencia es independiente de
+nuestras represertaciones de él. En tal forma de concebir la realidad se privilegian los
+rasgos que de ésta tratan las ciencias naturales (tales como la física, la quimica y la
+biología). Sin embargo, no todos los hechos acaecidos en dicho esquema son delo que
+podríamos considerar como de índole ”material" o “físicos". Para Searle (1997: 20),
+
+“ Muchos de los subtítulos aquí consignados intentan ser similares alos establecidos enla obra de Searle.
+
+R1Vl5 IA INS/XYOS. ANO 7. N” 7. ]Ul lO » DICIIMISRI Dl 2014.además de los hechos que existen independientemente de nuestras representaciones
+mentales, existen un grupo de hechos que existen enla medida que el ser humano cree
+que existen. A partir de tal afirmación, se sigue la siguiente demarcación entre dos tipos
+de hechos que pueden darse en la realidad: los ”hechos brutos” y los "hechos sociales"
+(Searle, 19997: 20). Como se mencionó, la existencia de los primeros es independiente
+de las representaciones mentales del hombre, mientras quela delos segundos no lo es.
+Al mismo tiempo, dentro del conjunto de los hechos sociales se subdividen otro
+conjunto: los hechos institucionales (Searle, 19997: 20). Estos últimos tienen su nombre,
+según Searle, porque pueden darse sólo por medio de la existencia de instituciones
+humanas, y porque existen ciertas características que hacen que, en dicho esquema
+categorial, se diferencian los hechos sociales simples (por asi decirlo) y los hechos
+sociales institucionales. ¿En qué términos se puede estructurar una ontología de los
+hechos sociales e institucionales? La respuesta a dicho interrogante será la tarea
+principal de éste autor.
+
+La primera cuestión trata sobre la manera en que encaja una cnto/ogía general de la
+realidad con una antología particular de los hechos sociales (Searle, 19997: 25). Para
+esto, Searle (1997: 25) parte de atribuir una primacía a los rasgos ontológicos de los
+hechos brutos. Es decir que, fundamentalmente, sobre la base primera dela existencia
+de los hechos brutos se da la existencia de los hechos sociales. Searle lo describe
+especificamente dela siguiente manera,
+
+[…] el mundo consiste exclusivamente en entidades que, por comodidad y
+conveniencia, aunque no sea exacto, describimos como particulas. Esas partículas
+existen en campos de fuerza, y están organizadas en sistemas. Las fronteras de
+esos sistemas están fijadas por relaciones causales. Ejemplos de sistemas son
+montañas, planetas, moléculas de H20, rios, cristales y bebés. Algunos de esos
+sistemas son sistemas vivos; y sobre nuestra pequeña Tierra, los sistemas vivos
+contienen una buena cantidad de moléculas basadas en el carbono y hacen
+abundante uso de hidrógeno, del nitrógeno y del oxígeno. Tipos de sistemas
+vivos evolucionan a través dela selección natural, y algunos de ellos han llegado
+a generar evolucionariamente ciertas clases de estructuras celulares -
+específicamente: sistemas nerviosos- capaces de causar y sostener la conciencia.
+(Searle, 1997: 25,26).
+
+La mente yla conciencia, en el orden de ideas que plantea Searle, son posibles por la
+existencia primera de ciertos hechos fisicos. Pero lo más importante en esta descripción
+es que de los actos de conciencia se sigue la posibilidad de los hechos sociales. Y esto,
+según el autor, deviene de la capacidad mental descrita como ”intencionalidad", la cual es
+definida como "la capacidad de la mente para representar objetos y estados de cosas
+mundanos distintos de uno mismo” (Searle, 1997: 26). Tal es la forma como resulta
+congruente una ontología de los hechos fisicos con una de los hechos sociales: de la
+existencia de ciertos hechos brutos, como el cerebro y otros tantos fenómenos
+
+RIVlS IA INS/XYOS. ANO 7. N” 7. ]Ul lO » DICIIMISRI Dl 2014.biológicos, fisicos y químicos, se sigue la posibilidad, en ciertos organismos vivos, de
+generar fenómenos de conciencia, y, de la mano de estos, ciertas capacidades mentales
+como lo es la capacidad de representarse estados de cosas, generar creencias, deseos e
+intenciones. Esta capacidad a la que Searle cataloga como "intencionalidad” será uno de
+los elementos de trasfondo que posibilitan la existencia de los hechos sociales, y más en
+concreto, delos hechos institucionales; aunque más adelante se detallará como se pasa
+de la intencionalidad individual a la intencionalidad colectiva.
+
+2.1.2 ºbjetividad y subjetividad en términos ontológicos y epistemológicos
+
+Usualmente se hace uso de los términos 'objetivo' y 'subjetivo' para describir un modo
+en que el conocimiento puede manifestarse. En estos usos, lo objetivo y subjetivo pasan
+a ser predicados de juicio, en los cuales su catalogación se realizará de acuerdo a la
+independencia o no de las actitudes o de los sentimientos de los hablantes. En los
+juicios epistemológicamente objetivos "los hechos en el mundo que los convierten en
+verdaderos o falsos son independientes de las actitudes o de los sentimientos que
+cualquiera puede albergar respecto a ellos” (Searle, 1997: 27). Por su parte, en el caso de
+los juicios epistemológicamente subjetivos, pasa todo lo contrario, pues "su verdad o
+falsedad no puede fijarse objetivamente porque la verdad o falsedad no es una simple
+cuestión de hecho, sino que depende de ciertas actitudes, sentimientos y puntos de
+vista delos proferidores o delos oyentes del juicio en cuestión" (Searle, 1997: 27).
+
+Sin embargo, de acuerdo a lo que distingue Searle (1997: 27-28), también estos pueden
+ser tratados en un sentido ontológico. Esto es tratado en términos de predicados de
+entidades (o tipos de entidades), referidos a su modo de existencia. Es decir, que algo
+puede ser catalogado como ontológicamente objetivo si se considera que el modo de
+existencia de dicha cosa es independiente de otra cosa. Como ilustración de este caso
+puede considerarse el modo de existencia de los hechos brutos, pues estos existen
+independientemente del ser humano y sus representaciones mentales. Por otro lado,
+algo es ontológicamente subjetivo en el sentido que su modo de existencia depende de
+algo que lo cree o crea que existe, que para este caso resulta ser el hombre y sus
+representaciones mentales. Como puede intuirse, en tal tipo de cosas se ubican los
+hechos sociales e institucionales: son hechos ontológicamente subjetivos en la medida
+de que su ontología es una creación humana; es una ontología, por así decirlo, artificial
+o antrópica.
+
+A lo anterior debe agregarse que se puede predicar algo epistemológicamente
+subjetivo y objetivo a hechos que son ontológicamente subjetivos y objetivos,
+independientemente de su modo de existencia. Es decir, existe la posibilidad de señalar
+rasgos que son epistemológicamente subjetivos y objetivos en hechos cuyo modo de
+existencia es, o bien subjetivo (dependiente de que el hombre crea que existen), o bien
+objetivo (independiente de que el hombre crea o no en su existencia). Así, a propósito
+
+R1Vl5 IA INS/XYOS. ANO 7. N” 7. ]Ul lO » DICIIMISRI Dl 2014.del interés científico y teórico que entrañan las ciencias sociales, es posible describir y
+estudiar los hechos ontológicamente subjetivos que hemos denominado hechos
+sociales e institucionales en términos delo epistemológicamente objetivo.
+
+2.1.3 Elementos de trasfondo de los hechos sociales e institucionales
+
+El mismo Searle (1997: 32) señala que su objetivo en el primer capítulo de su trabajo
+mencionado es el de "componer el aparato necesario para dar cuenta de la realidad
+social en el marco de nuestra ontología cientifica global". En correspondencia con ello,
+menciona tres elementos necesarios: ”[I]a asignación de función, la intencionalidad
+colectiva y las reglas constitutivas" (Searle, 1997: 32).
+
+Por 'asignación (o imposición) de función', o función agentiva, se ha de entender la
+función atribuida a un objeto u hecho determinado. Tal función es asignada a todo el
+conjunto de hechos posibles (brutos o, incluso, otros hechos sociales), en el marco de
+propósitos, objetivos y valores humanos. Así pues, los seres humanos poseemos la
+facultad, a partir de la mente, de atribuir una función a ciertos fenómenos que se nos
+presentan, como también podemos crear objetos y realizar actos que sirvan a una
+finalidad determinada. De esta manera, tales funciones pueden entenderse, por un lado,
+como fijas o determinadas, en el sentido en el cual se relaciona con una finalidad
+predeterminada en su creación. Por otro lado, pueden entenderse tales funciones como
+relativas al observador en dos sentidos: 1) en términos de su naturaleza, en la que toda
+función asignada lo es en tanto que es creada por ”observadores y usuarios conscientes”
+(Searle, 1997: 33); 2) en el sentido en que pueden atribuirse diversas funciones de
+acuerdo a la noción de ñnalidad que sele atribuya, el punto de vista del que sele mire o
+al modo de relacionar tal función con otros fenómenos (Searle, 1997: 33-40).
+
+Por otro lado, el término de "intencionalidad colectiva” alude a la capacidad grupal de
+los seres humanos (o de una comunidad o grupo de seres humanos) en la cual sus
+miembros "no sólo se comprometen en una conducta cooperativa, sino que comparten
+también estados mentales como creencias, deseos e intenciones“ (Searle, 1997: 41). Esta
+noción es una extensión dela capacidad de intencionalidad 'individual' que supone este
+autor como propio de cada individuo que posee mente y conciencia. En dicha
+extensión, el 'hacer' colectivo (que comprende tanto el desear, creer, entre otros) es algo
+compartido por un grupo de agentes. En esta forma de las capacidades mentales
+relativas a la colectividad, Searle señala que no debe ser reducida (ni confundida) con la
+intencionalidad individual, y que, además, "la intencionalidad que existe en cada cabeza
+individual tiene la forma <<nosotros intentamos»” (Searle, 1997: 43).
+
+Hasta el momento, los dos elementos mencionados dan el sustento para hablar de los
+
+hechos sociales (Searle, 1997: 44). Sin embargo, existe una subclase de hechos sociales a
+los cuales Searle ha llamado 'hechos institucionales'. Para el caso de estos, dicho autor
+
+R1Vl5 IA INS/XYOS. ANO 7. N” 7. ]Ul lO » DICIIMI)RI Dl 2014.señala un elemento más, considerando que estos últimos, para su existencia, necesitan
+de instituciones humanas. A partir de esto es que este autor introduce la noción de
+reglas constitutivas.
+
+Para que los hechos institucionales existan son necesarias las instituciones. Para explicar
+lo que significa ésta última noción, Searle se vale de una distinción entre dos tipos de
+reglas implicadas en la realidad social: 1) las “reglas regulativas”; 2) las ”reglas
+constitutivas”. Searle define las reglas regulativas como aquellas que únicamente
+”regulan actividades previamente existentes” (Searle, 1997: 45). Por otro lado, existen
+reglas que fundan la realidad o la posibilidad de dichas actividades. Son las reglas que
+constituyen, junto con los otros dos elementos de trasfondo, las características
+esenciales y estructurales de los hechos institucionales en general y de los hechos
+institucionales en particular. Tal es el caso de las reglas constitutivas, que, de acuerdo a
+su definición, son entendidas como aquellas que "no sólo regulan, sino que crean la
+posibilidad misma de ciertas actividades" (Searle, 1997: 45). En especial, estas segundas
+reglas se presentan dela siguiente forma: ”<<X cuenta como Y», o <<X cuenta como Y en el
+contexto C»". Tal formulación puede leerse alternativamente como: “X" hecho bruto
+(conjunto de hechos o fenómenos mundanos) cuenta cómo “Y" hecho institucional en
+el contexto social o cultural de hablantes "C”. Asignarle, en dicho sentido, la categoría
+de Y (es decir, de que cuenta como un hecho institucional) a un hecho bruto X”, es, de
+entrada, cargar con todo el conjunto de reglas que fundan su posibilidad misma, con las
+funciones agentivas y, adicional a ello, supone la capacidad mental de intencionalidad
+colectiva.
+
+2.2 El proceso de creación y construcción delos hechos institucionales
+2.2.1 Autorreferenciabilidad no circular de conceptos generales
+
+En lo que respecta a la creación de hechos institucionales y sociales, Searle (1997: 49—74)
+parte por señalar seis rasgos propios de la realidad social, los hechos sociales y el
+proceso de creación de estos últimos: 2.2.1) autorreferenciabilidad, 2.2.2) expresiones
+performativas, 2.2.3) primacía lógica de los hechos brutos sobre los hechos sociales,
+2.2.4) sistematicidad de las relaciones entre hechos institucionales y primacía de los
+procesos institucionales sobre los objetos institucionales, 2.2.5) lenguaje, 2.2.6)
+iteración. El primero se describe cómo una noción que hace referencia a un hecho social
+podría parecer circular, en el sentido que para que algo sea referenciado como un
+hecho social debe cumplir el requisito de ser creído como un hecho social. Parte de ser
+hecho social implica una parte de ser creído como tal. Pero, ¿Cuál es el contenido de tal
+creencia? Es decir, que para que "X” cosa sea considerada (o definida) como ”Y” hecho
+social es necesario que se crea que ”X" cosa cuente como "Y" hecho social; pero, en ello,
+pareciese manifestarse un fenómeno de autorreferenciabilidad en la medida que para
+que un hecho pueda ser tenido en cuenta (sea creído o definido) como hecho social
+debe satisfacer su propia definición. Así, para definir un hecho social como el ”dinero" se
+
+R1Vl5 IA INS/XYOS. ANO 7. N” 7. ]Ul lO » DICIIMISRI Dl 2014.debe tener en cuenta que parte de dicha definición implica "ser usado como dinero, o
+ser visto como dinero, o ser creído como dinero" (Searle, 1998: 68).
+
+Para solucionar este problema Searle realiza una distinción entre tipos de hechos
+sociales y ejemplares (Searle, 1998: 50). Señala, después, que la palabra que denota un
+hecho social (como el dinero) es una simple articulación lingúística de todas las
+prácticas y hechos que sele asocian. En palabras de Searle,
+
+[…] el hecho de que un conjunto de actitudes sea parcialmente constitutivo de
+las condiciones de verdad de un determinado concepto, y el hecho de que esas
+actitudes hallen normalmente su expresión más sumaria en el uso de ese mismo
+concepto (por ejemplo, pensar que algo es dinero, pensar que estas personas
+están casadas) no tiene por consecuencia el que la palabra con que se expresa
+ese concepto no pueda definirse sin circularidad o regreso infinito (Searle, 1998:
+50).
+
+Así, para el caso de los tipos (generales) de hechos sociales, la autorreferenciabilídad
+que se da entre su concepción como hecho social y su definición, es cuestión de que
+estos sean 'codiñcados' de manera oficial (es decir, de que sean institucionalizados de
+manera formal). Por su parte, en el caso de los ejemplares, la autorreferenciabilídad se
+codifica (o se institucionaliza) de manera particular, en la medida que su
+institucionalización se da de forma no oficial (o informal) (Searle, 1998; 69, 70). El
+aspecto central en este asunto es que los seres humanos, por medio de la asignación
+agentíva de funciones, imputamos condiciones de definición para los hechos sociales; y,
+así, para que un hecho social pueda ser considerado como tal ha de cumplir las
+condiciones predispuestas. El asunto es que, en cuanto a este fenómeno, se debe
+diferenciar entre tipos generales de hechos sociales y ejemplares particulares, pues los
+primeros, al ser generales, en su definición se nombran una clase muy amplia de hechos
+sociales particulares asociados, mientras que para el caso de los ejemplares no ocurre
+as¡.
+
+2.2.2 Expresiones performativas
+
+De acuerdo a Searle (1998; 70), existen algunos hechos sociales cuya posibilidad de
+existencia es dada al momento en que éste es nombrado o decretado: "En general,
+cuando el término X es un acto de habla, la regla constitutiva permite que el acto de habla
+pueda ser ejecutado como una declaración performativa que crea el estado de cosas
+descrito por el término Y”(Searle, 1998: 70; cursiva del autor). Asi, pues, la enunciación de
+actos de habla que indiquen cosas como ”se aplaza la reunión”, "trato cerrado”, 0 ”x
+persona es, ahora, el presidente de la organización", forman el hecho social de que la
+reunión se aplace, el trato quede cerrado y que, en efecto, x persona sea el nuevo
+
+presidente dela organización;constituyen, pues, hechos sociales.
+
+R1Vl5 IA INS/XYOS. ANO 7. N” 7. ]Ul lO » DICIIMISRI Dl 2014.2.2.3 Primacía lógica delos hechos brutos sobre los hechos institucionales
+
+Dado que la estructura de las reglas constitutivas es de la forma ”X” cuenta como ”Y” en
+”C", ello supone una jerarquía, en la cual lo denotado por “X" esté a la base de todo
+(Searle, 1998: 72). De acuerdo a Searle (1998: 72), la base de tal estructura es,
+necesariamente, la correspondiente a los hechos brutos (los cuales no dependen del
+acuerdo humano). Esto tiene que ver mucho con lo mencionado en el apartado anterior,
+sobre el hecho de que, en consideración de asignación de función agentiva, siempre se
+alude a un conjunto de hechos físicos o realización de hechos físicos. Lo que todo esto
+quiere decir es que, en la base de toda formación de reglas constitutivas de hechos
+institucionales, debe haber hechos brutos siempre, por simple necesidad lógica (según
+el autor).
+
+2.2.4 Relaciones sistémicas entre hechos institucionales, y primacía de los actos
+sociales sobre los objetos sociales
+
+En este punto Searle (1998: 72) destaca que muchos (por no decir todos) los hechos
+institucionales guardan relaciones sistémicas entre sí. De acuerdo al autor, esto se debe
+a que tales hechos sociales fueron creados con tal propiedad, en la medida que tal
+conexión sistémica garantía la articulación de diversos hechos institucionales entre si,
+posibilitando una mayor utilidad para los fines mundanos (Searle, 1988: 72).
+
+Por otra parte, este autor señala también que existe una supremacía de los hechos
+sociales que caracterizan actos sobre los hechos sociales que caracterizan objetos
+(Searle, 1988: 73). Y esto se debe a que, en últimas, los hechos sociales que conforman
+objetos (o entidades sociales) fueron creados para cumplir un gran compendio de
+funciones agentivas (Searle, 1988: 73). Por así decirlo, los 'hechos sociales de tipo
+entidatario' comprenden una urdimbre de actividades que los forman, que cuyo
+cumplimiento, en términos de función agentiva socialmente asignada, les da sentido.
+
+2.2.5 El componente Iingiiistico de base
+
+Este punto tiene que ver con el hecho de que, al parecer, uno de los elementos
+parcialmente fundamentales para la creación de hechos institucionales es el lenguaje (o,
+al menos, un sistema Iingúístico o de representación). Esto tiene que ver con el hecho
+de que sólo es posible que se dé un conjunto de actitudes, creencias y demás, a partir
+de un sistema de representaciones Iingúísticas de base (Searle, 1998: 54).
+
+2.2.6 Iteración
+
+R1Vl5 lA INS/XYOS. ANO 7. N“ 7. ]Ul lO » D|C|l MISRI Dl 2014.Este último elemento, como se mencionó enla parte inicial de este apartado, no se halla
+en el capítulo II aquí estudiado. Sin embargo resulta necesario que sea explicado,
+puesto que, para nuestros propósitos, necesitamos describir un hecho institucional que
+comprende otros conjuntos de hechos brutos, sociales e institucionales de base, y que
+le anteceden.
+
+La idea de iteración expuesta por el autor nos dice que las reglas constitutivas pueden
+constituir otras reglas constitutivas. En los términos planteados al inicio: "La estructura
+<<X cuenta como Y en C» puede ser iterada" (Searle, 1998: 93). Esto quiere decir que es
+posible imponer funciones agentivas, que dan un estatus al hecho social como tal, a
+otros hechos sociales a los cuales ya se les ha atribuido una función agentiva y de
+estatus. Es asi como puede darse el caso que un hecho institucional constituido por la
+estructura <<Xo cuenta como Yo en Ca» cuente como ”X1" en otra estructura de un hecho
+institucional mayor en donde <<X1 cuenta como Y1 en G» (Cfr. Searle, 1998: 93)
+
+Hasta aqui la ilustración del trabajo de Saerle, en lo que concierne alas piezas claves de
+su teoría dela realidad social necesaria para nuestra reflexión. En lo que sigue se hace la
+reflexión específica de dichos fundamentos para el caso dela práctica administrativa.
+
+3.La práctica administrativa vista como un hecho institucional
+
+Como ya se mencionó, en el presente apartado se aplican los elementos del esquema
+searleano en el caso de la práctica administrativa. Se recuerda que el aspecto
+fundamental de esta parte es la de responder a las dos preguntas fundamentales que
+guían esta reflexión: ¿Qué tipo de hecho es la práctica administrativa?, el cual, en el
+fondo, hace referencia al esquema categorial en el cual se circunscribe; y ¿Cómo es
+posible el modo existencia de dicho hecho de la práctica administrativa? En
+consecuencia, la respuesta que quiere ilustrarse de la primera pregunta es que la
+práctica administrativa, en tanto práctica social, posee un estatus como hecho
+institucional. En lo que concierne a la segunda es menester ilustrar la manera como
+operan, en conjunto, los tres elementos de trasfondo para la creación de hechos
+institucionales (la intencionalidad colectiva, la asignación de funciones agentivas y las
+reglas constitutivas) considerando, además, los procesos de iteración y demás
+elementos mencionados en el análisis del segundo capítulo del trabajo de Searle. Así
+pues, este apartado se centra en: l) brindar una taxonomía ontológica o un esquema
+categorial básico de la práctica administrativa en el universo de los hechos
+institucionales; 2) mostrar un esquema básico para comprender la configuración de la
+práctica administrativa como hecho institucional.
+
+R1Vl5 IA INS/XYOS. ANO 7. N” 7. ]Ul lO » DICIIMISRI Dl 2014.3.1 ¿Qué tipo de hecho esla práctica administrativa?
+
+Parece fácil considerar la tesis de que evidentemente la práctica administrativa no
+puede ser descrita como un hecho físico o bruto. Claramente, si se describiera en ese
+aspecto, no podría darse una comprensión sobre lo que es el proceso administrativo, y
+sobre la función que cumple en la sociedad (aun cuando tales preguntas no tuvieran
+una fácil respuesta). De la misma manera que con el ejemplo del billete, éste, podría
+decirse que describir la práctica administrativa en términos de un lenguaje meramente
+fisica/ista hace que sólo se puedan describir los fenómenos físicos, químicos y biológicos
+que se relacionan con las acciones, conductas y relaciones humanas básicas; lo cual
+dificulta y limita en gran medida una simple definición delo que es administrar… Por otro
+lado, el hecho administrativo parece existir de forma dependiente delos hombres, y no
+en virtud solamente de que son estos los que lo realizan; parafraseando a Searle,
+diríamos que el hecho administrativo existe en la medida de que existe un conjunto de
+personas que creen que existe. Es pues, al menos hasta el momento, un hecho social.
+
+Para facilitar las cosas se propone una descripción taxonómica; se busca describir la
+tipología de cosa social que caracteriza la práctica administrativa. 0, en otros términos,
+se busca especificar una noción acerca de su modo de existencia, circunscrito ello en un
+esquema categorial de la realidad social. Pero antes es necesario señalar algunos
+aspectos que parecen evidentes sobre lo que es la práctica administrativa, y que tiene
+relevancia en el presente texto en la medida que se busca establecer un fundamento
+ontológico que sea consecuente con las nociones empíricas y teóricas ampliamente
+reconocidas en el ámbito administrativo.
+
+En efecto, y corroborando lo dicho anteriormente, de acuerdo a lo normalmente
+aceptado la práctica administrativa pertenece al conjunto de las prácticas sociales, desde
+una perspectiva general (Bermúdez & Gutiérrez, 2005). A su vez, desde una perspectiva
+más específica, la práctica administrativa puede ser considerada como una técnica
+social, al menos en la terminología contemporánea (Cfr. Chiavenato, 2006: 131,
+haciendo alusión a los autores neoclásicos). Si se le mira de una forma más abstracta,
+esta práctica social puede ser considerada como una especie de técnica social
+ordenadora, que se manifiesta como un proceso compuesto de funciones (planear,
+organizar, dirigir y controlar, entre otros) y que en tales cuestiones se da, además, una
+función muy generalizada de toma de decisiones, entre otras funciones (Pineda, 2013:
+68).
+
+Considerando lo anterior, y teniendo en cuenta la correspondencia teórica y empírica
+que se busca, ¿en qué sentido podemos situar el tipo de hecho social que se presume
+que es la práctica administrativa a partir del trabajo de Searle? Retomando, en tanto
+hecho social, la práctica administrativa existe en la medida que existen hablantes y
+personas con facultades mentales de representar esos hechos sociales, los cuales
+
+R1Vl5 lA lN5AYOS. ANO 7. N” 7. ]Ul lO » DICIIMISRI Dl 20l4.ciernen en su base, desde luego, un conjunto de hechos físicos o brutos primigenios,
+que para el caso serían todo el conjunto de actividades, tareas y comportamientos a los
+cuales se les asigna una función agentíva. Pero, si fuese la práctica administrativa
+sencillamente un hecho social, bastaría, entonces, con señalar que, en los términos
+provistos por Searle, son hechos ontológicamente subjetivos, de los cuales se puede
+predicar juicios epistemológicamente subjetivos y objetivos. También se diría
+simplemente que para su existencia, como hechos sociales, bastan los elementos de
+trasfondo de intencionalidad colectiva y función agentiva, que para el caso vendrían
+significando, para lo primero, la capacidad mental en la cual una comunidad de hablantes
+puede representar menta/mente un conjunto de hechos y procesos cata/oga'ndolos como
+propios del acto administrativo y, por otro lado, para lo segundo, la función socialmente
+asignada que se conjuga con su definición de ordenar un cierto conjunto de acciones,
+conductas y relaciones humanas, así como también recursos, en ciertos contextos
+organizativos delos humanos (Pineda, 2013: 70).
+
+Pero pensar en la práctica administrativa meramente como un hecho social no es
+suficiente. Si algo caracteriza la práctica administrativa es que, al menos en la
+contemporaneidad, es considerada como una institución social (Dávila, 2001: 285).
+Resulta evidente que este hecho social de la práctica administrativa no es un hecho
+social simple, sino que conjuga un conjunto de hechos institucionales de fondo que le
+constituyen, y, además, su complejidad se ve reflejada en la regla constitutiva que le
+forma. 0 por decirlo de otra forma, la práctica administrativa es uno de esos hechos
+sociales imprescindibles para la vida humana en sociedad, y para la consecución de
+fines humanos, por lo que hemos institucionalizado dicho hecho social.
+
+En este sentido, siguiendo el planteamiento seraleano (1997: 44), para la existencia dela
+práctica administrativa se necesita también de la existencia de ciertas reglas que
+posibiliten la existencia misma de este hecho institucional. Y, de acuerdo a ello, sería
+necesario concebir un conjunto de reglas constitutivas que se ciernen de la forma <<X»
+cuenta como W» en <<C». Por asi decirlo, existe una estructura ontológica—social que
+constituye lo que conocemos como práctica administrativa, la cual hace que cierto
+conjunto de hechos empíricos (como acciones y conductas humanas básicas) y hechos
+sociales e institucionales básicos (como las funciones del proceso administrativo o la
+toma de decisiones) cuenten como práctica administrativa en un contexto social e
+histórico determinado. Se retoma esto más adelante.
+
+Dejando como supuesto que lo anterior se cumple, tendríamos que la práctica
+administrativa es un hecho institucional, y que, a su vez, pertenece a un conjunto de
+subclases de hechos institucionales. Desde una mirada retrospectiva, tendríamos que
+los hechos sociales, que son un tipo de hechos existentes en este mundo, contiene una
+subclase que se ha denominado hechos institucionales. Podríamos imaginar una gran
+cantidad de hechos institucionales que podrian referirse a acuerdos sociales
+
+R1Vl5 IA INS/XYOS. ANO 7. N” 7. ]Ul lO » DICIIMISRI Dl 2014.institucionalizados, como las constituciones políticas, entidades sociales
+institucionalizadas, como las organizaciones, y prácticas sociales institucionalizadas,
+como la práctica administrativa. Si además consideramos la tesis de que ésta práctica
+social institucionalizada es una técnica social, diríamos que, en el conjunto de las
+prácticas sociales institucionalizadas podemos distinguir ciertas prácticas a modo de
+técnicas, y dentro de las técnicas unas cuantas dedicadas a operar con aspectos sociales.
+Considerando además la naturaleza que le atañe a este hecho institucional en particular,
+tendríamos que decir que es un tipo de práctica institucionalizada, en la cual se
+comprenden diversos tipos de procesos, actos y manifestaciones empíricamente
+accesibles; como lo son las actividades, comportamientos y tareas que forman, en
+conjunto, las funciones básicas del proceso administrativo y la toma de decisiones; lo
+que, en conjunto, hace parte delo que denominamos como 'práctica administrativa'. Es,
+en este sentido, un hecho institucional a modo de práctica institucionalizada que
+contiene en si otros conjuntos de hechos sociales e institucionales más simples, por
+decirlo de algún modo. Su función agentiva, como la hemos descrito tentativamente,
+refiere a lo que se expresa en su definición en la cual, considerando que
+específicamente tal práctica institucionalizada es en específico una técnica social, puede
+decirse de ella que su función es la de ordenar instrumental, sistemática e
+intencionalmente conductas, acciones e interacciones humanas, así como también
+recursos, en las organizaciones o en los emprendimientos hcmanos para la consecución
+de ciertas finalidades, según sea necesario (Pineda, 2013: 68). La gráfica número 1
+resume varios aspectos delo ya mencionado.
+
+Grafica no. 1. El esquema categorial básico de la práctica administrativa como hecho
+institucional.
+
+    
+
+M urrdo [un
+mundo)
+
+  
+  
+
+Existen en lama que In per¡unns
+creen que existen: son
+ontológicamente subjet|vos y
+pueden ser epistemológicameme
+subjetivos u objetivos
+
+     
+ 
+   
+   
+  
+      
+     
+   
+
+chlm'.
+b…vos
+
+ 
+
+Existen gr: es : los elementos de
+"¡Honda: |nten:|analldad
+Colec(lva, función agenr|va y reglas
+constitutivas.
+
+   
+
+H5cliu>
+inamucianales
+
+…Imenna
+
+  
+
+Plactic
+
+ 
+   
+ 
+
+ 
+
+irisli!ticianallzdda:
+
+Función agunnva: ordenar
+Instrumental, slstemátlcae
+lmenclonalmentela cunductayel
+trabajo delas personasen las
+organizaciones para el cumplimiento
+de ciertasfinalidades
+
+Practica adm.mmauva
+
+ 
+
+ 
+
+Fuente. Elaboración propia a partir de los fundamentos teóricos del trabajo La construcción
+dela realidad social, de Searle (1997).
+
+R1VlSl/X INS/XYOS. ANO 7. N“ 7. ]Ul lO » D|C|l N…Rl Dl 2014.3.2 ¿Cómo es posible la existencia del hecho institucional de la práctica
+administrativa?
+
+Para tener una mayor claridad de lo que se ha dejado como supuesto en el anterior
+apartado, y sobre todo, para dar paso ala manera como se concibe la construcción dela
+práctica administrativa como hecho institucional, es necesario retomar los aspectos más
+relevantes del apartado sobre la creación delos hechos institucionales que ofrece Searle
+(1997; 49—74). Ahora el interés versa sobre el interrogante de la posibilidad de existencia
+de la práctica administrativa, lo cual, además, y considerando la complejidad de
+procesos y de otros hechos institucionales que conforman (y, también, se relacionan
+con) la práctica administrativa, obliga que se consideren otros elementos teóricos
+ofrecidos por Searle (1997) en el capítulo IV de su trabajo, en especial, lo que concierne
+al fenómeno iterativo que posibilitan la existencia de ciertos hechos institucionales
+(como ya se mencionó).
+
+Ha de partirse por considerar la primacía lógica de los hechos brutos sobre los hechos
+sociales y la primacía de los actos y procesos sobre los objetos y los productos. De
+acuerdo a lo mencionado en el apartado anterior, todo hecho social, que en la
+formulación toma el estatus de <<Y», está en relación con un hecho o conjunto de hechos
+brutos, que hacen las veces de <<X» en la formulación. La manera en que entran en
+relación funcionan con un cambio de status, en donde <<Y» denota el hecho institucional,
+al cual se le atribuye una función socialmente impuesta a partir de la intencionalidad
+colectiva, y <<X» denota el conjunto de actos, comportamientos, tareas y conductas
+empíricamente evidenciables en términos físicalistas; acciones como los de emitir actos
+de habla; movimientos como levantar una hoja y firmarla; acciones como las de realizar
+operaciones de digitación en un a máquina de cómputo, entre otros. Cuentan como la
+base empírica que conforman los hechos brutos de la práctica administrativa. Para darle
+contenido alo anterior es necesario considerar algo de fundamental importancia, lo que
+consideramos como práctica administrativa parece ser algo complejo. Se hace alusión a
+lo "complejo” en el sentido de que parece estar formada por otros hechos que, de
+antemano, ya son hechos institucionales y que, por medio de repetidos sucesos
+iterativos, podemos aunar dichos hechos por un objeto común, que se manifiesta por su
+función agentiva (la de ordenar de un modo particular el trabajo yla conducta humana),
+y que se ha aunado en la noción de “práctica administrativa". Dado lo anterior, los
+hechos brutos que se denotarían por el término "X” de la formulación, estarían en la
+base de esos otros tantos hechos institucionales que forman parte de la práctica
+administrativa. Por otro lado, el objeto que aquí es tratado como una práctica social, es,
+por naturaleza, un proceso compuesto por otros hechos sociales e institucionales a
+modos de procesos (tales como las funciones de planear, organizar, dirigir y controlar), lo
+que señala, por otro lado, la otra primacía de los procesos y actos sobre los objetos y
+productos mencionada por Searle.
+
+R1Vl5 lA INS/XYOS. ANO 7. N” 7. ]Ul IO » DICIIMISRI Dl 2014.Si consideramos lo que nos dice la teoria administrativa (Dávila, 2001: 281, citando a
+Fayol, 1961), una de las posibles formas de concebir la práctica administrativa es
+tratándola como un proceso compuesto de funciones. Tales funciones serían las de
+planear, organizar, dirigir y controlar (Fayol, 196; en Dávila, 2001: 281, cuyos términos
+originales serían los de previsión, organización, dirección, coordinación y control).23
+Ahora bien, resulta que tales funciones son, para nuestro caso, otros hechos (prácticas y
+actos) que socialmente se han institucionalizado y que, no obstante, se les ha unido en
+una misma categoría de cosa. De estos hechos institucionales que se ciernen en la base
+de la práctica administrativa (esto es, la categoría de cosa que los resume), podemos
+sustraer los hechos brutos que son necesarios para nuestra formulación: actos de habla
+de naturaleza performativa, conductas y acciones humanas básicas, y posiblemente
+rutinarias y reíterativas, como las mencionadas en líneas arriba.
+
+Para completar el carácter complejo señalado de la práctica administrativa, hay que
+señalar otros tantos aspectos más. Por un lado, los hechos brutos mencionados
+anteriormente no se dan en cualquier contexto indiscriminadamente. Es decir, existe un
+contexto específico en el cual, al menos en la contemporaneidad, se circunscriben y
+tienen sentido dichos hechos. Tal contexto es el contexto organizacional, 0, vale decir,
+se da en otro tipo de hecho institucional, a modo de "entidad social”, que sele atribuye
+el nombre de organización (Cfr. Carvajal, 2010). Se le adhiere a ello la estructuras
+organizacionales que han sido, también, socialmente institucionalizadas, y, asi mismo,
+las jerarquías, roles y formas de poder. Sumado a ello, en lo que respecta a la práctica
+administrativa, hay que tener en cuenta otros hechos institucionales que se dan en
+torno a ésta, además del complejo hecho irstitucional de la organización. Por ejemplo,
+se exige de ella una cierta capacidad estandarizada de eficiencia, eficacia y efectividad (lo
+cual entra en relación con el carácter de racionalidad instrumental con el que se
+relaciona dicha práctica); en los casos particulares, se da en ciertos tipos de sociedad
+especificos (aunque, en los casos de su noción general, puede decirse que se da y que
+puede darse en otros tipos ce sociedad ideales y, más aun, que se da todos los tipos de
+sociedad que necesiten de ella, y que se ha dado en las primeras civilizaciones
+humanas), lo cual supone una estructura socialmente institucionalizada, entre muchas
+otras cosas. Muy seguramente existen muchos otros hechos institucionales y, en
+general, sociales que se relacionan con la práctica administrativa, pero, en vista de no
+dilatar el objetivo central, la pregunta que ahora surge es en ¿qué aspecto se relaciona
+todo lo anterior con la teoria delos hechos institucionales?
+
+Por un lado, uno de los descritos por Searle (1997: 72) es el de las relaciones sistémicas
+que ciertos hechos institucionales guardan con otros. Como pudo observarse, la
+
+“ En el sentido en que se usará aqui, la práctica administrativa es, en parte, un proceso compuesto de funciones; no
+obstante, ya se ha caracterizado que dicho proceso es, en su totalidad, una técnica social. Cada función del proceso
+administrativo, en tanto técnica social, contribuye, pues a su función de orcenar instrumental, sistemática e
+intencionalmente la conducta y el trabajo humano enlas organizaciones para la consecución de ciertas finalidades,
+
+RIVIS IA INS/XYOS. ANO 7. N” 7. ]Ul lO » DICIIMISRI Dl 2014.práctica administrativa entra enteramente en relación con todos esos otros hechos
+institucionales referidos a las organizaciones, su contexto social, su estructura, los roles
+de sus miembros, las exigencias que se espera de dicha práctica, etc. En el fondo, lo que
+se señala es que la función social de la práctica administrativa sólo tiene sentido en
+función de lo que su acaecimiento conlleve al cumplimiento de ciertas finalidades,
+requisitos, ”inputs" y requerimientos de los otros elementos del "marco-sistema" de
+hechos institucionales del cual hace parte ycon los cuales se relaciona. Por otro lado, se
+puede hacer énfasis en uno delos hechos brutos que conforman la base de la práctica
+administrativa, los actos de habla de naturaleza performativa. La complejidad que tales
+actos suman al hecho institucional que estamos tratando tienen que ver con lo que
+menciona Searle (1997: 72), y es que estos actos crean, al momento de darse, hechos
+institucionales por si mismos. Expresiones performativas como las de “se levanta la
+
+u ¡¡
+
+sección , es usted nombrado presidente de la junta directiva", ”de ahora en adelante su
+función se encargará de tales acciones”, ”el nivel de ventas para el presente año sede de
+ser el siguiente", entre otros. Crean hechos institucionales que, a su vez, conforman y se
+relacionan con ciertas funciones del proceso administrativo (especialmente las de
+organizar y de direccionar), y que en conjunto hacen parte dela práctica administrativa
+(Cfr. Searle, 1997: 72). Tales expresiones performativas podrían, incluso, verse no sólo en
+las indicaciones explícitas de ciertos miembros directivos de una organización que
+cumplen el rol administrativo, sino, también, en los manuales de funciones, por
+ejemplo. Asítenemos que existen hechos sociales e institucionales producidos por actos
+de habla performativos, además de los hechos sociales básicos creados a partir de los
+hechos brutos que corresponden a la base empírica del actuar administrativo. A todo
+este conjunto de hechos se les denominará "hechos sociales básicos" para el hecho
+institucional complejo de la práctica administrativa. Ilustrado de una forma
+esquemática, tenemos para este primer nivel que:
+
+Regla constitutiva Nivel 0: <<Xg>: cuenta como <<Yg» en <<Cg»; en donde:
+
+<<X>>: Hechos empíricos del actuar humano y actos de habla performativas.
+<<Y>>: hechos sociales básicos
+
+<<C>>: C contexto lingúistico-cultural
+
+Para complementar la complejidad que hasta ahora se ha tratado de esbozar, basta con
+señalar la manera como se manifiestan el otro conjunto de hechos institucionales que
+surgen a partir de los hechos sociales básicos ya nombrados. Así, tales hechos sociales
+básicos harán las veces de acciones humanas básicas que conforman, en conjunto, una
+o varias funciones del proceso administrativo y manifestaciones de la toma de
+decisiones. Esto es porque 'planear', 'organizar', 'dirigir' y 'controlar', son verbos que
+suponen acciones, y estas, a su vez, suponen un vasto conjunto de actos y actuaciones
+manifiestas. Si con ello no es suñciente para señalar el rasgo complejo de la práctica
+administrativa, tan sólo considérese que, además de los hechos institucionales
+nombrados, se puede adherir que plantear objetivos, señalar metas y tomar decisiones,
+suponen otros hechos institucionales (relacionados con la función de planear). Así, para
+
+R1Vl5 lA lN5AYOS. ANO 7. N” 7. ]Ul lO » DICIIMISRI Dl 20l4.hacer un conjunto de tales funciones del proceso administrativo y la toma de
+decisiones, como hechos institucionales, se les nombrará acá como "hechos
+institucionales básicos del proceso administrativo”. En su forma esquemática tenemos
+que:
+
+Regla constitutiva Nivel 1: <<X1>: cuenta como <<Y1» en <<C1»; en donde:
+
+<<X»: hechos sociales básicos.
+
+<<Y>>: hechos institucionales básicos del proceso administrativo (tales como
+
+planear,
+
+organizar, dirigir y controlar, entre otros)
+
+<<C>>: C contexto |ingúístico-cultural
+
+Pero, ¿cómo de tales hechos sociales básicos se pasa a los hechos institucionales básicos
+del proceso administrativo.7 En este punto es necesario retomar la noción introducida
+por Searle de iteración. Esta noción hace referencia al hecho de que se le puede
+”imponer funciones de status a entidades a las que ya han sido impuestas funciones de
+status” (Searle, 1997: 93)”. Así pues, las acciones humanas y los actos performativos,
+cuentan como hechos sociales básicos. Pero, a su vez, tales hechos sociales básicos
+cuentan como los hechos institucionales básicos del proceso administrativo: planear,
+organizar, dirigir y controlar, en el contexto lingúístico en el cual se consideren. Lo
+anterior da paso a un último nivel, en el cual los hechos institucionales básicos del
+proceso administrativo cuentan como ”práctica administrativa”. Así, tenemos que:
+
+Regla constitutiva Nivel 2: <<X2>: cuenta como <<Y2» en <<C2»; en donde:
+
+<<X>>: hechos institucionales básicos del proceso administrativo,
+
+<<Y>>: práctica administrativa.
+
+<<C>>: C contexto |ingúístico-cultural
+
+Como puede verse, en este proceso iterativo general se da un paso de un <<” "0 cuenta
+como " "o en ”Cg"»a un <<”X"1 cuenta como “Y"1 en C1"», y ñnalmente a un <<”X“z cuenta
+como “Y”z en "C2"». Así, en consonancia a la manera como lo describe Searle (1997: 93,
+94), el primer "X” (hechos brutos de acciones humanas descritas y actos de habla),
+cuenta como ”Y" (hechos sociales básicos) en “C" (un contexto |ingúístico-cultural).
+Luego, la segunda "X” (hechos sociales básicos), cuenta como "Y” (hechos
+institucionales básicos del proceso administrativo) en ”C" (un contexto lingúístico—
+cultural). Finalmente, en la tercera “X" (hechos institucionales básicos del proceso
+administrativo), cuenta como “Y" (práctica administrativa) en ”C” (un contexto
+|ingúistico—cultural).
+
+Nótese que los hechos brutos que antes contaban como "X” ya no aparecen
+explícitamente en la segunda formulación y en la formulación final. No obstante, están
+contenidos en lo que concierne a la nueva "X”, que son ahora hechos institucionales.
+
+” Para este caso, no son tanto "entidades", sino más bien, hechos,
+
+R1Vl5 IA INS/XYOS. ANO 7. N” 7. ]Ul lO » DICIIMISRI Dl 2014.Además de esto, nótese que el contexto “C" no cambió. Se ha considerado,
+intencionalmente, que se debe conservar para hacer alusión al mismo contexto en el
+cual se enmarca la práctica administrativa y las funciones quela componen.
+
+Teniendo ahora la formulación que expresa la regla constitutiva del acto administrativo
+como hecho institucional, resta señalar la manera como se relaciona esto con la
+intencionalidad colectiva y la asignación de función socialmente aceptada. Además,
+falta por señalar el rasgo fundamental del lenguaje y de Ia autorreferencialidad con
+respecto al hecho institucional administrativo.
+
+Empezando por los dos rasgos restantes concernientes al lenguaje, no basta con
+señalarse que, como en todos los hechos institucionales, en la práctica administrativa el
+lenguaje es el fundamento institucional por el cual es posible. Hay que señalar, más
+bien, que existe todo un sistema y conjunto de símbolos que hacen parte tanto de los
+actos de habla performativos como de los símbolos y sistemas comunicativos que se
+ciernen a la base de diversos hechos institucionales que conforman las funciones del
+proceso administrativo. El lenguaje, en esta forma de verse, es una institución especial
+que sustenta todo (o casi todo) el hecho institucional administrativo en la medida que
+los hechos institucionales relativos a las funciones del proceso administrativo se
+componen por actos y actuaciones contarán como hechos institucionales en tanto de
+que exista un sistema lingiiístico que no sólo denote cada hecho como institucional,
+sino que también permita darle un sentido, un significado y, por ejemplo, en el caso de
+los actos de habla performativos, sean en si mismos hechos institucionales. Los
+términos, símbolos y expresiones que supongan un sistema lingiiístico
+institucionalizado en un contexto referido a lo administrativo funda o instituye, pues, la
+posibilidad base para gran parte del hecho institucional que hemos catalogado como
+práctica administrativa.
+
+En relación con el rasgo anterior, está el de autorreferencialidad. Un concepto general,
+en este caso el de práctica administrativa, parece volverse circular en la medida que
+para ser catalogado como lo que es necesita ser lo que es. Sabemos, (como menciona
+Searle), que tal autorreferencialidad se manifiesta, en apariencia, como un problema de
+circularidad; no obstante, es superado por dos vías que, en el caso del hecho
+institucional administrativo se configurarían por el otro conjunto de prácticas, funciones
+y procesos que la componen, y, por otro lado, de los otros hechos institucionales. El
+concepto general de práctica administrativa necesita corresponderse, primero, con
+otros hechos institucionales para poder ser lo que es: planear, organizar, dirigir, y
+controlar. Aquello funciona del modo como indicadores que le dan el status de práctica
+administrativa a lo que el término general alude. De este modo, para el caso de la
+administración como hecho institucional, se manifiesta este factor autorreferencial, el
+cual no es circular.
+
+R1Vl5 lA lN5AYOS. ANO 7. N” 7. ]Ul lO » DICIIMISRI Dl 2014.Finalmente, con todos los elementos ya señalados es el turno para ilustrar la manera
+como operan los elementos de trasfondo que posibilitan la existencia de los hechos
+institucionales en el proceso de su creación. De un lado, tenemos la intencionalidad
+colectiva, la capacidad mental que en un conjunto de sujetos da la posibilidad de
+representar un estado de cosas, manifiestas en creencias, deseos e intenciones
+compartidas colectivamente (Searle, 1997: 41). Esta cobra sentido cuando posibilita la
+asignación de función agentiva y de status que se le asigna, para nuestro caso, a la
+práctica administrativa; y, se espera que quede claro que esto se da desde un principio
+en los hechos sociales básicos, en los hechos institucionales básicos del proceso
+administrativo y en el hecho institucional mismo de la práctica administrativa; el cual
+comprende toda una urdimbre de funciones agentivas y de estatus agentivos. Es decir
+que, colectivamente se representa que los hechos brutos de emitir ciertos actos de
+habla performativos, de acontecer ciertas actividades y manifestaciones de
+comportamiento humano, contarán como los hechos sociales básicos mencionados, y
+estos últimos como los hechos institucionales del proceso administrativo: planear,
+organizar, dirigir y controlar; lo que contiene, a su vez, la asignación socialmente
+instituida de la función agentiva de ordenar un conjunto de acciones, conductas y
+relaciones humanas, así como también recursos usados por humanos, en contextos
+organizacionales o emprendimientos humanos determinados.
+
+Se representa colectivamente una función a la que se le da sentido dichas
+manifestaciones de hechos brutos y se le asigna socialmente un status a estos como un
+hecho social y, luego, como hechos institucionales. A la vez, por medio del proceso
+iterativo señalado, y por medio de la intencionalidad colectiva, se le asigna socialmente
+un nuevo status de hecho institucional de" práctica administrativa", que recoge la
+misma función agentiva que se le daba por separado a cada función del proceso
+administrativo, y que en general hemos descrito como ordenar socialmente, a un nivel
+pragmático. "X” cuenta como "Y” en "C" es posible por la capacidad mental de
+intencionalidad colectiva que, en el caso del hecho institucional de la administración,
+permite la asignación social de función como técnica social ordenadora y como status
+de hecho institucional complejo.
+
+4. A modo de conclusión
+
+En este escrito se ha realizado una interpretación ontológica preliminar de la práctica
+administrativa como hecho institucional, siguiendo el esquema conceptual provisto por
+John Searle (1997). Como se vio, se expuso en primera instancia los elementos
+conceptuales claves para este autor, para luego con ellos analizar el hecho dela práctica
+administrativa. Se dispuso, con ello, una respuesta preliminar a las preguntas de ”¿qué
+tipo de hecho es la práctica administrativa?”, y "¿cómo es posible su modo de
+existencia?”.
+
+R1Vl5 lA lN5AYOS. ANO 7. N” 7. ]Ul lO » DICIIMISRI Dl 20l4.Para la primera cuestión, se elaboró un esquema categorial básico en el cual se ubicó a
+la práctica administrativa como un tipo de práctica social institucionalizada, que se
+distingue por ser una técnica social, todo lo cual, a su vez, pertenece a conjuntos más
+amplios, como lo son el conjunto de todos los hechos institucionales y todos los hechos
+sociales. En cuanto a la segunda cuestión, se elaboró una explicación de la
+configuración de la práctica administrativa como hecho institucional siguiendo la
+formulación X cuenta como Y en C. En dicho caso, y considerando que el hecho
+institucional dela práctica administrativa es complejo, en virtud de que está compuesto
+por hechos brutos y hechos sociales e institucionales más simples, tal formulación se
+iteró de forma consecutiva. Así las cosas, un cierto conjunto de hechos empíricos (como
+acciones y conductas humanas básicas) y hechos sociales e institucionales básicos
+(como las funciones del proceso administrativo o la toma de decisiones) cuenten como
+práctica administrativa en un contexto social e histórico determinado. Finalmente, la
+función agentiva que cumple la práctica administrativa dependerá de cómo se conciba
+en determinados contextos sociales, lingúísticos y culturales, pero en un sentido más
+abstracto, haría referencia, siguiendo a Pineda (2013: 68), a una especie de técnica
+social ordenadora, que se manifiesta como un proceso compuesto de funciones
+(planear, organizar, dirigir y controlar, entre otros) y que en tales cuestiones se da,
+además, una función muy generalizada de toma de decisiones, entre otras funciones
+(Pineda, 2013: 68).
+
+Es importante señalar que la presente reflexión posee claramente limitaciones, por lo
+que no debe tomársele como una exposición completa de una fundamentación
+ontológica de la práctica administrativa. Quedan pendientes para futuras
+investigaciones temas tales como los referidos a las necesidades y problemas que dan
+origen a la institución administrativa desde un punto de vista de antropología filosófica,
+el rol del lenguaje en la constitución del hecho institucional administrativo, la
+historicidad de la práctica administrativa, y ahondar en la dinámica social cómo éste
+hecho institucional es construido, elementos básicos de una teoria de la acción que
+enriquezcan la visión de la práctica administrativa, entre otras cosas. No obstante, el
+trabajo aquí presentado de una pauta, de las otras tantas posibles que se hayan
+desarrollado, para introducirse en una fundamentación ontológica más completa de la
+práctica administrativa a desarrollarse en trabajos postreros.
+
+R1Vl5 IA INS/XYOS. ANO 7. N” 7. ]Ul lO » DICIIMISRI Dl 2014.Referencias
+
+Bermúdez, J. & Gutiérrez, 0. (2005) "Fundamentos filosóficos y administrativos para un
+programa curricular de Administración de Empresas.” En Investigar en
+administración en América Latina: Evolución y resultados. Calderón, G. & Castaño
+G. (2005). Manizales: Universidad Nacional de Colombia.
+
+Carvajal, J. G. (2010) ”El concepto de organización para la administración… Ontologia y
+epistemología de las organizaciones.” En Investigar en administración:
+conocimiento para el bienestar delas personas y el desarrollo de las organizaciones.
+Calderón, G. & Castaño G. (2010). Manizales: Universidad Nacional de Colombia.
+
+Chiavenato, |. (2006) Introducción a la Teoría General de la Administración. Séptima
+edición. México: MCGRAW-HILL.
+
+Dávila, C. (2001) Teorías organizacionales y Administración. Enfoque crítico. Bogotá:
+MCGRAW-HILL.
+
+Pineda, E. F. (2013) Una fundamentación antológica de la práctica administrativa como
+técnica social ordenadora institucionalizada. Tesis de grado para optar por el
+titulo de Administrador de Empresas en la Universidad Nacional de Colombia
+Sede Palmira.
+
+Searle, J. R. (1997) La construcción dela realidad social. (Trad. A: Doménech). Barcelona:
+Ediciones Paidós Ibérica, S.A.
+
+R1Vl5 IA INS/XYOS. ANO 7. N” 7. ]Ul IO » DICIIMISRI Dl 2014.

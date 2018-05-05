@@ -5,7 +5,7 @@ import os
 import platform
 import errno
 import zipfile
-# from .ocr import ocr
+from .ocr import ocr
 from pathlib import Path
 from mutagen.mp3 import MP3
 
@@ -40,8 +40,8 @@ def extract_text(path_pdf, from_page, until_page, mode):
         for number_page in range(from_page, until_page):
             page = doc.loadPage(number_page)
             text += page.getText("text")
-    # else:
-    # text = ocr(path_pdf, from_page, until_page)
+    else:
+        text = ocr(path_pdf, from_page, until_page)
 
     print(text)
     text.replace('\n', ' ')
