@@ -25,13 +25,13 @@ def text_to_audio(speed, name_audio, pitch, path, tts, lang="es"):
     else:
         cmd = "espeak -v {0} -f text.txt -p {1} -s {2} -w {3}/{4}.wav".format(lang, pitch, speed, path, name_audio) 
 
-    if tts == "rbt":
+    if tts == "espeak":
         subprocess.call(cmd, shell=True)
         return wav_to_mp3(os.path.join(path, name_audio + ".wav"))
     else:
         path_mp3 = os.path.join(path, name_audio + ".mp3")
         content = Path('text.txt').read_text()
-        audio_tts = gTTS(content, lang='es')
+        audio_tts = gTTS(content, slow=speed,lang='es')
         audio_tts.save(path_mp3)
         return path_mp3
 

@@ -14,13 +14,13 @@ class MenuPage(tk.Frame):
         self.controller = controller
 
         if platform.system() == "Windows":
-            height = 600
+            height = 250
         else:
-            height = 500
+            height = 150
 
         # boton para realizar conversiones
         button_convert = tk.Button(self, text="CONVERTIR TEXTO",
-                                   command=lambda: controller.show_frame(ConvertPage, 500, height), font=LARGE_FONT, bg="#000000", fg="#ffff00", activebackground="#000000", activeforeground="#ffff00")
+                                   command=lambda: controller.show_frame(ConvertPage, 200, height), font=LARGE_FONT, bg="#000000", fg="#ffff00", activebackground="#000000", activeforeground="#ffff00")
         button_convert.pack(pady=10)
 
         label = tk.Label(self, text="AUDIOS EXISTENTES", font=LARGE_FONT)
