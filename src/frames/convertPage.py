@@ -35,14 +35,24 @@ class ConvertPage(tk.Frame):
         self.field_path_selected_file = tk.Entry(self, width='65', textvariable=self.path_selected_file, font=LARGE_FONT)
         self.field_path_selected_file.pack()
 
-        self.option = StringVar()
+        self.option_type_conversion = StringVar()
         self.label_conversion = tk.Label(self, text="TIPO DE CONVERSIÓN: ", font=LARGE_FONT)
         self.label_conversion.pack()
-        scanned = Radiobutton(self, text="PDF ESCANEADO", value="ocr", var=self.option)
-        normal = Radiobutton(self, text="PDF NORMAL", value="pymupdf", var=self.option)
+        scanned = Radiobutton(self, text="PDF ESCANEADO", value="ocr", var=self.option_type_conversion)
+        normal = Radiobutton(self, text="PDF NORMAL", value="pymupdf", var=self.option_type_conversion)
 
         scanned.pack()
         normal.pack()
+
+        self.option_tts = StringVar()
+        self.label_tts = tk.Label(self, text="TIPO DE VOZ: ", font=LARGE_FONT)
+        self.label_tts.pack()
+        espeak = Radiobutton(self, text="ROBOTICA", value="rbt", var=self.option_tts)
+        human = Radiobutton(self, text="HUMANA", value="human", var=self.option_tts)
+
+        espeak.pack()
+        human.pack()
+
         # numero de paginas
         self.until_number_page = tk.IntVar()
         self.from_number_page = tk.IntVar()
@@ -100,6 +110,7 @@ class ConvertPage(tk.Frame):
         # barra de progreso de conversion
         self.progress_bar = Progressbar(self, orient=tk.HORIZONTAL, mode='indeterminate', takefocus=True)
         self.is_valid = False
+        self.hide_tone_speed()
 
     def select_pdf(self):
         """
@@ -168,10 +179,10 @@ class ConvertPage(tk.Frame):
         """
         #
         # extrae el texto y genera un .txt con el
-        extract_text(self.field_path_selected_file.get(), self.from_number_page.get(), self.until_number_page.get(), self.option.get())
+        extract_text(self.field_path_selected_file.get(), self.from_number_page.get(), self.until_number_page.get(), self.option_type_conversion.get())
         self.controller.data["path_file"] = text_to_audio(self.scale_speed.get(),
                                                           extract_name_audio(self.field_path_selected_file.get()),
-                                                          self.scale_pitch.get(), self.controller.data["path_audios"])
+                                                          self.scale_pitch.get(), self.controller.data["path_audios"], self.option_tts.get())
         # toma el nombre del audio y la duracion del archivo para ser guardado en base de datos
         path_audio = self.controller.data["path_file"]
         duration_audio_file = len_audio_file(self.controller.data["path_file"])
@@ -201,7 +212,7 @@ class ConvertPage(tk.Frame):
             self.error("SELECCIONE UN ARCHIVO")
             return
 
-        if self.option.get() != "pymupdf" and self.option.get() != "ocr":
+        if self.option_type_conversion.get() != "pymupdf" and self.option_type_conversion.get() != "ocr":
             self.error("ELIJA UN MODO DE CONVERSION")
             return
 
@@ -217,3 +228,10 @@ class ConvertPage(tk.Frame):
 
         self.is_valid = True
 
+    def hide_tone_speed(self):
+        if self.label_speed.winfo_ismapped() and self.option_tts == "rbt":
+            self.label_speed.pack_forget()
+        else:
+            self.label_speed.pack()
+
+        self.after(1, self.hide_tone_speed)

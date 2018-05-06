@@ -8,9 +8,10 @@ import zipfile
 from .ocr import ocr
 from pathlib import Path
 from mutagen.mp3 import MP3
+from gtts import gTTS
 
 
-def text_to_audio(speed, name_audio, pitch, path, lang="es"):
+def text_to_audio(speed, name_audio, pitch, path, tts, lang="es"):
     name_audio = clean(name_audio)
     
     if platform.system() == "Windows":
@@ -24,13 +25,19 @@ def text_to_audio(speed, name_audio, pitch, path, lang="es"):
     else:
         cmd = "espeak -v {0} -f text.txt -p {1} -s {2} -w {3}/{4}.wav".format(lang, pitch, speed, path, name_audio) 
 
-    subprocess.call(cmd, shell=True)
+    if tts == "rbt":
+        subprocess.call(cmd, shell=True)
+        return wav_to_mp3(os.path.join(path, name_audio + ".wav"))
+    else:
+        path_mp3 = os.path.join(path, name_audio + ".mp3")
+        content = Path('text.txt').read_text()
+        audio_tts = gTTS(content, lang='es')
+        audio_tts.save(path_mp3)
+        return path_mp3
 
-    return wav_to_mp3(os.path.join(path, name_audio + ".wav"))
 
-
-def extract_text(path_pdf, from_page, until_page, mode):
-    if mode == "pymupdf":
+def extract_text(path_pdf, from_page, until_page, mode_extract_text):
+    if mode_extract_text == "pymupdf":
         doc = fitz.open(path_pdf)
         text = ""
 
@@ -44,7 +51,7 @@ def extract_text(path_pdf, from_page, until_page, mode):
         text = ocr(path_pdf, from_page, until_page)
 
     print(text)
-    text.replace('\n', ' ')
+    text = text.replace('  ', ' ')
     file = open("text.txt", 'w', encoding='utf8')
     file.write(text)
     file.close()
