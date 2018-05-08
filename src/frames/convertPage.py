@@ -13,8 +13,8 @@ class ConvertPage(tk.Frame):
         label = tk.Label(self, text="TIPO DE VOZ", font=LARGE_FONT)
         label.pack(pady=10, padx=10)
         if platform.system() == "Windows":
-            height = 500
-            height_gtts = 440
+            height = 600
+            height_gtts = 540
         else:
             height = 480
             height_gtts = 420

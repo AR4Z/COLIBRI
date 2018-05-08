@@ -30,7 +30,7 @@ def text_to_audio(speed, name_audio, pitch, path, tts, lang="es"):
         return wav_to_mp3(os.path.join(path, name_audio + ".wav"))
     else:
         path_mp3 = os.path.join(path, name_audio + ".mp3")
-        content = Path('text.txt').read_text()
+        content = Path('text.txt').read_text(enconding='utf8')
         audio_tts = gTTS(content, slow=speed,lang='es')
         audio_tts.save(path_mp3)
         return path_mp3
