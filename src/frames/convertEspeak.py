@@ -178,7 +178,7 @@ class ConvertEspeak(tk.Frame):
         extract_text(self.field_path_selected_file.get(), self.from_number_page.get(), self.until_number_page.get(),
                      self.option_type_conversion.get())
         self.controller.data["path_file"] = text_to_audio(self.scale_speed.get(),
-                                                          extract_name_audio(self.field_path_selected_file.get()),
+                                                          self.name_conversion.get(),
                                                           self.scale_pitch.get(), self.controller.data["path_audios"],
                                                           "espeak")
         # toma el nombre del audio y la duracion del archivo para ser guardado en base de datos

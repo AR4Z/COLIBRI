@@ -30,9 +30,10 @@ def text_to_audio(speed, name_audio, pitch, path, tts, lang="es"):
         return wav_to_mp3(os.path.join(path, name_audio + ".wav"))
     else:
         path_mp3 = os.path.join(path, name_audio + ".mp3")
-        content = Path('text.txt').read_text(enconding='utf8')
-        audio_tts = gTTS(content, slow=speed,lang='es')
+        content = Path('text.txt').read_text()
+        audio_tts = gTTS(content, slow=0, lang='es')
         audio_tts.save(path_mp3)
+        velocity_human(path_mp3, speed)
         return path_mp3
 
 
@@ -109,3 +110,25 @@ def create_directory(path):
 
 def clean(string):
     return ''.join(ch for ch in string if ch.isalnum())
+
+
+def velocity_human(path_audio_mp3, speed):
+
+    name_audio = extract_name_audio(path_audio_mp3)
+    if platform.system() == "Windows":
+        cmd = '\"C:\Program Files (x86)\sox-14-4-2\sox\" --show-progress {0} {1}\\output.mp3 tempo {2}'.format(path_audio_mp3,
+                                                                                                               os.path.join(Path.home(),
+                                                                                                           "AudioLibros"), speed)
+        if not os.path.exists("C:\Program Files (x86)\sox-14-4-2"):
+            p = subprocess.Popen([r"bin/sox-14.4.2-win32.exe"])
+            p_status = p.wait()
+            subprocess.call(cmd, shell=True)
+    else:
+        cmd = "sox --show-progress {0} {1}/output.mp3 tempo {2}".format(path_audio_mp3, os.path.join(Path.home(), "AudioLibros"), speed)
+
+    subprocess.call(cmd, shell=True)
+
+    os.remove(path_audio_mp3)
+    os.rename(os.path.join(Path.home(), "AudioLibros", "output.mp3"), os.path.join(Path.home(), "AudioLibros", "{0}.mp3".format(name_audio)))
+
+

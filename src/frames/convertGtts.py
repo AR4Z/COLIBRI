@@ -69,14 +69,12 @@ class ConvertGtts(tk.Frame):
         self.label_name.pack()
         self.field_name_conversion.pack()
 
-        self.speed_voice = IntVar()
+        # slider para configurar la velocidad
         self.label_speed = tk.Label(self, text="VELOCIDAD: ", font=LARGE_FONT)
         self.label_speed.pack()
-        slow = Radiobutton(self, text="LENTO", value=1, var=self.speed_voice)
-        normal = Radiobutton(self, text="NORMAL", value=0, var=self.speed_voice)
-
-        slow.pack()
-        normal.pack()
+        self.scale_speed = tk.Scale(self, orient='horizontal', from_=1, to=2, activebackground="black", bg="#ffff00", resolution=0.1)
+        self.scale_speed.set(1.5)
+        self.scale_speed.pack()
 
         # boton para realizar la conversion
         self.button_conversion = tk.Button(self, text="CONVERTIR", command=self.conversion, font=LARGE_FONT,
@@ -101,6 +99,9 @@ class ConvertGtts(tk.Frame):
         # barra de progreso de conversion
         self.progress_bar = Progressbar(self, orient=tk.HORIZONTAL, mode='indeterminate', takefocus=True)
         self.is_valid = False
+
+
+
 
     def select_pdf(self):
         """
@@ -170,8 +171,8 @@ class ConvertGtts(tk.Frame):
         # extrae el texto y genera un .txt con el
         extract_text(self.field_path_selected_file.get(), self.from_number_page.get(), self.until_number_page.get(),
                      self.option_type_conversion.get())
-        self.controller.data["path_file"] = text_to_audio(self.speed_voice.get(),
-                                                          extract_name_audio(self.field_path_selected_file.get()),
+        self.controller.data["path_file"] = text_to_audio(self.scale_speed.get(),
+                                                          self.name_conversion.get(),
                                                           0, self.controller.data["path_audios"],
                                                           "gtts")
         # toma el nombre del audio y la duracion del archivo para ser guardado en base de datos
