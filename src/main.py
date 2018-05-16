@@ -51,6 +51,6 @@ class PdfToAudio(tk.Tk):
 
 
 app = PdfToAudio()
-app.title('pdfToAudio')
+app.title('COLIBRÍ')
 app.update()
 app.mainloop()
