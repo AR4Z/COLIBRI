@@ -212,9 +212,9 @@ class AudioPage(tk.Frame):
         self.controller.data["path_file"] = ""
         self.controller.data["name_file"] = ""
         if platform.system() == "Windows":
-            height = 350
+            height = 380
         else:
-            height = 300
+            height = 380
         self.controller.show_frame(self.controller.data["menu_frame"], 450, height)
 
     def on_closing(self):

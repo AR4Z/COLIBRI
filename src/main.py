@@ -34,9 +34,9 @@ class PdfToAudio(tk.Tk):
         }
         create_directory(self.data["path_audios"])
         if platform.system() == "Windows":
-            self.show_frame(MenuPage, 450, 350)
+            self.show_frame(MenuPage, 450, 380)
         else:
-            self.show_frame(MenuPage, 450, 300)
+            self.show_frame(MenuPage, 450, 380)
 
     def show_frame(self, cont, width, height):
         frame = cont(self.container, self)

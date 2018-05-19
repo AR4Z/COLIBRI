@@ -91,10 +91,10 @@ class ConvertEspeak(tk.Frame):
 
         # imagen y boton return
         if platform.system() == "Windows":
-            height = 350
+            height = 380
             self.icon_return = PhotoImage(file="img/ic_home_black_24dp_1x.png")
         else:
-            height = 300
+            height = 380
             self.icon_return = PhotoImage(file="../img/ic_home_black_24dp_1x.png")
 
         self.button_return = tk.Button(self, text="ATRÁS",

@@ -37,6 +37,13 @@ class MenuPage(tk.Frame):
                                            command=self.open_audio, font=LARGE_FONT, bg="#000000", fg="#ffff00", activebackground="#000000", activeforeground="#ffff00")
 
         button_open_audio_file.pack(pady=10)
+        # boton para abrir la carpeta con audios
+        button_open_audio_folder = tk.Button(self, text="ABRIR CARPETA AUDIOS",
+                                           command=self.open_folder, font=LARGE_FONT, bg="#000000", fg="#ffff00",
+                                           activebackground="#000000", activeforeground="#ffff00")
+
+        button_open_audio_folder.pack(pady=10)
+
 
     # funcion que me deuvlve todos los audios en la carpeta donde se guardan las conversiones
     def show_audios(self):
@@ -57,3 +64,9 @@ class MenuPage(tk.Frame):
             tkinter.messagebox.showerror("ERROR", "SELECCIONE AUDIO")
         # abre el frame de audio
         self.controller.show_frame(AudioPage, 450, 200)
+
+    def open_folder(self):
+        if platform.system() == "Windows":
+            os.system("start {0}".format(os.path.join(self.controller.data["home_user"], "AudioLibros")))
+        else:
+            os.system("thunar {0}".format(os.path.join(self.controller.data["home_user"], "AudioLibros")))
