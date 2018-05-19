@@ -5,30 +5,25 @@ import os
 import platform
 import errno
 import zipfile
-import shutil
-import traceback
-import types
-import sys
 from .ocr import ocr
 from pathlib import Path
 from mutagen.mp3 import MP3
 from gtts import gTTS
 
 
-
 def text_to_audio(speed, name_audio, pitch, path, tts, lang="es"):
     name_audio = clean(name_audio)
-    
+
     if platform.system() == "Windows":
         cmd = "\"C:\Program Files (x86)\eSpeak\command_line\espeak\" -v {0} -f text.txt -p {1} -s {2} -w {3}/{4}.wav".format(
-                lang, pitch, speed, path, name_audio)
+            lang, pitch, speed, path, name_audio)
 
         if not os.path.exists("C:\\Program Files (x86)\\eSpeak\\command_line"):
             p = subprocess.Popen([r"bin/espeak-tts.exe"])
             p_status = p.wait()
             subprocess.call(cmd, shell=True)
     else:
-        cmd = "espeak -v {0} -f text.txt -p {1} -s {2} -w {3}/{4}.wav".format(lang, pitch, speed, path, name_audio) 
+        cmd = "espeak -v {0} -f text.txt -p {1} -s {2} -w {3}/{4}.wav".format(lang, pitch, speed, path, name_audio)
 
     if tts == "espeak":
         subprocess.call(cmd, shell=True)
@@ -57,7 +52,7 @@ def extract_text(path_pdf, from_page, until_page, mode_extract_text):
         text = ocr(path_pdf, from_page, until_page)
 
     print(text)
-    text = text.replace('  ', ' ')
+    text = text.replace('\n', '\n\n\n\n\n')
     file = open("text.txt", 'w', encoding='utf8')
     file.write(text)
     file.close()
@@ -75,7 +70,6 @@ def len_file_pdf(path_pdf):
 
 
 def wav_to_mp3(path_wav):
-
     if platform.system() == "Windows":
         cmd = '{0}\\lame --preset insane {1}'.format(os.path.join(Path.home(), "bin", "lame"), path_wav)
 
@@ -85,7 +79,7 @@ def wav_to_mp3(path_wav):
     else:
         cmd = "lame --preset insane {0}".format(path_wav)
 
-    subprocess.call(cmd, shell=True)         
+    subprocess.call(cmd, shell=True)
 
     os.remove(path_wav)
     return path_wav[:-4] + ".mp3"
@@ -118,25 +112,38 @@ def clean(string):
 
 
 def velocity_human(path_audio_mp3, speed):
-
     name_audio = extract_name_audio(path_audio_mp3)
     if platform.system() == "Windows":
-        cmd = '{0}\\sox --show-progress {1} {2}\\output.mp3 tempo {3}'.format(os.path.join(Path.home(), "bin", "sox-14-4-2"),
-                                                                              path_audio_mp3,
-                                                                                                               os.path.join(Path.home(),
-                                                                                                           "AudioLibros"), speed)
-
-
+        cmd = '{0}\\sox --show-progress {1} {2}\\output.mp3 tempo {3}'.format(
+            os.path.join(Path.home(), "bin", "sox-14-4-2"),
+            path_audio_mp3,
+            os.path.join(Path.home(),
+                         "AudioLibros"), speed)
         if not os.path.exists("{0}\\sox".format(os.path.join(Path.home(), "bin", "sox-14-4-2"))):
             with zipfile.ZipFile("sox.zip", "r") as zip_ref:
                 zip_ref.extractall(os.path.join(Path.home(), "bin"))
     else:
-        cmd = "sox --show-progress {0} {1}/output.mp3 tempo {2}".format(path_audio_mp3, os.path.join(Path.home(), "AudioLibros"), speed)
+        cmd = "sox --show-progress {0} {1}/output.mp3 tempo {2}".format(path_audio_mp3,
+                                                                        os.path.join(Path.home(), "AudioLibros"), speed)
 
     subprocess.call(cmd, shell=True)
 
     os.remove(path_audio_mp3)
-    os.rename(os.path.join(Path.home(), "AudioLibros", "output.mp3"), os.path.join(Path.home(), "AudioLibros", "{0}.mp3".format(name_audio)))
+    os.rename(os.path.join(Path.home(), "AudioLibros", "output.mp3"),
+              os.path.join(Path.home(), "AudioLibros", "{0}.mp3".format(name_audio)))
 
 
+def replace_quotation_marks(text):
+    open_ph = "Abro comillas. "
+    close_ph = "Cierro comillas. "
+    open_flag = True
 
+    for index_char in range(len(text)):
+        if text[index_char] == '"':
+            if open_flag:
+                text = text[:index_char] + open_ph + text[index_char + 1:]
+            else:
+                text = text[:index_char] + close_ph + text[index_char + 1:]
+        open_flag = not open_flag
+
+    return text
