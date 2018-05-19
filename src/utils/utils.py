@@ -52,6 +52,7 @@ def extract_text(path_pdf, from_page, until_page, mode_extract_text):
         text = ocr(path_pdf, from_page, until_page)
 
     print(text)
+    text = replace_quotation_marks(text)
     text = text.replace('\n', '\n\n\n\n\n')
     file = open("text.txt", 'w', encoding='utf8')
     file.write(text)
@@ -134,16 +135,13 @@ def velocity_human(path_audio_mp3, speed):
 
 
 def replace_quotation_marks(text):
-    open_ph = "Abro comillas. "
-    close_ph = "Cierro comillas. "
-    open_flag = True
+    open_ph = "                  Abro comillas.               "
+    close_ph = "                  Cierro comillas.               "
 
     for index_char in range(len(text)):
-        if text[index_char] == '"':
-            if open_flag:
-                text = text[:index_char] + open_ph + text[index_char + 1:]
-            else:
-                text = text[:index_char] + close_ph + text[index_char + 1:]
-        open_flag = not open_flag
+        if text[index_char] == '“':
+            text = text[:index_char] + open_ph + text[index_char + 1:]
+        elif text[index_char] == "”":
+            text = text[:index_char] + close_ph + text[index_char + 1:]
 
     return text

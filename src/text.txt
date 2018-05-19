@@ -1,108 +1,25 @@
-de la década de 1990 fue de alrededor de un 2 por ciento solamente. La Figura 1.4 muestra que los precios de consumo han subido significativamente desde la Segunda Guerra Mundial: el índice mostrado se ha multiplicado por más de siete. La subida porcentual anual del nivel medio de precios se denomina tasa de in- flación. Por ejemplo, si la tasa de inflación de los precios de consumo es de un 10 por ciento, quiere decir que los precios de los artículos que compran los consumidores es- tán subiendo, en promedio, un 10 por ciento al año. Las tasas de inflación pueden va- riar espectacularmente tanto con el paso del tiempo como de unos países a otros: van desde un 1 o 2 por ciento al año en los países de baja inflación (como Suiza) hasta 1.000 por ciento al año o más en los países (como Bolivia y Argentina en los últimos años) que experimentan hiperinflaciones, o sea, inflaciones extremas. Cuando la tasa de inflación alcanza un nivel extraordinariamente alto, es decir, los precios varían cada día o cada hora, la economía tiende a funcionar mal. Cuando la inflación es alta, también significa que el poder adquisitivo del dinero disminuye rápidamente, lo cual obliga a la gente a tratar de gastar el dinero casi tan pronto como lo recibe.
+xviii Prefacio
 
 
-La economía internacional
 
 
-Actualmente, todas las grandes economías son economías abiertas, es decir, eco- nomías que mantienen extensas relaciones comerciales y financieras con otras (una economía cerrada no mantiene relaciones económicas con el resto del mundo). Los macroeconomistas estudian las pautas de comercio y préstamos internacionales para comprender mejor las relaciones entre las economías nacionales. Por ejemplo, un importante tema en macroeconomía es cómo pueden contribuir el comercio y los préstamos internacionales a transmitir los ciclos económicos de un país a otro. Otra cuestión para la que son fundamentales las consideraciones internacio- nales son los desequilibrios comerciales. La Figura 1.5 muestra el comportamiento histórico de las importaciones y las exportaciones de bienes y servicios de Estados Unidos. Las importaciones de Estados Unidos son bienes y servicios producidos en el extranjero y comprados por residentes de Estados Unidos; las exportaciones de Estados Unidos son bienes y servicios producidos en Estados Unidos y vendidos a personas de otros países. Para hacerse una idea de la importancia relativa del co- mercio internacional, la citada figura muestra las exportaciones y las importaciones de Estados Unidos en porcentaje de su producción total. Actualmente, tanto las ex- portaciones como las importaciones representan una proporción de la producción de Estados Unidos mayor que en las décadas de 1950 y 1960, debido tanto a la re- cuperación del comercio tras su interrupción durante la Gran Depresión y la Segunda Guerra Mundial como a la tendencia de los países a aumentar su inter- dependencia económica. Obsérvese, sin embargo, que hace cien años las exporta- ciones y las importaciones ya eran importantes en relación con las dimensiones del conjunto de la economía. La Figura 1.5 muestra que las exportaciones y las importaciones no tienen por qué ser iguales todos los años. Por ejemplo, tras las dos guerras mundiales, las ex- portaciones de Estados Unidos fueron mayores que las importaciones debido a que el país envió una gran cantidad de suministros a los países cuyas economías habían sido devastadas por la guerra. Cuando las exportaciones son mayores que las im- portaciones, hay un superávit comercial. Sin embargo, en los años 80 las exporta-
+y el keynesiano de las fluctuaciones a corto plazo dentro de un único modelo general, en el que mostramos que los dos enfoques se diferencian principal- mente por sus supuestos sobre el ritmo al que se ajustan los salarios y los pre- cios. Cuando subsisten diferencias de puntos de vista –por ejemplo, en las interpretaciones del desempleo basadas en la búsqueda y en los salarios de efi- ciencia– presentamos y criticamos ambas perspectivas. Este enfoque equili- brado pone a los estudiantes en contacto con las mejores ideas de la macroeconomía moderna. Al mismo tiempo, un profesor de tendencia clásica o de tendencia keynesiana puede basar fácilmente su curso en este libro. ■ Pedagogía innovadora. La cuarta edición ofrece, al igual que sus predecesoras, una amplia variedad de útiles instrumentos para ayudar a los estudiantes a estudiar, comprender y retener la materia. Estos instrumentos, que describimos con mayor detalle más adelante, son las tablas resumen, los diagramas clave, los términos clave y las ecuaciones fundamentales para ayudar a los estudian- tes a organizarse; y cuatro tipos de preguntas y problemas para practicar y comprender mejor la materia. Una novedad de esta edición es la inclusión de problemas que animan a los estudiantes a realizar su propio trabajo empírico utilizando datos de Conference Board ® que pueden descargarse de la página web del texto.
 
 
-10 Capítulo 1   Introducción a la macroeconomía
 
 
-1.1. ¿Qué es la macroeconomía? 11
+Cobertura nueva y actualizada
 
 
-ciones de Estados Unidos disminuyeron vertiginosamente en relación con las im- portaciones, situación que persistió durante la década de 1990, como puede obser- varse en la referida figura. Este reciente exceso de importaciones sobre las exportaciones o déficit comercial ha sido objeto de gran atención por parte de los responsables de la política económica y de los medios de comunicación. ¿A qué se deben estos desequilibrios comerciales? ¿Son malos para la economía de Estados Unidos o para las economías de sus socios comerciales? Éstas son algunas de las preguntas a las que los macroeconomistas tratan de responder.
 
 
-La política macroeconómica
+En los últimos años ha cambiado considerablemente lo que se enseña y cómo se enseña en los cursos de macroeconomía intermedia. Las ediciones anteriores de Macroeconomía desempeñaron un importante papel en estos cambios. La cuarta se ocupa de un amplio espectro de cuestiones e ideas macroeconómicos, entre los que se encuentra toda una variedad de temas nuevos y actualizados:
 
 
-Los resultados económicos de un país dependen de muchos factores, entre los cuales se encuentran sus recursos naturales y humanos, su stock de capital (edi- ficios y máquinas), su tecnología y las decisiones económicas de sus ciudadanos, tanto individuales como colectivas. Otro factor sumamente importante que afec- ta a los resultados económicos son las medidas macroeconómicas que adopta el gobierno.
 
 
-Exportaciones e importaciones (porcentaje de la producción total)
+■ Crecimiento económico a largo plazo. Como la tasa de crecimiento económico desempeña un papel fundamental en la determinación de los niveles de vida, dedicamos en gran medida la Segunda Parte al crecimiento y a cuestiones relacionadas con él. Primero analizamos los factores que contribuyen al creci- miento, como la productividad (Capítulo 3) y las tasas de ahorro y de inversión (Capítulo 4); a continuación pasamos en el Capítulo 6 a un análisis exhaustivo del proceso de crecimiento utilizando instrumentos como la contabilidad del crecimiento y el modelo de Solow. Entre los temas relacionados con el creci- miento se encuentran la desaceleración de la productividad a partir de 1973, los                   Abro comillas.               milagros                  Cierro comillas.                del crecimiento, los factores que determinan el nivel de vida a largo plazo, la convergencia de las tasas de crecimiento y las medidas econó- micas para estimular el crecimiento económico. Temas nuevos en esta edición: la caída de los precios de las computadoras y la medición del crecimiento econó- mico (Capítulo 2), un análisis más extenso de la teoría del crecimiento endó- geno (Capítulo 6) y la revolución de la tecnología de la información y la conducta de la productividad (Capítulo 6). ■ Cuestiones macroeconómicas internacionales. Abordamos la creciente integración de la economía mundial de dos formas. En primer lugar, utilizamos frecuen-
 
 
-0 1860
-
-
-Año
-
-
-12
-
-
-11
-
-
-10
-
-
-9
-
-
-8
-
-
-7
-
-
-6
-
-
-5
-
-
-4
-
-
-3
-
-
-2
-
-
-1
-
-
-EXPORTACIONES
-
-
-Primera Guerra Mundial
-
-
-Segunda Guerra Mundial
-
-
-Déficit comerciales de las décadas de 1980 y 1990
-
-
-IMPORTACIONES
-
-
-14
-
-
-13
-
-
-15
-
-
-16
-
-
-17
-
-
-18
-
-
-1870 1880 1890 1900 1910 1920 1930 1940 1950 1960 1970 1980 1990
-
-
-Figura 1.5 Exportaciones e importaciones de Estados Unidos, 1869-1998 La figura muestra las ex- portaciones de Estados Unidos (en gris) y sus importaciones (en negro) en porcentaje de la pro- ducción total. Las expor- taciones y las importaciones no tiene por qué ser iguales todos los años: las exportacio- nes fueron mayores que las importaciones (área sombreada más oscura) durante una gran parte del siglo XX. Sin embar- go, en las décadas de 1980 y 1990, las exporta- ciones fueron menores que las importaciones (área sombreada más clara). Fuentes: Las importaciones y las exportaciones de bienes y servicios de 1869-1959 proce- den de Historical Statistics of the United States, Colonial Times to 1970, págs. 864-865; las de 1960-1998 proceden de la pági- na web de BEA, International Data, Tabla 1 de Balance of Payments Accounts; produc- ción: el PNB de 1869-1928 pro- cede de Christina D. Romer, “The Prewar Business Cycle Reconsidered: New Estimates of Gross National Product, 1869-1908”, Journal of Political Economy, 97, 1, febrero, 1989, págs. 22-23; los datos de 1929- 1998 (PIB) proceden de la pá- gina web de BEA, National, GDP, and Related Data.
 
 
