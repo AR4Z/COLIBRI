@@ -5,10 +5,15 @@ import os
 import platform
 import errno
 import zipfile
+import shutil
+import traceback
+import types
+import sys
 from .ocr import ocr
 from pathlib import Path
 from mutagen.mp3 import MP3
 from gtts import gTTS
+
 
 
 def text_to_audio(speed, name_audio, pitch, path, tts, lang="es"):
@@ -30,7 +35,7 @@ def text_to_audio(speed, name_audio, pitch, path, tts, lang="es"):
         return wav_to_mp3(os.path.join(path, name_audio + ".wav"))
     else:
         path_mp3 = os.path.join(path, name_audio + ".mp3")
-        content = Path('text.txt').read_text()
+        content = Path('text.txt').read_text(encoding='utf8')
         audio_tts = gTTS(content, slow=0, lang='es')
         audio_tts.save(path_mp3)
         velocity_human(path_mp3, speed)
@@ -116,13 +121,15 @@ def velocity_human(path_audio_mp3, speed):
 
     name_audio = extract_name_audio(path_audio_mp3)
     if platform.system() == "Windows":
-        cmd = '\"C:\Program Files (x86)\sox-14-4-2\sox\" --show-progress {0} {1}\\output.mp3 tempo {2}'.format(path_audio_mp3,
+        cmd = '{0}\\sox --show-progress {1} {2}\\output.mp3 tempo {3}'.format(os.path.join(Path.home(), "bin", "sox-14-4-2"),
+                                                                              path_audio_mp3,
                                                                                                                os.path.join(Path.home(),
                                                                                                            "AudioLibros"), speed)
-        if not os.path.exists("C:\Program Files (x86)\sox-14-4-2"):
-            p = subprocess.Popen([r"bin/sox-14.4.2-win32.exe"])
-            p_status = p.wait()
-            subprocess.call(cmd, shell=True)
+
+
+        if not os.path.exists("{0}\\sox".format(os.path.join(Path.home(), "bin", "sox-14-4-2"))):
+            with zipfile.ZipFile("sox.zip", "r") as zip_ref:
+                zip_ref.extractall(os.path.join(Path.home(), "bin"))
     else:
         cmd = "sox --show-progress {0} {1}/output.mp3 tempo {2}".format(path_audio_mp3, os.path.join(Path.home(), "AudioLibros"), speed)
 
@@ -130,5 +137,6 @@ def velocity_human(path_audio_mp3, speed):
 
     os.remove(path_audio_mp3)
     os.rename(os.path.join(Path.home(), "AudioLibros", "output.mp3"), os.path.join(Path.home(), "AudioLibros", "{0}.mp3".format(name_audio)))
+
 
 
