@@ -1,24 +1,59 @@
-xviii Prefacio
+El  término  enfermedad  holandesa  se  refiere  a  los  efectos  nocivos  derivados  de  un  aumento
 
 
 
 
-y el keynesiano de las fluctuaciones a corto plazo dentro de un único modelo general, en el que mostramos que los dos enfoques se diferencian principal- mente por sus supuestos sobre el ritmo al que se ajustan los salarios y los pre- cios. Cuando subsisten diferencias de puntos de vista –por ejemplo, en las interpretaciones del desempleo basadas en la búsqueda y en los salarios de efi- ciencia– presentamos y criticamos ambas perspectivas. Este enfoque equili- brado pone a los estudiantes en contacto con las mejores ideas de la macroeconomía moderna. Al mismo tiempo, un profesor de tendencia clásica o de tendencia keynesiana puede basar fácilmente su curso en este libro. ■ Pedagogía innovadora. La cuarta edición ofrece, al igual que sus predecesoras, una amplia variedad de útiles instrumentos para ayudar a los estudiantes a estudiar, comprender y retener la materia. Estos instrumentos, que describimos con mayor detalle más adelante, son las tablas resumen, los diagramas clave, los términos clave y las ecuaciones fundamentales para ayudar a los estudian- tes a organizarse; y cuatro tipos de preguntas y problemas para practicar y comprender mejor la materia. Una novedad de esta edición es la inclusión de problemas que animan a los estudiantes a realizar su propio trabajo empírico utilizando datos de Conference Board ® que pueden descargarse de la página web del texto.
+significativo en las entradas de divisas de un país y fue acuñado debido al hallazgo de grandes
 
 
 
 
-Cobertura nueva y actualizada
+yacimientos de gas natural en Holanda, específicamente en el mar del norte. El impacto de estos
 
 
 
 
-En los últimos años ha cambiado considerablemente lo que se enseña y cómo se enseña en los cursos de macroeconomía intermedia. Las ediciones anteriores de Macroeconomía desempeñaron un importante papel en estos cambios. La cuarta se ocupa de un amplio espectro de cuestiones e ideas macroeconómicos, entre los que se encuentra toda una variedad de temas nuevos y actualizados:
+hallazgos originó un aumento considerable en sus exportaciones lo que trajo una mayor entrada de
 
 
 
 
-■ Crecimiento económico a largo plazo. Como la tasa de crecimiento económico desempeña un papel fundamental en la determinación de los niveles de vida, dedicamos en gran medida la Segunda Parte al crecimiento y a cuestiones relacionadas con él. Primero analizamos los factores que contribuyen al creci- miento, como la productividad (Capítulo 3) y las tasas de ahorro y de inversión (Capítulo 4); a continuación pasamos en el Capítulo 6 a un análisis exhaustivo del proceso de crecimiento utilizando instrumentos como la contabilidad del crecimiento y el modelo de Solow. Entre los temas relacionados con el creci- miento se encuentran la desaceleración de la productividad a partir de 1973, los                   Abro comillas.               milagros                  Cierro comillas.                del crecimiento, los factores que determinan el nivel de vida a largo plazo, la convergencia de las tasas de crecimiento y las medidas econó- micas para estimular el crecimiento económico. Temas nuevos en esta edición: la caída de los precios de las computadoras y la medición del crecimiento econó- mico (Capítulo 2), un análisis más extenso de la teoría del crecimiento endó- geno (Capítulo 6) y la revolución de la tecnología de la información y la conducta de la productividad (Capítulo 6). ■ Cuestiones macroeconómicas internacionales. Abordamos la creciente integración de la economía mundial de dos formas. En primer lugar, utilizamos frecuen-
+divisas y por tanto una reducción de la tasa de cambio de la moneda holandesa de la época, el Florín.
+
+
+
+
+El concepto por partes
+
+
+
+
+En principio la lógica nos llevaría a pensar que el hallazgo de un gran yacimiento de gas natural en
+
+
+
+
+Groningen en 1959 debería ser algo positivo para el crecimiento económico de Holanda, sin embargo,
+
+
+
+
+existe un efecto adverso sobre otros sectores debido a la revaluación de la tasa de cambio. En otras
+
+
+
+
+palabras, cuando se presentan este tipo de hallazgos hay un sector que experimenta un boom, en este
+
+
+
+
+caso el gas natural, y lo vuelve mucho más activo, pero perjudica otros sectores como el de la
+
+
+
+
+manufactura.
 
 
 
